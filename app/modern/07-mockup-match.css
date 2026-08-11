@@ -1,0 +1,358 @@
+/* ==========================================================================
+   Approved mockup alignment
+   Keeps evidence-backed YOCED content while matching the approved 2026 portal
+   composition more closely: floating utility bar, two-line hero, angled image,
+   atlas-first flow, compact ventures and disciplined mobile composition.
+   ========================================================================== */
+
+.portal-canvas { position:relative; }
+
+/* Approved mockup uses a floating utility pill, not a full-width banner. */
+.home-signalbar {
+  position:absolute;
+  z-index:8;
+  top:17px;
+  right:28px;
+  width:min(560px,49%);
+  min-height:32px !important;
+  padding:0 14px !important;
+  border:1px solid rgba(15,24,29,.08);
+  border-radius:999px;
+  background:rgba(255,255,255,.88);
+  box-shadow:0 5px 18px rgba(15,24,29,.07);
+  backdrop-filter:blur(14px);
+}
+.home-signalbar span,.home-signalbar a {
+  font-size:10px !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+}
+.home-signalbar span { color:#5d6870; }
+.home-signalbar a { color:#3158de; }
+
+.home-hero {
+  min-height:548px !important;
+  grid-template-columns:minmax(420px,.78fr) minmax(560px,1.22fr) !important;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 42% 15%,rgba(201,255,22,.08),transparent 24%),
+    linear-gradient(120deg,#fff 0%,#fff 47%,#f7f9f9 100%) !important;
+}
+.home-hero__copy {
+  position:relative;
+  z-index:3;
+  padding:76px 18px 34px var(--content-gutter) !important;
+}
+.home-hero h1 {
+  max-width:11ch !important;
+  margin:20px 0 17px !important;
+  font-size:clamp(4rem,5.6vw,5.45rem) !important;
+  line-height:.87 !important;
+  letter-spacing:-.075em !important;
+}
+.home-hero h1 mark {
+  padding:0 .035em .03em;
+  border-radius:.06em;
+  background:linear-gradient(180deg,transparent 13%,var(--signal) 13%,var(--signal) 90%,transparent 90%);
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.home-hero__lede {
+  max-width:39ch !important;
+  font-size:1rem !important;
+  line-height:1.46 !important;
+  color:#3f4a51 !important;
+}
+.home-actions { margin-top:22px !important; }
+.home-audience-strip {
+  margin-top:36px !important;
+  align-items:center;
+}
+.home-audience-strip > div { gap:7px !important; }
+.home-audience-strip a {
+  min-height:32px;
+  display:inline-flex;
+  align-items:center;
+  padding:0 12px !important;
+  border:1px solid #d7dddf;
+  border-radius:999px !important;
+  background:#fbfcfc;
+  color:#2c363c;
+  font-size:11px !important;
+}
+.home-audience-strip a:hover { border-color:#9ab600; background:#f9ffe2; }
+
+.home-hero__visual {
+  position:relative;
+  min-height:514px !important;
+  margin:34px 18px 0 -38px;
+  overflow:hidden;
+  clip-path:polygon(15% 0,100% 0,94% 100%,0 100%);
+  border-radius:26px 18px 18px 32px;
+  background:#dce2e3;
+}
+.home-hero__visual > img {
+  object-fit:cover;
+  object-position:center 42%;
+}
+.home-hero__veil {
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.28),transparent 26%),
+    linear-gradient(180deg,transparent 65%,rgba(12,19,23,.11)) !important;
+}
+.home-purpose-card {
+  right:24px !important;
+  top:50% !important;
+  bottom:auto !important;
+  transform:translateY(-38%);
+  width:min(250px,36%) !important;
+  padding:18px 18px 16px !important;
+  border:1px solid rgba(255,255,255,.72) !important;
+  border-radius:13px !important;
+  background:rgba(250,252,252,.91) !important;
+  box-shadow:0 16px 45px rgba(12,19,23,.18) !important;
+  backdrop-filter:blur(18px);
+}
+.home-purpose-card p { color:#303b42 !important; }
+
+/* Atlas begins immediately after the hero in the approved composition. */
+.home-atlas-layout {
+  grid-template-columns:minmax(0,1fr) 250px !important;
+  gap:12px !important;
+  padding:22px var(--content-gutter) 34px !important;
+  background:#fff;
+  scroll-margin-top:24px;
+}
+.home-atlas {
+  border-radius:13px !important;
+  box-shadow:0 12px 32px rgba(8,15,19,.17) !important;
+}
+.home-atlas__bar {
+  min-height:68px !important;
+  padding:15px 19px !important;
+}
+.home-atlas__bar h2 {
+  font-size:1.55rem !important;
+  letter-spacing:-.045em !important;
+}
+.home-atlas__body {
+  min-height:350px !important;
+  grid-template-columns:minmax(0,1fr) 228px !important;
+}
+.home-network { min-height:350px !important; }
+.home-atlas__summary { padding:19px 16px !important; }
+.home-atlas__summary h3 { font-size:1.2rem !important; max-width:13ch; }
+.home-atlas__legend { min-height:39px !important; padding:8px 18px !important; }
+.home-partner-rail {
+  padding:17px 15px !important;
+  border-radius:13px !important;
+  background:linear-gradient(180deg,#f7f8f8,#eef1f1) !important;
+  box-shadow:none !important;
+}
+.home-partner-rail h2 {
+  margin:7px 0 12px !important;
+  font-size:1.14rem !important;
+  max-width:14ch;
+}
+.home-partner-item { min-height:47px !important; padding:7px 0 !important; }
+.home-partner-item__mark { width:28px !important; height:28px !important; }
+.home-partner-item b { font-size:11px !important; }
+.home-partner-item small { font-size:10px !important; }
+.home-partner-rail__note { font-size:10px !important; }
+
+/* Venture rail is compact in the approved mockup and reads as one continuous strip. */
+.home-ventures {
+  padding:0 var(--content-gutter) 38px !important;
+  border-top:0 !important;
+}
+.home-ventures .home-section-title { margin-bottom:10px !important; }
+.home-ventures .home-section-title h2 {
+  margin-top:5px !important;
+  font-size:1rem !important;
+  letter-spacing:-.025em !important;
+}
+.home-venture-track { gap:9px !important; }
+.home-venture-card {
+  border-radius:8px !important;
+  background:#11191e !important;
+  border-color:#172126 !important;
+}
+.home-venture-card__media { height:112px !important; }
+.home-venture-card__media[data-empty="true"] > span {
+  font-size:1.55rem !important;
+  letter-spacing:-.05em !important;
+}
+.home-venture-card__body {
+  min-height:48px !important;
+  padding:8px 9px !important;
+  background:linear-gradient(180deg,#151e23,#0e1519);
+}
+.home-venture-card__body b { color:#fff; font-size:10px !important; }
+.home-venture-card__body small { color:rgba(255,255,255,.55); font-size:10px !important; }
+
+/* The quote follows ventures, mirroring the approved visual sequence. */
+.home-perspective {
+  min-height:232px !important;
+  grid-template-columns:minmax(0,1fr) 360px !important;
+  margin:0 var(--content-gutter) 34px;
+  border:0 !important;
+  border-radius:13px;
+  background:#10181d !important;
+  color:#fff;
+}
+.home-perspective__quote { padding:34px 38px !important; }
+.home-perspective blockquote {
+  max-width:38ch !important;
+  margin:12px 0 14px !important;
+  font-size:clamp(1.45rem,2.05vw,2.1rem) !important;
+  line-height:1.08 !important;
+  color:#fff;
+}
+.home-perspective__quote > p { color:rgba(255,255,255,.55) !important; }
+.home-perspective__media { min-height:232px !important; }
+.home-perspective__media::after {
+  background:linear-gradient(90deg,#10181d 0%,transparent 31%),linear-gradient(0deg,rgba(10,16,20,.28),transparent 70%) !important;
+}
+
+/* Supporting material remains available below the approved primary composition. */
+.home-operating { padding:52px var(--content-gutter) !important; }
+.home-operating__intro h2 { font-size:clamp(2.1rem,3vw,3rem) !important; }
+.home-bpm-grid li { min-height:190px !important; }
+.home-partners-band { padding:44px var(--content-gutter) !important; }
+.home-cta { padding:52px var(--content-gutter) !important; }
+
+@media (max-width:1180px) {
+  .home-hero {
+    grid-template-columns:minmax(360px,.82fr) minmax(460px,1.18fr) !important;
+  }
+  .home-hero h1 { font-size:clamp(3.7rem,5.5vw,4.8rem) !important; }
+  .home-purpose-card { width:min(230px,42%) !important; }
+}
+
+@media (max-width:900px) {
+  .home-signalbar { display:none !important; }
+  .home-hero {
+    display:block !important;
+    min-height:0 !important;
+    background:linear-gradient(145deg,#fff,#f4f6f5) !important;
+  }
+  .home-hero__copy { padding:35px 18px 30px !important; }
+  .home-hero h1 {
+    max-width:10ch !important;
+    margin:12px 0 15px !important;
+    font-size:clamp(3rem,14.5vw,4rem) !important;
+    line-height:.88 !important;
+  }
+  .home-hero__lede { max-width:35ch !important; font-size:.94rem !important; }
+  .home-actions {
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:8px !important;
+  }
+  .home-actions .home-button { width:100%; justify-content:center; }
+  .home-audience-strip {
+    margin-top:22px !important;
+    display:block !important;
+  }
+  .home-audience-strip > span { display:block; margin-bottom:9px; }
+  .home-audience-strip > div {
+    display:grid !important;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:6px !important;
+  }
+  .home-audience-strip a {
+    min-height:38px;
+    justify-content:center;
+    padding:0 5px !important;
+    font-size:10px !important;
+    text-align:center;
+  }
+  .home-audience-strip a:nth-child(5) { grid-column:2 / span 2; }
+  .home-hero__visual { display:none !important; }
+
+  .home-atlas-layout {
+    display:block !important;
+    padding:12px 12px 28px !important;
+    background:#f3f5f4;
+  }
+  .home-atlas { border-radius:12px !important; }
+  .home-atlas__bar {
+    align-items:center !important;
+    min-height:61px !important;
+    padding:13px !important;
+  }
+  .home-atlas__bar h2 { font-size:1.1rem !important; max-width:17ch; }
+  .home-atlas__bar .home-inline-link { font-size:10px !important; }
+  .home-atlas__body {
+    min-height:0 !important;
+    display:block !important;
+  }
+  .home-network {
+    min-height:280px !important;
+    border-right:0 !important;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .home-atlas__summary {
+    display:grid !important;
+    grid-template-columns:36px 1fr;
+    gap:7px 10px;
+    padding:13px !important;
+  }
+  .home-atlas__summary-icon { grid-row:1 / span 2; }
+  .home-atlas__summary .home-kicker { margin-top:0 !important; align-self:end; }
+  .home-atlas__summary h3 { margin:0 !important; max-width:none; font-size:1rem !important; }
+  .home-atlas__summary dl { grid-column:1 / -1; grid-template-columns:repeat(3,1fr); gap:0 !important; margin-top:6px !important; }
+  .home-atlas__summary dl div {
+    display:grid !important;
+    padding:8px !important;
+    border:1px solid rgba(255,255,255,.08) !important;
+  }
+  .home-atlas__summary-link { grid-column:1 / -1; margin-top:0 !important; padding-top:6px !important; }
+  .home-atlas__legend { gap:9px !important; }
+
+  .home-partner-rail {
+    margin-top:10px;
+    padding:14px !important;
+    background:#fff !important;
+  }
+  .home-partner-rail h2 { max-width:22ch; }
+  .home-partner-list { grid-template-columns:1fr 1fr; column-gap:13px; }
+  .home-partner-rail__note { margin-bottom:8px !important; }
+
+  .home-ventures {
+    padding:28px 14px 34px !important;
+    overflow:hidden;
+  }
+  .home-venture-track {
+    display:flex !important;
+    overflow-x:auto;
+    padding-bottom:6px;
+    scroll-snap-type:x mandatory;
+  }
+  .home-venture-card {
+    flex:0 0 146px !important;
+    scroll-snap-align:start;
+  }
+  .home-venture-card__media { height:105px !important; }
+
+  .home-perspective {
+    margin:0 12px 28px !important;
+    grid-template-columns:1fr !important;
+    min-height:0 !important;
+  }
+  .home-perspective__quote { padding:25px 20px !important; }
+  .home-perspective blockquote { font-size:1.45rem !important; }
+  .home-perspective__media { min-height:210px !important; }
+  .home-perspective__media::after { background:linear-gradient(0deg,#10181d 0%,transparent 28%) !important; }
+
+  .home-operating { padding:42px 18px !important; }
+  .home-partners-band { padding:38px 18px !important; }
+  .home-cta { padding:44px 18px !important; }
+}
+
+@media (max-width:520px) {
+  .home-audience-strip > div { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .home-audience-strip a:nth-child(5) { grid-column:1 / -1; }
+  .home-network { min-height:250px !important; }
+  .home-partner-list { grid-template-columns:1fr !important; }
+}
