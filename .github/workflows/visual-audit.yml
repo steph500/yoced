@@ -38,6 +38,7 @@ jobs:
       - name: Capture and audit routes
         run: |
           mkdir -p visual-audit
+          cp public/assets/reference/yoced-approved-ui.webp visual-audit/reference.webp
           cat > capture.mjs <<'EOF'
           import { chromium } from 'playwright';
           const browser = await chromium.launch({headless: true});
@@ -88,6 +89,8 @@ jobs:
         if: always()
         with:
           name: yoced-visual-audit
-          path: visual-audit/*.png
+          path:
+            - visual-audit/*.png
+            - visual-audit/reference.webp
           if-no-files-found: error
           retention-days: 2
