@@ -1,0 +1,48 @@
+/* Final visual polish for the approved portal composition. */
+
+.portal-sidebar .brand { gap:11px !important; align-items:flex-start; }
+.portal-sidebar .brand svg { width:38px !important; height:38px !important; flex:0 0 38px; }
+.portal-sidebar .brand__word { font-size:1.08rem !important; line-height:1 !important; }
+.portal-sidebar .brand__full { max-width:135px; margin-top:4px !important; font-size:10px !important; line-height:1.18 !important; opacity:.78; }
+.portal-sidebar__brand { padding:7px 8px 24px !important; }
+.portal-nav__item { min-height:43px !important; }
+
+.home-network { isolation:isolate; }
+.home-network__map {
+  position:absolute;
+  z-index:1;
+  inset:3% 7% 6%;
+  width:86%;
+  height:91%;
+  overflow:visible;
+  filter:drop-shadow(0 18px 26px rgba(0,0,0,.32));
+}
+.home-network__africa {
+  stroke:rgba(226,237,239,.34);
+  stroke-width:1.4;
+  vector-effect:non-scaling-stroke;
+}
+.home-network__routes path {
+  fill:none;
+  stroke:rgba(201,255,22,.42);
+  stroke-width:1.2;
+  stroke-dasharray:3.5 5.5;
+  vector-effect:non-scaling-stroke;
+}
+.home-network__grid { z-index:0; opacity:.1 !important; }
+.home-network__node { z-index:4 !important; }
+.home-network__origin,.home-network__note { z-index:5 !important; }
+.home-network::after {
+  content:"";
+  position:absolute;
+  z-index:2;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 48% 50%,transparent 0 42%,rgba(7,12,16,.08) 64%,rgba(7,12,16,.28) 100%);
+}
+
+@media (max-width:900px) {
+  .portal-mobile-header .brand svg { width:28px !important; height:28px !important; }
+  .home-network__map { inset:4% 1% 8%; width:98%; height:88%; }
+}

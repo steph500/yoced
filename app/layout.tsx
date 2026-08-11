@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import { site, technologyPartner } from "@/lib/site";
 import { RevealProvider } from "@/components/Reveal";
 import { OrganizationSchema, WebSiteSchema } from "@/components/StructuredData";
@@ -10,26 +10,16 @@ import "./modern/02.css";
 import "./modern/03.css";
 import "./modern/04.css";
 import "./modern/05.css";
+import "./modern/06-system.css";
+import "./modern/07-mockup-match.css";
+import "./modern/08-map-polish.css";
+import "./modern/09-final-scale.css";
 
-const sans = Archivo({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-yoced",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const display = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-  axes: ["SOFT", "WONK"],
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-  weight: ["400", "500"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -83,7 +73,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-KE" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+    <html lang="en-KE" className={inter.variable}>
       <body>
         <OrganizationSchema knowsAbout={programs.map((program) => program.title)} />
         <WebSiteSchema />

@@ -10,6 +10,7 @@ import {
   Handshake,
   Home,
   Images,
+  Layers3,
   Mail,
   MapPin,
   Menu,
@@ -24,12 +25,13 @@ import { site } from "@/lib/site";
 
 const nav = [
   { label: "Home", href: "/", icon: Home },
-  { label: "Impact Atlas", href: "/programs", icon: Grid2X2 },
+  { label: "Impact Atlas", href: "/#impact-atlas", icon: Grid2X2 },
+  { label: "Programs", href: "/programs", icon: Layers3 },
   { label: "Field work", href: "/work", icon: Images },
   { label: "Ventures", href: "/ventures", icon: Briefcase },
   { label: "Partners", href: "/partners", icon: Handshake },
   { label: "Leadership", href: "/about", icon: Users },
-  { label: "Contact", href: "/contact", icon: Mail },
+  { label: "Get involved", href: "/contact", icon: Mail },
 ] as const;
 
 export function SiteHeader() {
@@ -56,8 +58,10 @@ export function SiteHeader() {
     };
   }, [open]);
 
-  const active = (href: string) =>
-    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+  const active = (href: string) => {
+    if (href.includes("#")) return false;
+    return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <>
