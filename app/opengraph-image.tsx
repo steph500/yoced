@@ -11,7 +11,10 @@ export default function Image() {
         <div style={{ width: 36, height: 36, border: "5px solid #0b0d0c", borderRightColor: "transparent", borderRadius: "50%" }} />
         YOCED
       </div>
-      <div style={{ fontSize: 112, fontWeight: 800, lineHeight: .82, letterSpacing: "-8px", maxWidth: 900 }}>Build ideas<br />into impact.</div>
+      <div style={{ display: "flex", flexDirection: "column", fontSize: 112, fontWeight: 800, lineHeight: .82, letterSpacing: "-8px", maxWidth: 900 }}>
+        <span>Build ideas</span>
+        <span>into impact.</span>
+      </div>
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 18 }}>
         <span>Youth Corporate and Economic Development</span><span>Nairobi, Kenya</span>
       </div>
