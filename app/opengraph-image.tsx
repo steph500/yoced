@@ -1,26 +1,113 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import { site } from "@/lib/site";
 
-export const alt = "YOCED | Build ideas into impact";
+export const alt = `${site.name} — ${site.legalName}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function Image() {
+/**
+ * Social preview.
+ *
+ * Fonts are read from the repo rather than fetched at render time, so the image
+ * builds identically in CI, on Vercel and offline.
+ */
+export default async function Image() {
+  const fontDir = join(process.cwd(), "app", "fonts");
+  const [grotesk, serif] = await Promise.all([
+    readFile(join(fontDir, "archivo-600.ttf")),
+    readFile(join(fontDir, "fraunces-600.ttf")),
+  ]);
+
   return new ImageResponse(
-    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#f4f0e8", color: "#0b0d0c", padding: "64px", fontFamily: "Arial, sans-serif", position: "relative", overflow: "hidden" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 28, fontWeight: 800 }}>
-        <div style={{ width: 36, height: 36, border: "5px solid #0b0d0c", borderRightColor: "transparent", borderRadius: "50%" }} />
-        YOCED
+    (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          background: "#141310",
+          color: "#f6f2e9",
+          padding: 68,
+          fontFamily: "Archivo",
+          position: "relative",
+        }}
+      >
+        {/* Header rule */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 18,
+            borderBottom: "1px solid rgba(246,242,233,0.22)",
+            paddingBottom: 26,
+          }}
+        >
+          <svg width="46" height="46" viewBox="0 0 64 64">
+            <path d="M2 58V42a8 8 0 0 1 16 0v16Z" fill="#f6f2e9" />
+            <path d="M22 58V30a10 10 0 0 1 20 0v28Z" fill="#e8a317" />
+            <path d="M46 58V42a8 8 0 0 1 16 0v16Z" fill="#f6f2e9" />
+          </svg>
+          <span style={{ fontSize: 34, letterSpacing: 1 }}>YOCED</span>
+          <span
+            style={{
+              marginLeft: "auto",
+              fontSize: 17,
+              letterSpacing: 2.4,
+              textTransform: "uppercase",
+              color: "rgba(246,242,233,0.6)",
+            }}
+          >
+            {site.location}
+          </span>
+        </div>
+
+        {/* Headline, mixed grotesk and serif */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            fontSize: 92,
+            lineHeight: 1.02,
+            letterSpacing: -4,
+            maxWidth: 1000,
+          }}
+        >
+          <span>Ideas are cheap.</span>
+          <span style={{ display: "flex", gap: 22 }}>
+            <span style={{ fontFamily: "Fraunces", color: "#ef7a4b" }}>Operations</span>
+            <span>are what last.</span>
+          </span>
+        </div>
+
+        {/* Footer rule */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            borderTop: "1px solid rgba(246,242,233,0.22)",
+            paddingTop: 26,
+            fontSize: 19,
+            color: "rgba(246,242,233,0.72)",
+          }}
+        >
+          <span>{site.legalName}</span>
+          <span style={{ letterSpacing: 2.4, textTransform: "uppercase", fontSize: 16 }}>
+            12 fields · 6 ventures
+          </span>
+        </div>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", fontSize: 112, fontWeight: 800, lineHeight: .82, letterSpacing: "-8px", maxWidth: 900 }}>
-        <span>Build ideas</span>
-        <span>into impact.</span>
-      </div>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 18 }}>
-        <span>Youth Corporate and Economic Development</span><span>Nairobi, Kenya</span>
-      </div>
-      <div style={{ position: "absolute", width: 380, height: 380, border: "70px solid #d9ff43", borderRadius: "50%", right: -150, top: -150 }} />
-      <div style={{ position: "absolute", width: 180, height: 180, border: "42px solid #5a78ff", borderRadius: "50%", right: 110, top: 60 }} />
-    </div>,
-    size
+    ),
+    {
+      ...size,
+      fonts: [
+        { name: "Archivo", data: grotesk, weight: 600, style: "normal" },
+        { name: "Fraunces", data: serif, weight: 600, style: "normal" },
+      ],
+    },
   );
 }
