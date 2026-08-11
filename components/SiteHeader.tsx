@@ -3,212 +3,172 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import {
+  ArrowUpRight,
+  Briefcase,
+  Grid2X2,
+  Handshake,
+  Home,
+  Images,
+  Mail,
+  MapPin,
+  Menu,
+  Users,
+  X,
+} from "lucide-react";
 import { Brand } from "./Brand";
-import { clusters, programsInCluster } from "@/lib/programs";
-import { audiences } from "@/lib/audiences";
-import { primaryNav } from "@/lib/site";
+import { programs } from "@/lib/programs";
+import { ventures } from "@/lib/ventures";
+import { partners } from "@/lib/partners";
+import { site } from "@/lib/site";
 
-/**
- * Site header.
- *
- * Both the program mega-panel and the mobile drawer animate entirely in CSS —
- * the panel via a `grid-template-rows: 0fr → 1fr` transition, the drawer via
- * opacity and transform. That keeps an animation library out of the bundle for
- * what amounts to two transitions.
- *
- * The drawer stays mounted and is marked `inert` when closed, so it is fully
- * removed from the tab order and the accessibility tree without unmounting.
- */
+const nav = [
+  { label: "Home", href: "/", icon: Home },
+  { label: "Impact Atlas", href: "/programs", icon: Grid2X2 },
+  { label: "Field work", href: "/work", icon: Images },
+  { label: "Ventures", href: "/ventures", icon: Briefcase },
+  { label: "Partners", href: "/partners", icon: Handshake },
+  { label: "Leadership", href: "/about", icon: Users },
+  { label: "Contact", href: "/contact", icon: Mail },
+] as const;
+
 export function SiteHeader() {
   const pathname = usePathname();
-  const [mega, setMega] = useState(false);
-  const [drawer, setDrawer] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
+  const [open, setOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
-  const burgerRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
-  // Close both surfaces whenever the route changes. Adjusting state during
-  // render is the supported pattern here — an effect would paint one frame with
-  // the old menu still open.
-  const [lastPath, setLastPath] = useState(pathname);
-  if (lastPath !== pathname) {
-    setLastPath(pathname);
-    setMega(false);
-    setDrawer(false);
-  }
-
-  // Escape closes; a pointer press outside the header closes the mega panel.
   useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
     const onKey = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return;
-      setMega(false);
-      setDrawer(false);
-    };
-    const onPointer = (event: PointerEvent) => {
-      if (!headerRef.current?.contains(event.target as Node)) setMega(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
     };
     document.addEventListener("keydown", onKey);
-    document.addEventListener("pointerdown", onPointer);
     return () => {
+      document.body.style.overflow = previous;
       document.removeEventListener("keydown", onKey);
-      document.removeEventListener("pointerdown", onPointer);
     };
-  }, []);
+  }, [open]);
 
-  // Lock background scroll and move focus with the drawer.
-  useEffect(() => {
-    if (drawer) {
-      const previous = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      closeRef.current?.focus();
-      return () => {
-        document.body.style.overflow = previous;
-      };
-    }
-    return undefined;
-  }, [drawer]);
-
-  const closeDrawer = () => {
-    setDrawer(false);
-    burgerRef.current?.focus();
-  };
-
-  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+  const active = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <>
-      <header
-        className="header"
-        ref={headerRef}
-        onBlur={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget as Node)) setMega(false);
-        }}
-      >
-        <div className="header__inner">
+      <aside className="portal-sidebar" aria-label="YOCED navigation">
+        <div className="portal-sidebar__brand">
           <Brand withFullName />
-
-          <nav className="nav" aria-label="Primary">
-            <button
-              type="button"
-              className="nav__trigger"
-              aria-expanded={mega}
-              aria-controls="program-navigator"
-              onClick={() => setMega((open) => !open)}
-            >
-              Programs <ChevronDown size={14} aria-hidden="true" />
-            </button>
-            {primaryNav
-              .filter((item) => item.href !== "/programs")
-              .map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="nav__link"
-                  data-active={isActive(item.href)}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                >
-                  {item.label}
-                </Link>
-              ))}
-          </nav>
-
-          <Link href="/contact" className="btn header__cta">
-            Work with us <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
-
-          <button
-            type="button"
-            className="burger"
-            ref={burgerRef}
-            aria-label="Open menu"
-            aria-expanded={drawer}
-            onClick={() => setDrawer(true)}
-          >
-            <Menu size={20} aria-hidden="true" />
-          </button>
         </div>
 
-        <div id="program-navigator" className="mega on-ink" data-open={mega} inert={!mega}>
-          <div className="mega__clip">
-            <div className="mega__inner">
-              {clusters.map((cluster) => (
-                <div className="mega__cluster" key={cluster.id} data-accent={cluster.accent}>
-                  <span className="label label--accent">{cluster.title}</span>
-                  {programsInCluster(cluster.id).map((program) => (
-                    <Link key={program.slug} href={`/programs/${program.slug}`} className="mega__link">
-                      <span className="code">{program.code}</span>
-                      <span>{program.navTitle}</span>
-                    </Link>
-                  ))}
-                </div>
-              ))}
-              <div className="mega__foot">
-                <Link href="/programs" className="link">
-                  All twelve fields <ArrowUpRight size={15} aria-hidden="true" />
-                </Link>
-                {audiences.map((audience) => (
-                  <Link key={audience.slug} href={`/for/${audience.slug}`} className="link">
-                    {audience.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
+        <nav className="portal-nav" aria-label="Primary">
+          {nav.map((item) => {
+            const Icon = item.icon;
+            const isActive = active(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="portal-nav__item"
+                data-active={isActive}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <Icon size={17} strokeWidth={1.8} aria-hidden="true" />
+                <span>{item.label}</span>
+                {isActive ? <span className="portal-nav__pulse" aria-hidden="true" /> : null}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="portal-sidebar__snapshot" aria-label="YOCED at a glance">
+          <div className="portal-sidebar__snapshot-head">
+            <span className="portal-live-dot" aria-hidden="true" />
+            <span>YOCED AT A GLANCE</span>
           </div>
+          <dl>
+            <div>
+              <dt>Active fields</dt>
+              <dd>{programs.length}</dd>
+            </div>
+            <div>
+              <dt>Active ventures</dt>
+              <dd>{ventures.length}</dd>
+            </div>
+            <div>
+              <dt>Network organisations</dt>
+              <dd>{partners.length}</dd>
+            </div>
+            <div>
+              <dt>Base</dt>
+              <dd className="portal-sidebar__place">{site.locality}</dd>
+            </div>
+          </dl>
+          <Link href="/partners" className="portal-sidebar__snapshot-link">
+            Partnership routes <ArrowUpRight size={13} aria-hidden="true" />
+          </Link>
         </div>
+
+        <div className="portal-sidebar__foot">
+          <span>© {new Date().getFullYear()} YOCED</span>
+          <span><MapPin size={12} aria-hidden="true" /> {site.location}</span>
+        </div>
+      </aside>
+
+      <header className="portal-mobile-header">
+        <Brand withFullName />
+        <button
+          ref={triggerRef}
+          type="button"
+          className="portal-menu-button"
+          aria-label="Open site menu"
+          aria-expanded={open}
+          onClick={() => setOpen(true)}
+        >
+          <Menu size={21} aria-hidden="true" />
+        </button>
       </header>
 
-      <div
-        className="drawer"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Site menu"
-        data-open={drawer}
-        inert={!drawer}
-      >
-        <div className="drawer__top">
-          <Brand />
+      <div className="portal-mobile-drawer" data-open={open} inert={!open} role="dialog" aria-modal="true" aria-label="Site menu">
+        <div className="portal-mobile-drawer__top">
+          <Brand withFullName />
           <button
-            type="button"
-            className="drawer__close"
             ref={closeRef}
-            aria-label="Close menu"
-            onClick={closeDrawer}
+            type="button"
+            className="portal-menu-button"
+            aria-label="Close site menu"
+            onClick={() => {
+              setOpen(false);
+              triggerRef.current?.focus();
+            }}
           >
-            <X size={20} aria-hidden="true" />
+            <X size={21} aria-hidden="true" />
           </button>
         </div>
-
-        <div className="drawer__group drawer__primary">
-          {primaryNav.map((item) => (
-            <Link key={item.href} href={item.href}>
-              {item.label}
-            </Link>
-          ))}
-          <Link href="/contact">Contact</Link>
-        </div>
-
-        {clusters.map((cluster) => (
-          <div className="drawer__group" key={cluster.id} data-accent={cluster.accent}>
-            <span className="label label--accent">{cluster.title}</span>
-            {programsInCluster(cluster.id).map((program) => (
-              <Link key={program.slug} href={`/programs/${program.slug}`}>
-                {program.navTitle}
-                <span className="code">{program.code}</span>
+        <nav className="portal-mobile-nav" aria-label="Mobile primary">
+          {nav.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Link key={item.href} href={item.href} data-active={active(item.href)}>
+                <Icon size={18} aria-hidden="true" />
+                <span>{item.label}</span>
+                <ArrowUpRight size={16} aria-hidden="true" />
               </Link>
-            ))}
-          </div>
-        ))}
-
-        <div className="drawer__group">
-          <span className="label">Find your route</span>
-          {audiences.map((audience) => (
-            <Link key={audience.slug} href={`/for/${audience.slug}`}>
-              {audience.label}
-              <span className="code">→</span>
-            </Link>
-          ))}
-        </div>
+            );
+          })}
+        </nav>
+        <Link href="/contact?topic=partnership" className="portal-mobile-cta">
+          Partner with YOCED <ArrowUpRight size={17} aria-hidden="true" />
+        </Link>
       </div>
     </>
   );

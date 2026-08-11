@@ -5,8 +5,12 @@ import { RevealProvider } from "@/components/Reveal";
 import { OrganizationSchema, WebSiteSchema } from "@/components/StructuredData";
 import { programs } from "@/lib/programs";
 import "./globals.css";
+import "./modern/01.css";
+import "./modern/02.css";
+import "./modern/03.css";
+import "./modern/04.css";
+import "./modern/05.css";
 
-/** Workhorse grotesk: interface, body copy, tight display lines. */
 const sans = Archivo({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -14,7 +18,6 @@ const sans = Archivo({
   weight: ["400", "500", "600", "700"],
 });
 
-/** Editorial display serif. The `SOFT`/`WONK` axes give the headings character. */
 const display = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
@@ -22,7 +25,6 @@ const display = Fraunces({
   axes: ["SOFT", "WONK"],
 });
 
-/** Atlas codes, labels and captions. */
 const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
@@ -75,7 +77,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f6f2e9",
+  themeColor: "#0f171c",
   colorScheme: "light",
 };
 

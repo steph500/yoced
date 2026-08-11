@@ -1,276 +1,258 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  BriefcaseBusiness,
+  Building2,
+  Handshake,
+  Layers3,
+  MapPin,
+  Play,
+} from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
-import { AtlasIndex } from "@/components/AtlasIndex";
-import { Plate, Reel } from "@/components/Photo";
-import { reveal } from "@/lib/reveal";
-import { clusters, programs, programsInCluster } from "@/lib/programs";
+import { ImpactNetwork } from "@/components/ImpactNetwork";
 import { audiences } from "@/lib/audiences";
-import { ventures } from "@/lib/ventures";
 import { partners } from "@/lib/partners";
-import { photo, photoSet } from "@/lib/photos";
-import { site } from "@/lib/site";
+import { photo } from "@/lib/photos";
+import { programs } from "@/lib/programs";
+import { site, technologyPartner } from "@/lib/site";
+import { testimonials } from "@/lib/testimonials";
+import { ventures } from "@/lib/ventures";
+import { ventureImage } from "@/lib/ventureAssets";
 
-const previews = Object.fromEntries(
-  programs.map((program) => [program.slug, program.heroPhoto ? photo(program.heroPhoto) : undefined]),
-);
+const heroPhoto = photo("training-session");
+const partnerPhoto = photo("partner-meeting");
 
-const tickerItems = programs.map((program) => `${program.code} ${program.title}`);
+const bpmStages = [
+  ["01", "Design", "Identify the current process and the change that is needed."],
+  ["02", "Modelling", "Test proposed changes against the variables that can break them."],
+  ["03", "Execution", "Put the process into operation with the tools needed to manage it."],
+  ["04", "Monitoring", "Track completion, effectiveness and where the process is leaking value."],
+  ["05", "Optimisation", "Apply what the evidence shows and improve the system again."],
+] as const;
 
-const reelPhotos = photoSet(
-  "field-preparation",
-  "groundnut-lifted",
-  "weeding-team",
-  "groundnut-harvest-drying",
-  "groundnut-peanut-butter",
-  "poultry-brooder",
-  "capsicum-harvest",
-  "training-session",
-);
+const featuredQuote = testimonials.find((item) => item.name === "Fundi Ngundi") ?? testimonials[0];
 
 export default function HomePage() {
   return (
     <PageShell>
-      {/* Hero ---------------------------------------------------------- */}
-      <section className="hero" aria-labelledby="hero-heading">
-        <div className="hero__meta">
-          <span className="label">{site.location}</span>
-          <span className="label">Enterprise · Land · Skills · Capital</span>
-          <span className="label" style={{ marginLeft: "auto" }}>
-            12 fields · 6 ventures
-          </span>
-        </div>
-
-        <h1 className="grotesk hero__headline" id="hero-heading">
-          Ideas are cheap. <em className="stroke">Operations</em> are what last.
-        </h1>
-
-        <div className="hero__foot">
-          <p>
-            YOCED builds the layer underneath youth opportunity in Kenya — the enterprises,
-            field operations, skills and funding routes that turn capability into an income
-            that survives the season.
-          </p>
-          <div className="btn-row">
-            <Link href="#atlas" className="btn btn--solid">
-              Open the atlas <ArrowUpRight size={17} aria-hidden="true" />
-            </Link>
-            <Link href="/work" className="btn">
-              See the field work <ArrowUpRight size={17} aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <div className="ticker" aria-hidden="true">
-        <div className="ticker__track">
-          <span>{tickerItems.join(" ")}</span>
-          <span>{tickerItems.join(" ")}</span>
-        </div>
+      <div className="home-signalbar" role="note">
+        <span><i aria-hidden="true" /> YOCED partnership & programme platform</span>
+        <Link href="/partners">Explore partnership routes <ArrowUpRight size={13} aria-hidden="true" /></Link>
       </div>
 
-      {/* Documentary opener -------------------------------------------- */}
-      <Plate photo={photo("field-preparation")} priority />
-
-      {/* Audience doors ------------------------------------------------ */}
-      <section className="band wrap" aria-labelledby="doors-heading">
-        <div className="section-head">
-          <div>
-            <span className="label">Where do I belong here?</span>
-            <h2 className="display t-1" id="doors-heading" style={{ marginTop: 14 }}>
-              Five routes in. Pick the one that describes you.
-            </h2>
-          </div>
-          <p>
-            YOCED is deliberately broad, so the first job of this site is to get you out of the
-            parts that are not yours.
+      <section className="home-hero" aria-labelledby="home-heading">
+        <div className="home-hero__copy">
+          <span className="home-kicker">Youth Corporate & Economic Development · Kenya</span>
+          <h1 id="home-heading">Build ideas<br />into <mark>impact.</mark></h1>
+          <p className="home-hero__lede">
+            YOCED is a Kenyan ecosystem that helps young people, creatives and communities turn
+            capability into sustainable ventures, livelihoods, skills and long-term economic participation.
           </p>
+          <div className="home-actions">
+            <Link href="/programs" className="home-button home-button--signal">
+              Explore programs <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+            <Link href="/partners" className="home-button home-button--dark">
+              Partner with YOCED <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="home-audience-strip" aria-label="Explore YOCED by audience">
+            <span>I want to explore as:</span>
+            <div>
+              {audiences.map((audience) => (
+                <Link key={audience.slug} href={`/for/${audience.slug}`}>{audience.navLabel}</Link>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <ul className="doors">
-          {audiences.map((audience, index) => (
-            <li key={audience.slug} data-accent={audience.accent} {...reveal(index * 45)}>
-              <Link href={`/for/${audience.slug}`}>
-                <span className="code">{String(index + 1).padStart(2, "0")}</span>
-                <span className="doors__q">{audience.question}</span>
-                <span className="doors__a">{audience.lede}</span>
-                <span className="doors__go">
-                  {audience.navLabel} <ArrowUpRight size={16} aria-hidden="true" />
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* The atlas ------------------------------------------------------ */}
-      <AtlasIndex
-        programs={programs}
-        previews={previews}
-        heading="Twelve fields, one organisation, and a direct route into each."
-        intro="Every field below has its own page, its own partnership models and its own URL — built to be sent to a colleague on its own without dragging the rest of YOCED along with it."
-      />
-
-      {/* Statement ------------------------------------------------------ */}
-      <section className="statement wrap" aria-labelledby="statement-heading">
-        <span className="label" id="statement-heading">
-          One ecosystem / many doors
-        </span>
-        <p className="display">
-          Broad is not the same as <span className="mark">blurry</span>. Employment, land,
-          money, health and rights fail together — so we stopped pretending they could be
-          fixed separately.
-        </p>
-      </section>
-
-      {/* Clusters ------------------------------------------------------- */}
-      <section className="band on-ink" aria-labelledby="clusters-heading">
-        <div className="wrap">
-          <div className="section-head">
-            <div>
-              <span className="label">How the twelve fit together</span>
-              <h2 className="display t-1" id="clusters-heading" style={{ marginTop: 14 }}>
-                Four clusters.
-              </h2>
-            </div>
+        <div className="home-hero__visual">
+          <Image
+            src={heroPhoto.src}
+            alt={heroPhoto.alt}
+            fill
+            priority
+            sizes="(max-width: 900px) 100vw, 55vw"
+            placeholder="blur"
+            blurDataURL={heroPhoto.blurDataURL}
+          />
+          <div className="home-hero__veil" aria-hidden="true" />
+          <div className="home-purpose-card">
+            <span className="home-kicker">Our purpose</span>
             <p>
-              The fields are grouped by the problem they solve, not by the department that runs
-              them. Most real work crosses at least two.
+              Create the conditions for young people to develop their potential, participate in
+              economic life and build futures not restricted by poverty, lack of education or discrimination.
             </p>
+            <Link href="/about">How YOCED works <ArrowUpRight size={13} aria-hidden="true" /></Link>
           </div>
+          <div className="home-hero__mini-photo">
+            <Image
+              src={partnerPhoto.src}
+              alt=""
+              fill
+              sizes="180px"
+              placeholder="blur"
+              blurDataURL={partnerPhoto.blurDataURL}
+            />
+          </div>
+        </div>
+      </section>
 
-          <div className="clusters">
-            {clusters.map((cluster) => (
-              <div className="cluster" key={cluster.id} data-accent={cluster.accent} {...reveal()}>
-                <div>
-                  <span className="label label--accent">{cluster.title}</span>
-                  <h3 className="cluster__title">{cluster.short}</h3>
-                </div>
-                <ul className="cluster__fields">
-                  {programsInCluster(cluster.id).map((program) => (
-                    <li key={program.slug}>
-                      <Link href={`/programs/${program.slug}`}>
-                        <span className="code">{program.code}</span>
-                        <span>{program.title}</span>
-                        <ArrowUpRight size={15} aria-hidden="true" />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+      <section className="home-snapshot" aria-label="YOCED organisation snapshot">
+        <div><Layers3 size={21} aria-hidden="true" /><span><b>{programs.length}</b><small>Active focus areas</small></span></div>
+        <div><BriefcaseBusiness size={21} aria-hidden="true" /><span><b>{ventures.length}</b><small>Active ventures</small></span></div>
+        <div><Handshake size={21} aria-hidden="true" /><span><b>{partners.length}</b><small>Network organisations</small></span></div>
+        <div><Building2 size={21} aria-hidden="true" /><span><b>BPM</b><small>Operating discipline</small></span></div>
+        <div><MapPin size={21} aria-hidden="true" /><span><b>Nairobi</b><small>Kenya base</small></span></div>
+      </section>
+
+      <section className="home-explore" aria-labelledby="explore-heading">
+        <div className="home-section-title">
+          <div>
+            <span className="home-kicker">Find your route</span>
+            <h2 id="explore-heading">Where do you belong?</h2>
+          </div>
+          <p>Five tailored pathways keep a broad organisation easy to navigate.</p>
+        </div>
+        <div className="home-route-grid">
+          {audiences.map((audience, index) => {
+            const routePhoto = audience.heroPhoto ? photo(audience.heroPhoto) : undefined;
+            return (
+              <Link key={audience.slug} href={`/for/${audience.slug}`} className="home-route-card">
+                <span className="home-route-card__num">0{index + 1}</span>
+                {routePhoto ? (
+                  <span className="home-route-card__image">
+                    <Image
+                      src={routePhoto.src}
+                      alt=""
+                      fill
+                      sizes="(max-width: 700px) 45vw, 220px"
+                      placeholder="blur"
+                      blurDataURL={routePhoto.blurDataURL}
+                    />
+                  </span>
+                ) : null}
+                <span className="home-route-card__body">
+                  <b>{audience.navLabel}</b>
+                  <small>{audience.question}</small>
+                </span>
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      <div className="home-atlas-layout">
+        <ImpactNetwork />
+        <aside className="home-partner-rail" aria-labelledby="partner-rail-heading">
+          <span className="home-kicker">Our network</span>
+          <h2 id="partner-rail-heading">Relationships that widen what YOCED can do.</h2>
+          <div className="home-partner-list">
+            {partners.map((partner) => (
+              <div key={partner.name} className="home-partner-item">
+                <span className="home-partner-item__mark">{partner.name.slice(0, 2).toUpperCase()}</span>
+                <span><b>{partner.name}</b><small>{partner.role ?? partner.field}</small></span>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+          <p className="home-partner-rail__note">
+            Partner relationships vary by initiative. Outreach history is not presented as partnership.
+          </p>
+          <Link href="/partners" className="home-inline-link">View partnership directory <ArrowUpRight size={14} aria-hidden="true" /></Link>
+        </aside>
+      </div>
 
-      {/* Field work ----------------------------------------------------- */}
-      <section className="band" aria-labelledby="work-heading">
-        <div className="wrap section-head">
+      <section className="home-ventures" aria-labelledby="ventures-heading">
+        <div className="home-section-title home-section-title--compact">
           <div>
-            <span className="label">Field archive / photographed, not illustrated</span>
-            <h2 className="display t-1" id="work-heading" style={{ marginTop: 14 }}>
-              This is the work, as it actually looks.
-            </h2>
+            <span className="home-kicker">Active ventures</span>
+            <h2 id="ventures-heading">Enterprise is where the model meets the market.</h2>
           </div>
-          <p>
-            Every photograph on this site is from YOCED project work. Captions describe what is
-            in the frame and nothing more — there are no outcome claims attached to any of them.
-          </p>
+          <Link href="/ventures" className="home-inline-link">View all ventures <ArrowUpRight size={14} aria-hidden="true" /></Link>
         </div>
-
-        <Reel photos={reelPhotos}>
-          <p className="muted" style={{ fontSize: ".95rem" }}>
-            The archive runs from land preparation through planting, weeding and harvest to
-            drying, sorting and a jar on a shelf.
-          </p>
-          <Link href="/work" className="btn btn--solid">
-            Open the full archive <ArrowUpRight size={17} aria-hidden="true" />
-          </Link>
-        </Reel>
-      </section>
-
-      {/* Ventures ------------------------------------------------------- */}
-      <section className="band wrap" aria-labelledby="ventures-heading">
-        <div className="section-head">
-          <div>
-            <span className="label">Active ventures / {ventures.length}</span>
-            <h2 className="display t-1" id="ventures-heading" style={{ marginTop: 14 }}>
-              Businesses, not case studies.
-            </h2>
-          </div>
-          <p>
-            Six active ventures across furniture, food, apparel, film and craft — each one a
-            live test of whether the enterprise model actually holds.
-          </p>
-        </div>
-
-        <ul className="ventures">
-          {ventures.map((venture) => (
-            <li key={venture.slug} data-accent={venture.accent} {...reveal()}>
-              <Link href={`/ventures/${venture.slug}`}>
-                <span className="cipher" aria-hidden="true">
-                  {venture.cipher}
+        <div className="home-venture-track">
+          {ventures.map((venture) => {
+            const image = ventureImage(venture.slug);
+            return (
+              <Link key={venture.slug} href={`/ventures/${venture.slug}`} className="home-venture-card">
+                <span className="home-venture-card__media" data-empty={!image}>
+                  {image ? <Image src={image} alt="" fill sizes="220px" /> : <span>{venture.cipher}</span>}
+                  <i aria-hidden="true" />
                 </span>
-                <span>
-                  <span className="ventures__name">{venture.name}</span>
-                  <span className="ventures__sector">{venture.sector}</span>
+                <span className="home-venture-card__body">
+                  <b>{venture.name}</b>
+                  <small>{venture.sector}</small>
                 </span>
-                <span className="doors__a ventures__blurb">{venture.short}</span>
-                <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="home-operating" aria-labelledby="operating-heading">
+        <div className="home-operating__intro">
+          <span className="home-kicker home-kicker--signal">Business Process Management</span>
+          <h2 id="operating-heading">The operating discipline underneath the mission.</h2>
+          <p>
+            YOCED’s earlier material defined BPM through five stages. That structure remains useful:
+            programs should be designed, tested, run, measured and improved rather than left as intentions.
+          </p>
+          <Link href="/programs/business-development" className="home-button home-button--outline">Explore BPM <ArrowUpRight size={15} aria-hidden="true" /></Link>
+        </div>
+        <ol className="home-bpm-grid">
+          {bpmStages.map(([number, title, body]) => (
+            <li key={number}>
+              <span>{number}</span>
+              <b>{title}</b>
+              <p>{body}</p>
             </li>
           ))}
-        </ul>
+        </ol>
       </section>
 
-      {/* Partners ------------------------------------------------------- */}
-      <section className="band band--tight on-ink" aria-labelledby="partners-heading">
-        <div className="wrap">
-          <div className="section-head">
-            <div>
-              <span className="label">Network</span>
-              <h2 className="display t-2" id="partners-heading" style={{ marginTop: 14 }}>
-                Organisations in the YOCED network.
-              </h2>
-            </div>
-            <p>
-              Shown as network, not as endorsement. Nothing here states that an organisation
-              currently funds YOCED.
-            </p>
+      {featuredQuote ? (
+        <section className="home-perspective" aria-labelledby="perspective-heading">
+          <div className="home-perspective__quote">
+            <span className="home-kicker">From the YOCED archive · Words of Wisdom</span>
+            <blockquote id="perspective-heading">“{featuredQuote.quote}”</blockquote>
+            <p><b>{featuredQuote.name}</b> · {featuredQuote.role}</p>
           </div>
+          <div className="home-perspective__media">
+            {featuredQuote.portrait ? <Image src={featuredQuote.portrait} alt="" fill sizes="360px" /> : null}
+            <span className="home-perspective__play"><Play size={18} fill="currentColor" aria-hidden="true" /></span>
+          </div>
+        </section>
+      ) : null}
 
-          <ul className="tags" style={{ gap: 10 }}>
-            {partners.map((partner) => (
-              <li key={partner.name} style={{ fontSize: ".8rem", padding: "9px 15px" }}>
-                {partner.name}
-                {partner.role ? ` · ${partner.role}` : ""}
-              </li>
-            ))}
-          </ul>
+      <section className="home-partners-band" aria-labelledby="partners-band-heading">
+        <div>
+          <span className="home-kicker">Partner network</span>
+          <h2 id="partners-band-heading">Built to collaborate.</h2>
+        </div>
+        <div className="home-wordmarks">
+          {partners.map((partner) => (
+            <span key={partner.name} data-tech={partner.name === technologyPartner.name}>
+              {partner.name}
+              {partner.role ? <small>{partner.role}</small> : null}
+            </span>
+          ))}
+        </div>
+      </section>
 
-          <p style={{ marginTop: 28 }}>
-            <Link href="/partners" className="link">
-              How partnership works at YOCED <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
+      <section className="home-cta">
+        <div>
+          <span className="home-kicker home-kicker--signal">Partnerships · funding · programme delivery</span>
+          <h2>Bring the mandate. We will route you to the right part of YOCED.</h2>
+          <p>
+            Tell us the field, geography, communities, capability or funding objective you are working with.
+            The conversation starts there, not with a generic organisation deck.
           </p>
         </div>
-      </section>
-
-      {/* Close ---------------------------------------------------------- */}
-      <section className="band wrap">
-        <div className="cta-panel" data-accent="clay">
-          <div>
-            <span className="label">Start a conversation</span>
-            <h2>Tell us which field, and we will route it from there.</h2>
-            <p>
-              Program inquiry, partnership, funding, youth support, corporate collaboration,
-              media or technology — the form routes each one to the right part of YOCED.
-            </p>
-          </div>
-          <Link href="/contact" className="btn">
-            Contact YOCED <ArrowUpRight size={17} aria-hidden="true" />
-          </Link>
-        </div>
+        <Link href="/contact?topic=partnership" className="home-button home-button--signal">
+          Start a conversation <ArrowUpRight size={16} aria-hidden="true" />
+        </Link>
       </section>
     </PageShell>
   );

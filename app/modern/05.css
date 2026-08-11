@@ -1,0 +1,71 @@
+.topic span { display:block; padding:8px 10px; border:1px solid var(--portal-line); border-radius:999px; background:#f8f9f9; color:#566168; font-size:.59rem; cursor:pointer; }
+.topic input:checked + span { border-color:var(--signal-strong); background:var(--signal-soft); color:#1f2800; box-shadow:inset 0 0 0 1px var(--signal); }
+
+@media (max-width: 900px) {
+  .leaders,.contact { grid-template-columns:1fr !important; }
+}
+
+.archive-voices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.archive-voice { position:relative; min-height:260px; padding:22px; overflow:hidden; border:1px solid rgba(255,255,255,.1); border-radius:11px; background:rgba(255,255,255,.035); }
+.archive-voice__portrait { position:absolute; right:0; top:0; width:112px; height:128px; opacity:.9; }
+.archive-voice__portrait::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#111a20,transparent 52%),linear-gradient(0deg,#111a20,transparent 55%); }
+.archive-voice__portrait img { object-fit:cover; object-position:center top; }
+.archive-voice blockquote { position:relative; z-index:2; max-width:34ch; margin:0; padding-right:70px; font-size:clamp(1.15rem,1.8vw,1.9rem); line-height:1.15; letter-spacing:-.035em; font-weight:650; }
+.archive-voice > p { position:absolute; left:22px; bottom:20px; margin:0; color:rgba(255,255,255,.47); font-size:.63rem; }
+.archive-voice > p b { color:#fff; }
+@media (max-width:900px) { .archive-voices { grid-template-columns:1fr; } }
+
+/* ---------- Venture gallery + venture detail ---------- */
+.venture-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.venture-gallery__card { overflow:hidden; border:1px solid var(--portal-line); border-radius:12px; background:#fff; color:#11181d; transition:transform .2s ease,box-shadow .2s ease; }
+.venture-gallery__card:hover { transform:translateY(-3px); box-shadow:0 16px 34px rgba(15,25,31,.1); }
+.venture-gallery__media { position:relative; height:225px; overflow:hidden; display:grid; place-items:center; background:#121c22; }
+.venture-gallery__media img { object-fit:cover; transition:transform .3s ease; }
+.venture-gallery__card:hover .venture-gallery__media img { transform:scale(1.025); }
+.venture-gallery__media[data-empty="true"] > span { color:var(--signal); font-size:4.5rem; font-weight:820; letter-spacing:-.09em; }
+.venture-gallery__veil { position:absolute; inset:0; background:linear-gradient(0deg,rgba(8,13,17,.55),transparent 48%); }
+.venture-gallery__status { position:absolute; top:11px; left:11px; z-index:2; padding:5px 8px; border-radius:999px; color:#10161a; background:var(--signal); font-size:.52rem; font-weight:760; text-transform:uppercase; letter-spacing:.08em; }
+.venture-gallery__body { min-height:125px; padding:15px; display:grid; grid-template-columns:35px 1fr auto; gap:10px; align-items:start; }
+.venture-gallery__body h2 { margin:0 0 5px; font-size:1.25rem; letter-spacing:-.045em; }
+.venture-gallery__body p { margin:0; color:#606b73; font-size:.68rem; line-height:1.45; }
+.venture-gallery__body small { display:block; margin-top:9px; color:#889197; font-size:.55rem; text-transform:uppercase; letter-spacing:.08em; }
+.venture-model-grid { display:grid; grid-template-columns:repeat(4,1fr); overflow:hidden; border:1px solid rgba(255,255,255,.1); border-radius:12px; }
+.venture-model-grid > div { min-height:210px; padding:18px; display:flex; flex-direction:column; border-right:1px solid rgba(255,255,255,.09); }
+.venture-model-grid > div:last-child { border-right:0; }
+.venture-model-grid span { color:var(--signal); font-size:.58rem; font-weight:760; }
+.venture-model-grid b { margin-top:auto; font-size:.9rem; }
+.venture-model-grid p { margin:8px 0 0; color:rgba(255,255,255,.48); font-size:.65rem; line-height:1.48; }
+
+.venture-detail-hero { display:grid; grid-template-columns:minmax(0,.9fr) minmax(450px,1.1fr); min-height:520px; border-bottom:1px solid var(--portal-line); background:#fff; }
+.venture-detail-hero__copy { align-self:center; padding:42px clamp(28px,4vw,64px); }
+.venture-detail-hero__copy .pd__crumb { padding-bottom:16px; }
+.venture-detail-hero__cipher { display:inline-grid; place-items:center; width:52px; height:52px; margin-top:28px; border-radius:10px; color:var(--signal); background:#111a20; font-weight:820; letter-spacing:-.08em; }
+.venture-detail-hero h1 { margin:14px 0 16px; font-size:clamp(4rem,6.8vw,7.7rem); line-height:.8; letter-spacing:-.085em; }
+.venture-detail-hero__copy > p { max-width:45ch; color:#536068; font-size:1rem; line-height:1.55; }
+.venture-detail-hero__media { position:relative; min-height:520px; display:grid; place-items:center; overflow:hidden; background:#111a20; }
+.venture-detail-hero__media img { object-fit:cover; }
+.venture-detail-hero__media[data-empty="true"] > span { color:var(--signal); font-size:9rem; font-weight:850; letter-spacing:-.1em; }
+.venture-detail-hero__flag { position:absolute; left:16px; bottom:16px; padding:7px 10px; border:1px solid rgba(255,255,255,.25); border-radius:7px; color:#fff; background:rgba(10,16,20,.65); backdrop-filter:blur(10px); font-size:.59rem; font-weight:650; }
+.venture-mini-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:15px; }
+.venture-mini-grid > a { overflow:hidden; display:grid; grid-template-columns:86px 1fr auto; gap:11px; align-items:center; min-height:90px; padding-right:13px; border:1px solid var(--portal-line); border-radius:9px; background:#fff; }
+.venture-mini-grid__media { position:relative; height:90px; display:grid; place-items:center; overflow:hidden; background:#111a20; }
+.venture-mini-grid__media img { object-fit:cover; }
+.venture-mini-grid__media[data-empty="true"] b { color:var(--signal); }
+.venture-mini-grid > a > span:nth-child(2) { display:grid; gap:3px; }
+.venture-mini-grid small { color:#7c868c; font-size:.58rem; }
+
+@media (max-width:900px) {
+  .venture-gallery { grid-template-columns:1fr 1fr; }
+  .venture-model-grid { grid-template-columns:1fr 1fr; }
+  .venture-model-grid > div:nth-child(2) { border-right:0; }
+  .venture-model-grid > div:nth-child(-n+2) { border-bottom:1px solid rgba(255,255,255,.09); }
+  .venture-detail-hero { grid-template-columns:1fr; }
+  .venture-detail-hero__media { min-height:340px; order:-1; }
+  .venture-mini-grid { grid-template-columns:1fr; }
+}
+@media (max-width:540px) {
+  .venture-gallery { grid-template-columns:1fr; }
+  .venture-model-grid { grid-template-columns:1fr; }
+  .venture-model-grid > div { border-right:0; border-bottom:1px solid rgba(255,255,255,.09); }
+  .venture-model-grid > div:last-child { border-bottom:0; }
+}
