@@ -39,10 +39,6 @@ export function SiteHeader() {
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     if (!open) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -158,7 +154,7 @@ export function SiteHeader() {
           {nav.map((item) => {
             const Icon = item.icon;
             return (
-              <Link key={item.href} href={item.href} data-active={active(item.href)}>
+              <Link key={item.href} href={item.href} data-active={active(item.href)} onClick={() => setOpen(false)}>
                 <Icon size={18} aria-hidden="true" />
                 <span>{item.label}</span>
                 <ArrowUpRight size={16} aria-hidden="true" />
@@ -166,7 +162,7 @@ export function SiteHeader() {
             );
           })}
         </nav>
-        <Link href="/contact?topic=partnership" className="portal-mobile-cta">
+        <Link href="/contact?topic=partnership" className="portal-mobile-cta" onClick={() => setOpen(false)}>
           Partner with YOCED <ArrowUpRight size={17} aria-hidden="true" />
         </Link>
       </div>

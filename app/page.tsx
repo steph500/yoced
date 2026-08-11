@@ -15,7 +15,7 @@ import { audiences } from "@/lib/audiences";
 import { partners } from "@/lib/partners";
 import { photo } from "@/lib/photos";
 import { programs } from "@/lib/programs";
-import { site, technologyPartner } from "@/lib/site";
+import { technologyPartner } from "@/lib/site";
 import { testimonials } from "@/lib/testimonials";
 import { ventures } from "@/lib/ventures";
 import { ventureImage } from "@/lib/ventureAssets";
