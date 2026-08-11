@@ -1,35 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Archivo } from "next/font/google";
 import { site, technologyPartner } from "@/lib/site";
 import { RevealProvider } from "@/components/Reveal";
 import { OrganizationSchema, WebSiteSchema } from "@/components/StructuredData";
 import { programs } from "@/lib/programs";
 import "./globals.css";
-import "./modern/01.css";
-import "./modern/02.css";
-import "./modern/03.css";
-import "./modern/04.css";
-import "./modern/05.css";
+import "./portal.css";
 
+/**
+ * One typeface, site-wide.
+ *
+ * The design uses a single grotesk at every size and weight. A display serif and
+ * a mono were previously loaded alongside it and leaked into headings, atlas
+ * titles, partner names and labels, which is what made the typography read as
+ * inconsistent. `--font-display` and `--font-mono` are aliased to this same
+ * stack in globals.css so any stale reference still resolves to the grotesk.
+ */
 const sans = Archivo({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const display = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-  axes: ["SOFT", "WONK"],
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-  weight: ["400", "500"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -83,7 +74,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-KE" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+    <html lang="en-KE" className={sans.variable}>
       <body>
         <OrganizationSchema knowsAbout={programs.map((program) => program.title)} />
         <WebSiteSchema />

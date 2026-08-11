@@ -7,7 +7,6 @@ import {
   Handshake,
   Layers3,
   MapPin,
-  Play,
 } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
 import { ImpactNetwork } from "@/components/ImpactNetwork";
@@ -20,7 +19,7 @@ import { testimonials } from "@/lib/testimonials";
 import { ventures } from "@/lib/ventures";
 import { ventureImage } from "@/lib/ventureAssets";
 
-const heroPhoto = photo("training-session");
+const heroPhoto = photo("weeding-team");
 const partnerPhoto = photo("partner-meeting");
 
 const bpmStages = [
@@ -220,8 +219,15 @@ export default function HomePage() {
             <p><b>{featuredQuote.name}</b> · {featuredQuote.role}</p>
           </div>
           <div className="home-perspective__media">
-            {featuredQuote.portrait ? <Image src={featuredQuote.portrait} alt="" fill sizes="360px" /> : null}
-            <span className="home-perspective__play"><Play size={18} fill="currentColor" aria-hidden="true" /></span>
+            {featuredQuote.portrait ? (
+              <Image
+                src={featuredQuote.portrait}
+                alt={`${featuredQuote.name}, ${featuredQuote.role ?? ""}`.trim().replace(/,$/, "")}
+                width={156}
+                height={230}
+                sizes="156px"
+              />
+            ) : null}
           </div>
         </section>
       ) : null}

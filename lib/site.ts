@@ -2,6 +2,8 @@
 export const site = {
   name: "YOCED",
   legalName: "Youth Corporate and Economic Development",
+  /** Lockup form — the ampersand keeps the sidebar subtitle to two lines. */
+  shortLegalName: "Youth Corporate & Economic Development",
   url: "https://yoced.com",
   tagline: "Build ideas into impact.",
   description:

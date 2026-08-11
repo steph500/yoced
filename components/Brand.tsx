@@ -40,7 +40,7 @@ export function Brand({ withFullName = false }: { withFullName?: boolean }) {
       <YocedMark />
       <span className="brand__copy">
         <span className="brand__word">{site.name}</span>
-        {withFullName ? <span className="brand__full">{site.legalName}</span> : null}
+        {withFullName ? <span className="brand__full">{site.shortLegalName}</span> : null}
       </span>
     </Link>
   );
