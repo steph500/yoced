@@ -1,0 +1,66 @@
+name: Visual Audit
+
+on:
+  push:
+    branches:
+      - design-consistency
+
+permissions:
+  contents: read
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Start app
+        run: |
+          npm start > /tmp/yoced-next.log 2>&1 &
+          for i in {1..45}; do
+            if curl -fsS http://127.0.0.1:3000/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/yoced-next.log
+          exit 1
+      - name: Capture routes
+        run: |
+          mkdir -p visual-audit
+          cat > capture.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch({headless: true});
+          const routes = [
+            ['home','/'],['programs','/programs'],['program-agriculture','/programs/agriculture-food-systems'],
+            ['work','/work'],['ventures','/ventures'],['venture-casa','/ventures/casa-furnishings'],
+            ['partners','/partners'],['about','/about'],['contact','/contact'],
+            ['for-partners','/for/partners'],['for-funders','/for/funders']
+          ];
+          for (const [name, route] of routes) {
+            for (const [device, width, height] of [['desktop',1440,1000],['mobile',390,844]]) {
+              const page = await browser.newPage({viewport:{width,height}, deviceScaleFactor:1});
+              await page.goto('http://127.0.0.1:3000'+route,{waitUntil:'networkidle'});
+              await page.screenshot({path:`visual-audit/${name}-${device}.png`,fullPage:true});
+              await page.close();
+            }
+          }
+          await browser.close();
+          EOF
+          node capture.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yoced-visual-audit
+          path: visual-audit/*.png
+          if-no-files-found: error
+          retention-days: 2
