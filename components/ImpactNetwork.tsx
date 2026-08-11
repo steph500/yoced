@@ -4,9 +4,14 @@ import { clusters, programs } from "@/lib/programs";
 import { ventures } from "@/lib/ventures";
 import { site } from "@/lib/site";
 
+/*
+ * Program nodes are intentionally arranged over an Africa-shaped graphic to echo
+ * the approved visual concept. They represent relationships between YOCED fields,
+ * not offices, beneficiaries or geographic coverage. The UI states that explicitly.
+ */
 const positions = [
-  [13, 55], [23, 31], [34, 61], [43, 37], [52, 72], [61, 26],
-  [70, 52], [81, 34], [88, 68], [27, 78], [58, 50], [75, 79],
+  [31, 33], [40, 24], [49, 34], [57, 27], [65, 39], [37, 48],
+  [48, 48], [58, 53], [44, 62], [54, 67], [47, 76], [61, 72],
 ] as const;
 
 export function ImpactNetwork() {
@@ -14,8 +19,8 @@ export function ImpactNetwork() {
     <section className="home-atlas" aria-labelledby="home-atlas-heading">
       <div className="home-atlas__bar">
         <div>
-          <span className="home-kicker home-kicker--signal">Impact Atlas</span>
-          <h2 id="home-atlas-heading">Navigate the ecosystem, not a brochure.</h2>
+          <span className="home-kicker home-kicker--signal">Impact Atlas · Program network</span>
+          <h2 id="home-atlas-heading">Explore how YOCED’s fields connect.</h2>
         </div>
         <Link href="/programs" className="home-inline-link">
           Open full atlas <ArrowUpRight size={15} aria-hidden="true" />
@@ -23,12 +28,32 @@ export function ImpactNetwork() {
       </div>
 
       <div className="home-atlas__body">
-        <div className="home-network" aria-label="YOCED program network">
-          <svg className="home-network__lines" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M90 310 C210 185 310 355 430 235 S650 190 760 285 S865 370 930 250" />
-            <path d="M165 165 C250 270 320 155 410 260 S585 360 690 190 S835 165 900 350" />
-            <path d="M175 410 C300 315 385 430 510 325 S710 300 860 410" />
-            <path d="M255 115 C360 200 465 100 570 195 S760 225 855 115" />
+        <div className="home-network" aria-label="YOCED program relationship network">
+          <svg className="home-network__map" viewBox="0 0 700 420" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <defs>
+              <radialGradient id="africaGlow" cx="50%" cy="48%" r="55%">
+                <stop offset="0" stopColor="#c9ff16" stopOpacity=".17" />
+                <stop offset="1" stopColor="#c9ff16" stopOpacity="0" />
+              </radialGradient>
+              <linearGradient id="africaFill" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#2d3940" />
+                <stop offset="1" stopColor="#151f25" />
+              </linearGradient>
+            </defs>
+            <ellipse cx="350" cy="220" rx="245" ry="185" fill="url(#africaGlow)" />
+            <path
+              className="home-network__africa"
+              d="M337 31 C292 29 248 42 214 61 L179 89 L151 116 L120 153 L139 181 L177 195 L195 223 L229 242 L248 278 L270 311 L289 354 L311 390 L335 357 L347 319 L374 293 L393 261 L423 239 L444 206 L474 187 L499 154 L481 124 L456 104 L441 77 L405 59 L374 42 Z"
+              fill="url(#africaFill)"
+            />
+            <path className="home-network__africa" d="M511 246 C523 263 526 286 518 308 C512 324 503 337 495 342 C490 322 493 304 498 286 C503 268 505 255 511 246 Z" fill="url(#africaFill)" />
+            <g className="home-network__routes">
+              <path d="M224 143 C287 114 354 111 409 143 S469 198 424 225" />
+              <path d="M280 100 C319 154 357 183 421 185 S456 225 386 267" />
+              <path d="M215 202 C276 180 332 213 364 256 S357 310 316 342" />
+              <path d="M319 132 C330 185 324 222 290 267 S311 315 365 300" />
+              <path d="M252 235 C322 230 368 215 427 168" />
+            </g>
           </svg>
           <div className="home-network__grid" aria-hidden="true" />
           {programs.map((program, index) => {
@@ -54,7 +79,7 @@ export function ImpactNetwork() {
           <div className="home-network__origin">
             <MapPin size={13} aria-hidden="true" /> {site.location}
           </div>
-          <p className="home-network__note">Program network visualisation · not geographic coverage</p>
+          <p className="home-network__note">Program relationships · not geographic coverage</p>
         </div>
 
         <aside className="home-atlas__summary">
