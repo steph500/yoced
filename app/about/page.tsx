@@ -1,40 +1,219 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
-import { team } from "@/lib/content";
+import { Plate } from "@/components/Photo";
+import { reveal } from "@/lib/reveal";
+import { team } from "@/lib/team";
+import { clusters, programs } from "@/lib/programs";
+import { ventures } from "@/lib/ventures";
+import { photo } from "@/lib/photos";
+import { site, technologyPartner } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "YOCED — Youth Corporate and Economic Development — is a Nairobi-based ecosystem working across twelve fields, with roots in Business Process Management. Led by Dovies Ebbiey, Founder & President, and Stefan Juma, Co-founder & Technology Lead.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About YOCED",
+    description: "An ecosystem for youth-led economic development, based in Nairobi, Kenya.",
+    url: "/about",
+  },
+};
+
+const principles = [
+  {
+    title: "Operations before ideas",
+    body: "A venture becomes real when its work is written down, costed and repeatable. That discipline comes from Business Process Management, and it is the through-line of everything YOCED does.",
+  },
+  {
+    title: "Breadth on purpose",
+    body: "Employment, land, money, health and rights fail together. Twelve fields is not scope creep — it is an admission that these problems do not occur separately.",
+  },
+  {
+    title: "Structure over slogans",
+    body: "Breadth is only a problem when it is disorganised. Every field has its own page, its own communities and its own route in, so nobody has to navigate YOCED to reach the part that concerns them.",
+  },
+  {
+    title: "Only what we can evidence",
+    body: "This site publishes no beneficiary counts, funding totals or success rates, because none have been independently verified. It publishes the work instead.",
+  },
+];
 
 export default function AboutPage() {
   return (
     <PageShell>
-      <section className="page-hero">
-        <span className="kicker">About YOCED</span>
-        <h1>An ecosystem for youth-led economic development.</h1>
-        <p>YOCED, Youth Corporate and Economic Development, exists to help young people, creatives and communities move from ideas and capability to sustainable ventures, livelihoods and long-term economic participation.</p>
-      </section>
-
-      <section className="content-wrap">
-        <div className="content-grid">
-          <article className="content-card">
-            <span className="kicker">How we work</span>
-            <h2>Ideas become systems.</h2>
-            <p>YOCED combines business development, training, networks, funding pathways, technology, research and program partnerships. Our roots include Business Process Management and Business Process Outsourcing approaches that help ideas become structured, measurable and scalable.</p>
-          </article>
-          <article className="content-card">
-            <span className="kicker">Why we are broad</span>
-            <h2>Economic development is connected.</h2>
-            <p>Employment, health, education, climate, finance, agriculture, technology, rights and entrepreneurship rarely exist in isolation. YOCED keeps these fields connected while giving each one its own clear program route.</p>
-          </article>
+      <section className="hero" aria-labelledby="about-heading">
+        <div className="hero__meta">
+          <span className="label">About</span>
+          <span className="label">{site.legalName}</span>
+          <span className="label" style={{ marginLeft: "auto" }}>
+            {site.location}
+          </span>
+        </div>
+        <h1 className="grotesk hero__headline" id="about-heading">
+          An ecosystem, not a <em>programme</em>.
+        </h1>
+        <div className="hero__foot">
+          <p>
+            YOCED exists to help young people, creatives and communities move from capability to
+            income — through enterprises that operate, work that pays, skills attached to real
+            opportunity, and funding that keeps moving.
+          </p>
+          <div className="btn-row">
+            <Link href="/work" className="btn btn--solid">
+              See the field work <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="content-wrap" style={{ paddingTop: 0 }}>
-        <span className="kicker">Leadership</span>
-        <div className="team-grid" style={{ marginTop: 22 }}>
+      <Plate photo={photo("training-session")} priority />
+
+      <section className="band wrap" aria-labelledby="what-heading">
+        <div className="railed">
+          <span className="label">What YOCED is</span>
+          <div className="prose" style={{ maxWidth: "62ch" }}>
+            <h2 className="display t-2" id="what-heading" style={{ marginBottom: 18 }}>
+              Youth Corporate and Economic Development.
+            </h2>
+            <p>
+              YOCED works at the point where young people, entrepreneurs, creatives, businesses
+              and communities try to convert what they can do into something that pays. That
+              conversion is where most development effort is lost, and it is almost never a
+              question of ambition.
+            </p>
+            <p>
+              The organisation’s roots are in Business Process Management and Business Process
+              Outsourcing — disciplines concerned with how work is actually structured, costed and
+              made repeatable. Applied to youth enterprise, that background is unusual, and it is
+              the reason YOCED’s programs tend to produce something operable rather than something
+              described.
+            </p>
+            <p>
+              Today that runs across {programs.length} active fields and {ventures.length} active
+              ventures, from land preparation and groundnut processing to furniture, film and
+              craft.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="band on-ink wrap" aria-labelledby="principles-heading">
+        <span className="label">How we work</span>
+        <h2 className="display t-1" id="principles-heading" style={{ margin: "14px 0 34px" }}>
+          Four things that decide everything else.
+        </h2>
+        <ul className="defs">
+          {principles.map((principle, index) => (
+            <li key={principle.title} {...reveal(index * 40)}>
+              <span className="code">{String(index + 1).padStart(2, "0")}</span>
+              <span className="defs__t">{principle.title}</span>
+              <span className="defs__d">{principle.body}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="band wrap" aria-labelledby="structure-heading">
+        <div className="section-head">
+          <div>
+            <span className="label">Structure</span>
+            <h2 className="display t-1" id="structure-heading" style={{ marginTop: 14 }}>
+              How the organisation is arranged.
+            </h2>
+          </div>
+          <p>
+            Four clusters, twelve fields, six ventures, and a set of routes designed around who
+            is arriving rather than around the org chart.
+          </p>
+        </div>
+        <ul className="defs">
+          {clusters.map((cluster) => (
+            <li key={cluster.id} data-accent={cluster.accent}>
+              <span className="code">{cluster.id.slice(0, 3).toUpperCase()}</span>
+              <span className="defs__t">{cluster.title}</span>
+              <span className="defs__d">{cluster.short}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="band wrap" aria-labelledby="leadership-heading">
+        <div className="section-head">
+          <div>
+            <span className="label">Leadership</span>
+            <h2 className="display t-1" id="leadership-heading" style={{ marginTop: 14 }}>
+              Two people, two remits.
+            </h2>
+          </div>
+          <p>
+            Roles rather than biographies. What each position is responsible for is established;
+            career histories were not available and are not invented here.
+          </p>
+        </div>
+
+        <div className="leaders">
           {team.map((person) => (
-            <article className="team-card" key={person.name}>
-              <span className="monogram" aria-hidden="true">{person.initials}</span>
-              <h2>{person.name}</h2>
-              <p>{person.role}</p>
+            <article className="leader" key={person.name} {...reveal()}>
+              <span className="leader__initials" aria-hidden="true">
+                {person.initials}
+              </span>
+              {person.portrait ? (
+                <div className="shot leader__portrait">
+                  <Image
+                    src={person.portrait}
+                    alt={`${person.name}, ${person.role}`}
+                    fill
+                    sizes="220px"
+                  />
+                </div>
+              ) : null}
+              <span className="leader__role">{person.role}</span>
+              <h3 className="leader__name">{person.name}</h3>
+              <p className="leader__focus">{person.focus}</p>
+              <ul className="tags">
+                {person.fields.map((slug) => {
+                  const program = programs.find((item) => item.slug === slug);
+                  return program ? <li key={slug}>{program.navTitle}</li> : null;
+                })}
+              </ul>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="band band--tight wrap" aria-labelledby="tech-heading">
+        <div className="railed">
+          <span className="label">{technologyPartner.role}</span>
+          <div className="prose" style={{ maxWidth: "62ch" }}>
+            <h2 className="display t-3" id="tech-heading" style={{ marginBottom: 14 }}>
+              {technologyPartner.name}
+            </h2>
+            <p>{technologyPartner.note}</p>
+            <p>
+              <a href={technologyPartner.url} className="link" rel="noopener noreferrer" target="_blank">
+                selfawaretech.com <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="band wrap">
+        <div className="cta-panel" data-accent="field">
+          <div>
+            <span className="label">Get in touch</span>
+            <h2>Based in {site.location}. Working wherever the field work is.</h2>
+            <p>
+              {site.email} · {site.phone}
+            </p>
+          </div>
+          <Link href="/contact" className="btn">
+            Contact YOCED <ArrowUpRight size={17} aria-hidden="true" />
+          </Link>
         </div>
       </section>
     </PageShell>
