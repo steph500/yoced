@@ -128,28 +128,73 @@ vercel                # preview
 vercel --prod         # production
 ```
 
-### DNS for yoced.com
+### DNS for yoced.com — action needed at the registrar
 
-Add both domains in Vercel (`yoced.com` and `www.yoced.com`), pick one as
-canonical and let Vercel redirect the other. Then set **only** these records:
+Both `yoced.com` and `www.yoced.com` are already added to the Vercel project.
+The remaining step needs registrar access and could not be done from here.
+
+**The domain currently has no working DNS.** Verified on 2026-08-11:
+
+| Check | Result |
+|---|---|
+| Registrar | Namecheap, registered 2022-11-01, expires **2026-11-01** |
+| Delegated nameservers | `danica.ns.cloudflare.com`, `ray.ns.cloudflare.com`, `ns01.000webhost.com`, `ns02.000webhost.com` |
+| Cloudflare nameservers | return `REFUSED` — the zone is **not** hosted there |
+| 000webhost nameservers | do not respond at all |
+| Public resolvers (8.8.8.8 / 1.1.1.1 / 9.9.9.9) | `SERVFAIL` — nothing resolves |
+
+The domain is delegated to four nameservers split across two providers, and
+neither provider is serving the zone. That is why `yoced.com` resolves nowhere.
+
+**This means there is no live zone to preserve** — no `MX`, `SPF`, `DKIM`,
+`DMARC` or verification records are currently in effect, so no mail is routing
+through `yoced.com` today. The published contact address, `yoced.ke@gmail.com`,
+is a Gmail address and does not depend on this domain at all.
+
+#### Recommended fix
+
+At **Namecheap → Domain List → yoced.com → Nameservers**, replace all four
+entries with Vercel's:
+
+```
+ns1.vercel-dns.com
+ns2.vercel-dns.com
+```
+
+Vercel then hosts the zone and both domains verify automatically, usually within
+the hour. Pick one canonical host in Vercel → Settings → Domains and let it
+redirect the other.
+
+#### Alternative, if you want to keep DNS elsewhere
+
+Point the domain at a provider that is actually serving the zone (Namecheap
+BasicDNS, or re-add it to Cloudflare), then set:
 
 | Type | Name | Value |
 |---|---|---|
 | `A` | `@` | `76.76.21.21` |
 | `CNAME` | `www` | `cname.vercel-dns.com` |
 
-> **Do not remove any other record.** `MX`, `TXT` (SPF/DKIM/DMARC) and any
-> verification records must stay exactly as they are — `yoced.ke@gmail.com` and
-> any mail routing depend on them. Only the `A`/`CNAME` records above should
-> change. Confirm the current zone before editing:
->
-> ```bash
-> dig yoced.com  MX  +short
-> dig yoced.com  TXT +short
-> dig www.yoced.com CNAME +short
-> ```
+#### If you ever want email on @yoced.com
 
----
+Add the `MX` and `TXT` records at whichever provider ends up hosting the zone.
+And from that point on the usual rule applies: when changing web records later,
+**leave `MX`, `SPF`, `DKIM`, `DMARC` and verification records untouched.**
+
+Re-check state at any time with:
+
+```bash
+dig yoced.com NS  +short
+dig yoced.com MX  +short
+npx vercel domains inspect yoced.com
+```
+
+Note the **expiry on 2026-11-01** — worth renewing regardless of the above.
+
+### Current hosting
+
+Production is live at **https://yoced.vercel.app** and will move to
+`yoced.com` as soon as the nameservers are corrected.
 
 ## Accessibility & performance notes
 
