@@ -36,7 +36,7 @@ jobs:
       - name: Capture routes
         run: |
           mkdir -p visual-audit
-          cat > /tmp/capture.mjs <<'EOF'
+          cat > capture.mjs <<'EOF'
           import { chromium } from 'playwright';
           const browser = await chromium.launch({headless: true});
           const routes = [
@@ -62,7 +62,7 @@ jobs:
           }
           await browser.close();
           EOF
-          node /tmp/capture.mjs
+          node capture.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: yoced-visual-audit
