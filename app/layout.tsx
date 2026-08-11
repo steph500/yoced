@@ -12,6 +12,7 @@ import "./modern/04.css";
 import "./modern/05.css";
 import "./modern/06-system.css";
 import "./modern/07-mockup-match.css";
+import "./modern/08-map-polish.css";
 
 const inter = Inter({
   subsets: ["latin"],
