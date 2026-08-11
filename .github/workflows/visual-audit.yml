@@ -89,8 +89,6 @@ jobs:
         if: always()
         with:
           name: yoced-visual-audit
-          path:
-            - visual-audit/*.png
-            - visual-audit/reference.webp
+          path: visual-audit/
           if-no-files-found: error
           retention-days: 2
