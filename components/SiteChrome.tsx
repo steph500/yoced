@@ -34,7 +34,7 @@ function Footer() {
               </li>
             ))}
             <li>
-              <Link href="/programs">All twelve fields →</Link>
+              <Link href="/programs">All thirteen fields →</Link>
             </li>
           </ul>
         </div>

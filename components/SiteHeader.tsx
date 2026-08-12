@@ -145,7 +145,7 @@ export function SiteHeader() {
               ))}
               <div className="mega__foot">
                 <Link href="/programs" className="link">
-                  All twelve fields <ArrowUpRight size={15} aria-hidden="true" />
+                  All thirteen fields <ArrowUpRight size={15} aria-hidden="true" />
                 </Link>
                 {audiences.map((audience) => (
                   <Link key={audience.slug} href={`/for/${audience.slug}`} className="link">

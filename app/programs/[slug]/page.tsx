@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
-import { Mosaic, Plate, Reel } from "@/components/Photo";
+import { Plate } from "@/components/Photo";
+import { Sequence } from "@/components/Sequence";
 import { reveal } from "@/lib/reveal";
 import { BreadcrumbSchema, ProgramSchema } from "@/components/StructuredData";
 import { clusterOf, getProgram, programs } from "@/lib/programs";
@@ -214,13 +215,11 @@ export default async function ProgramPage({ params }: Params) {
                 ) : null}
               </div>
             </div>
-            {gallery.length > 8 ? (
-              <div className="wrap">
-                <Mosaic photos={gallery} />
-              </div>
-            ) : (
-              <Reel photos={gallery} />
-            )}
+            {/* One frame at a time, in order — a field's photography is a
+                sequence of an activity, not a wall of thumbnails. */}
+            <div className="wrap">
+              <Sequence photos={gallery} label={`${program.title} — field archive`} />
+            </div>
           </section>
         ) : null}
 

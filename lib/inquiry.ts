@@ -24,7 +24,7 @@ export const topics: Topic[] = [
     id: "program",
     label: "Program inquiry",
     subject: "Program",
-    hint: "A question about one of the twelve fields.",
+    hint: "A question about one of the thirteen fields.",
   },
   {
     id: "partnership",

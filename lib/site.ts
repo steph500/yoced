@@ -9,10 +9,10 @@ export const site = {
   url: "https://yoced.com",
   tagline: "One ecosystem. Many doors.",
   description:
-    "YOCED is a Kenyan youth development ecosystem that turns ideas and capability into ventures, livelihoods, skills and long-term economic participation across twelve active fields.",
+    "YOCED is a Kenyan youth development ecosystem that turns ideas and capability into ventures, livelihoods, skills and long-term economic participation across thirteen active fields.",
   email: "yoced.ke@gmail.com",
-  phone: "+254 726 647052",
-  phoneHref: "tel:+254726647052",
+  phone: "+254 740 334262",
+  phoneHref: "tel:+254740334262",
   locality: "Nairobi",
   country: "Kenya",
   location: "Nairobi, Kenya",

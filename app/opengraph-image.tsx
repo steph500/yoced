@@ -97,7 +97,7 @@ export default async function Image() {
         >
           <span>{site.legalName}</span>
           <span style={{ letterSpacing: 2.4, textTransform: "uppercase", fontSize: 16 }}>
-            12 fields · 6 ventures
+            13 fields · 6 ventures
           </span>
         </div>
       </div>

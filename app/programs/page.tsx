@@ -8,13 +8,13 @@ import { photo } from "@/lib/photos";
 import { sdgTitle } from "@/lib/sdg";
 
 export const metadata: Metadata = {
-  title: "Programs — twelve active fields",
+  title: "Programs — thirteen active fields",
   description:
-    "YOCED works across twelve active fields: job creation, business development and BPM, capital, skills, financial literacy, intellectual property, agriculture, climate, health, women and community empowerment, youth and creative rights, and technology.",
+    "YOCED works across thirteen active fields: creatives, agriculture and food security, business development and BPM, job creation, capital, skills, financial literacy, intellectual property, climate, health, women and community empowerment, technology, and refugee sustainability and economic solutions.",
   alternates: { canonical: "/programs" },
   openGraph: {
-    title: "YOCED programs — twelve active fields",
-    description: "One organisation, twelve fields, and a direct route into each.",
+    title: "YOCED programs — thirteen active fields",
+    description: "One organisation, thirteen fields, and a direct route into each.",
     url: "/programs",
   },
 };
@@ -33,11 +33,11 @@ export default function ProgramsPage() {
           <span className="label">Programs</span>
           <span className="label">Structured directory</span>
           <span className="label" style={{ marginLeft: "auto" }}>
-            F-01 → F-12
+            F-01 → F-13
           </span>
         </div>
         <h1 className="grotesk hero__headline" id="programs-heading">
-          One mission. <em>Twelve</em> fields.
+          One mission. <em>Thirteen</em> fields.
         </h1>
         <div className="hero__foot">
           <p>
@@ -57,7 +57,7 @@ export default function ProgramsPage() {
         programs={programs}
         previews={previews}
         heading="Search, filter, and go straight to your field."
-        intro="Filter by cluster or search across every activity, community and audience described in the twelve program records."
+        intro="Filter by cluster or search across every activity, community and audience described in the thirteen program records."
       />
 
       <section className="band wrap" aria-labelledby="grouping-heading">
@@ -101,7 +101,7 @@ export default function ProgramsPage() {
       <section className="band band--tight on-ink wrap" aria-labelledby="sdg-heading">
         <span className="label">Alignment</span>
         <h2 className="display t-2" id="sdg-heading" style={{ marginTop: 12, marginBottom: 10 }}>
-          Sustainable Development Goals across the twelve fields.
+          Sustainable Development Goals across the thirteen fields.
         </h2>
         <p className="muted" style={{ maxWidth: "60ch", marginBottom: 26 }}>
           Mapped where a field genuinely works on the goal. Each program page lists only its own

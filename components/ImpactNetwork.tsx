@@ -60,7 +60,7 @@ export function ImpactNetwork() {
         <aside className="home-atlas__summary">
           <span className="home-atlas__summary-icon" aria-hidden="true">Y</span>
           <span className="home-kicker">{site.location}</span>
-          <h3>One organisation. Twelve direct routes in.</h3>
+          <h3>One organisation. Thirteen direct routes in.</h3>
           <dl>
             <div><dt>Active program fields</dt><dd>{programs.length}</dd></div>
             <div><dt>Active ventures</dt><dd>{ventures.length}</dd></div>

@@ -50,7 +50,7 @@ editing a component.
 | File | Holds |
 |---|---|
 | `lib/site.ts` | Name, URL, email, phone, location, nav, **social links** |
-| `lib/programs.ts` | The twelve fields and the four clusters they group into |
+| `lib/programs.ts` | The thirteen fields and the four clusters they group into |
 | `lib/ventures.ts` | The six active ventures |
 | `lib/audiences.ts` | The five `/for/*` routes |
 | `lib/partners.ts` | Partner organisations |
@@ -62,15 +62,17 @@ editing a component.
 
 ### What is evidenced, and what is still open
 
-`lib/photos.ts` holds two intakes:
+`lib/photos.ts` holds three intakes:
 
 1. **Field production** — the groundnut, maize, horticulture and poultry work.
 2. **Institutional and network evidence** — the National Productivity and
    Performance Conference 2026 (Kenya School of Government, 17–19 June 2026,
    where the Founder was an accredited delegate), working visits, partner farms
    and partner organisations.
+3. **The creative sector** — cultural heritage, performing arts, the venues and
+   collaborators around them, and the instrument trade.
 
-Rules that hold across both:
+Rules that hold across all three:
 
 - Anything YOCED did not photograph carries a `credit`, which renders with the
   caption. Broadcast stills are marked as such.
@@ -80,11 +82,23 @@ Rules that hold across both:
   Records tree-planting attempt is Green Earth Ambassadors Foundation's;
   YOCED attended in support, and that is exactly how it appears.
 - The delegate pass has its QR code blurred before publication.
+- Film artwork carries its film and its director. *Ancestral Hands: The Art of
+  Djembe* is credited to R.G. Fondo wherever its key art or poster appears.
+- `tags` drive which chapter of `/work` a frame lands in, so the
+  chapter-selecting tags are kept mutually exclusive. Adding a frame without a
+  tag means it is registered but shown nowhere, which is the safe default.
 
-**`socialLinks` in `lib/site.ts` is the one thing still empty.** The previous
-site linked Facebook, Instagram, X and LinkedIn but none of those URLs could be
-verified. Add `{ label, href }` entries and the footer and contact page start
-showing them. Nothing else on the site is waiting on material.
+Two things are still waiting on material:
+
+- **`socialLinks` in `lib/site.ts` is empty.** The previous site linked
+  Facebook, Instagram, X and LinkedIn but none of those URLs could be verified.
+  Add `{ label, href }` entries and the footer and contact page start showing
+  them.
+- **The *Ancestral Hands* film has no watch link.** The film is presented on
+  `/work` and on `/programs/creatives` through its key art and credit. The
+  YouTube URL supplied was truncated in transit (`youtu.be/p_-3M9i94` is nine
+  characters; a video ID is eleven) and it does not resolve, so no link is
+  published rather than a broken one.
 
 ### Adding photographs
 

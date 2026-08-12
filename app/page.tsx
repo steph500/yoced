@@ -2,7 +2,8 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
 import { AtlasIndex } from "@/components/AtlasIndex";
-import { Plate, Reel } from "@/components/Photo";
+import { Plate } from "@/components/Photo";
+import { Sequence } from "@/components/Sequence";
 import { reveal } from "@/lib/reveal";
 import { clusters, programs, programsInCluster } from "@/lib/programs";
 import { audiences } from "@/lib/audiences";
@@ -27,15 +28,17 @@ const roomPhotos = photoSet(
 const tickerItems = programs.map((program) => `${program.code} ${program.title}`);
 
 const reelPhotos = photoSet(
+  "ancestral-hands-key-art",
+  "stage-254-lead",
+  "stage-house-audience",
   "field-preparation",
   "groundnut-lifted",
   "weeding-team",
-  "groundnut-harvest-drying",
   "groundnut-peanut-butter",
+  "riverbank-tree-planting",
   "conference-delegation",
   "partner-farm-kale",
   "partner-254-brewing",
-  "poultry-brooder",
   "training-session",
 );
 
@@ -48,7 +51,7 @@ export default function HomePage() {
           <span className="label">{site.location}</span>
           <span className="label">Enterprise · Land · Skills · Capital</span>
           <span className="label" style={{ marginLeft: "auto" }}>
-            12 fields · 6 ventures
+            13 fields · 6 ventures
           </span>
         </div>
 
@@ -118,7 +121,7 @@ export default function HomePage() {
       <AtlasIndex
         programs={programs}
         previews={previews}
-        heading="Twelve fields, one organisation, and a direct route into each."
+        heading="Thirteen fields, one organisation, and a direct route into each."
         intro="Every field below has its own page, its own partnership models and its own URL — built to be sent to a colleague on its own without dragging the rest of YOCED along with it."
       />
 
@@ -159,16 +162,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Captioned rather than cropped: the delegate pass has to stay readable,
-          and the broadcast frames must carry their source. */}
-      <Reel photos={roomPhotos} />
+      {/* Stepped in sequence, captioned rather than cropped: the delegate pass
+          has to stay readable, and the broadcast frames carry their source. */}
+      <div className="wrap">
+        <Sequence photos={roomPhotos} label="YOCED institutional presence" />
+      </div>
 
       {/* Clusters ------------------------------------------------------- */}
       <section className="band on-ink" aria-labelledby="clusters-heading">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <span className="label">How the twelve fit together</span>
+              <span className="label">How the thirteen fit together</span>
               <h2 className="display t-1" id="clusters-heading" style={{ marginTop: 14 }}>
                 Four clusters.
               </h2>
@@ -213,21 +218,25 @@ export default function HomePage() {
             </h2>
           </div>
           <p>
-            Field production, institutional presence and the partner network. Captions describe
-            what is in the frame and nothing more, and anything YOCED did not photograph carries
-            its source.
+            The creative sector, field production, institutional presence and the partner
+            network. Captions describe what is in the frame and nothing more, and anything YOCED
+            did not photograph carries its source.
           </p>
         </div>
 
-        <Reel photos={reelPhotos}>
-          <p className="muted" style={{ fontSize: ".95rem" }}>
-            Three chapters: the season, from land preparation to a jar on a shelf; the rooms YOCED
-            has been present in; and the sites and organisations it works alongside.
-          </p>
-          <Link href="/work" className="btn btn--solid">
-            Open the full archive <ArrowUpRight size={17} aria-hidden="true" />
-          </Link>
-        </Reel>
+        <div className="wrap">
+          <Sequence photos={reelPhotos} label="YOCED field archive" />
+          <div className="archive-cta">
+            <p className="muted" style={{ fontSize: ".95rem", maxWidth: "52ch" }}>
+              Four chapters: the creative sector, on stage and behind it; the season, from land
+              preparation to a jar on a shelf; the rooms YOCED has been present in; and the sites
+              and organisations it works alongside.
+            </p>
+            <Link href="/work" className="btn btn--solid">
+              Open the full archive <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* Ventures ------------------------------------------------------- */}

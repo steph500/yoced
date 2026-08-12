@@ -186,7 +186,7 @@ export const ventures: Venture[] = [
       "Intellectual property and legal support",
       "Design training placements",
     ],
-    programs: ["intellectual-property", "business-development", "youth-creative-rights"],
+    programs: ["intellectual-property", "business-development", "creatives"],
     accent: "slate",
   },
   {
@@ -225,7 +225,7 @@ export const ventures: Venture[] = [
       "Crew training placements",
       "Distribution and broadcast relationships",
     ],
-    programs: ["youth-creative-rights", "intellectual-property", "job-creation", "technology"],
+    programs: ["creatives", "intellectual-property", "job-creation", "technology"],
     accent: "slate",
   },
   {

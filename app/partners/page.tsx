@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
-import { Plate, Reel } from "@/components/Photo";
+import { Plate } from "@/components/Photo";
+import { Sequence } from "@/components/Sequence";
 import { reveal } from "@/lib/reveal";
 import { partners } from "@/lib/partners";
 import { clusters, programs, programsInCluster } from "@/lib/programs";
@@ -13,7 +14,7 @@ import { technologyPartner } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Partners",
   description:
-    "How partnership works at YOCED: enter through one of twelve fields, with stated partnership models for each. Network includes MKJ Law LLP, Kenbright, 254 Brewing Co, Twenty Fifth Hive, Njoki Karuoya Creative & Media Centre, PesaSwap and technology partner SelfAwareTech.",
+    "How partnership works at YOCED: enter through one of thirteen fields, with stated partnership models for each. Network includes MKJ Law LLP, Kenbright, 254 Brewing Co, Twenty Fifth Hive, Njoki Karuoya Creative & Media Centre, PesaSwap and technology partner SelfAwareTech.",
   alternates: { canonical: "/partners" },
   openGraph: {
     title: "Partner with YOCED",
@@ -24,8 +25,11 @@ export const metadata: Metadata = {
 
 const networkPhotos = photoSet(
   "partner-254-brewing",
+  "venue-254-sitting",
+  "venue-254-brewhouse",
   "conference-delegation",
   "institutional-handshake",
+  "creative-collaborators",
   "partner-farm-kale",
   "green-earth-record-notice",
   "institutional-delegation",
@@ -39,7 +43,7 @@ export default function PartnersPage() {
         <div className="hero__meta">
           <span className="label">Partners · funders · collaborators</span>
           <span className="label" style={{ marginLeft: "auto" }}>
-            12 fields, 40+ partnership models
+            13 fields, 45+ partnership models
           </span>
         </div>
         <h1 className="grotesk hero__headline" id="partners-heading">
@@ -134,7 +138,9 @@ export default function PartnersPage() {
             neither is a claim of funding or endorsement.
           </p>
         </div>
-        <Reel photos={networkPhotos} />
+        <div className="wrap">
+          <Sequence photos={networkPhotos} label="Organisations and sites in the YOCED network" />
+        </div>
       </section>
 
       <section className="band on-ink wrap" aria-labelledby="models-heading">

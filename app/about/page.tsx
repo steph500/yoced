@@ -14,7 +14,7 @@ import { site, technologyPartner } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "YOCED — Youth Corporate and Economic Development — is a Nairobi-based ecosystem working across twelve fields, with roots in Business Process Management. Led by Dovies Ebbiey, Founder & President, and Stefan Juma, Co-founder & Technology Lead.",
+    "YOCED — Youth Corporate and Economic Development — is a Nairobi-based ecosystem working across thirteen fields, with roots in Business Process Management. Led by Dovies Ebbiey, Founder & President, and Stefan Juma, Co-founder & Technology Lead.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About YOCED",
@@ -30,7 +30,7 @@ const principles = [
   },
   {
     title: "Breadth on purpose",
-    body: "Employment, land, money, health and rights fail together. Twelve fields is not scope creep — it is an admission that these problems do not occur separately.",
+    body: "Employment, land, money, health and rights fail together. Thirteen fields is not scope creep — it is an admission that these problems do not occur separately.",
   },
   {
     title: "Structure over slogans",
@@ -126,7 +126,7 @@ export default function AboutPage() {
             </h2>
           </div>
           <p>
-            Four clusters, twelve fields, six ventures, and a set of routes designed around who
+            Four clusters, thirteen fields, six ventures, and a set of routes designed around who
             is arriving rather than around the org chart.
           </p>
         </div>

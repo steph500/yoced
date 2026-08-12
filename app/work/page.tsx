@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
-import { Figure, Plate } from "@/components/Photo";
+import { Plate } from "@/components/Photo";
+import { Sequence } from "@/components/Sequence";
 import { photo, photos } from "@/lib/photos";
 import { getProgram } from "@/lib/programs";
 
@@ -19,25 +20,32 @@ export const metadata: Metadata = {
 };
 
 /**
- * The archive is organised in three chapters, because YOCED's evidence is of
- * three kinds: what it produces, where it is present, and who it works with.
+ * The archive is organised in four chapters, because YOCED's evidence is of
+ * four kinds: the creative work it supports, what it produces on land, where it
+ * has been present, and who it works alongside.
  */
 const chapters = [
   {
-    id: "season",
+    id: "stage",
     code: "I",
+    title: "On the stage",
+    body: "The creative sector, which is where a great deal of young economic activity actually happens: the heritage the work comes from, the rooms it is performed in, and the trade that sits behind it.",
+  },
+  {
+    id: "season",
+    code: "II",
     title: "The season",
     body: "One continuous operation, in order: land opened, seed planted, crop tended, harvest lifted, produce dried and sorted, then processed into something with a label on it.",
   },
   {
     id: "room",
-    code: "II",
+    code: "III",
     title: "In the room",
     body: "Development work is decided in rooms as often as in fields. This chapter records where YOCED has been present and in what capacity.",
   },
   {
     id: "network",
-    code: "III",
+    code: "IV",
     title: "The network",
     body: "The sites and organisations YOCED works alongside. Shown as relationships, not as endorsements.",
   },
@@ -45,12 +53,44 @@ const chapters = [
 
 const sequence = [
   {
+    chapter: "stage",
+    code: "C-01",
+    title: "Cultural heritage",
+    body: "Ancestral Hands: The Art of Djembe, a film by R.G. Fondo, follows djembe making in Nairobi — the craft, and the two generations holding it. Heritage work is economic work: when a practice is held by a handful of makers, documenting it and paying the people who know it is the only version that survives.",
+    tags: ["cultural-heritage"],
+    field: "creatives",
+  },
+  {
+    chapter: "stage",
+    code: "C-02",
+    title: "Performing arts",
+    body: "Live sets at 254 Brewing Co and at house venues around Nairobi. The point of photographing the audience as well as the stage is that both halves are the business — a room that fills is what makes a date bookable a second time.",
+    tags: ["performance"],
+    field: "creatives",
+  },
+  {
+    chapter: "stage",
+    code: "C-03",
+    title: "Venues, collaborators and the business around them",
+    body: "The working side of the creative field: venue sessions, production floors and the collaborators a project is assembled from. Most of what decides whether a creative career holds is agreed in rooms like these rather than on stage.",
+    tags: ["creative-business"],
+    field: "creatives",
+  },
+  {
+    chapter: "stage",
+    code: "C-04",
+    title: "The instrument trade",
+    body: "The supply side of the music economy, photographed at an international guitar fair: makers, distributors and priced catalogues. It is a reference point for what a formalised creative sector looks like from the inside.",
+    tags: ["creative-economy"],
+    field: "creatives",
+  },
+  {
     chapter: "season",
     code: "S-01",
     title: "Opening the land",
     body: "The season starts with land preparation. A tractor pass decides how much ground one operation can realistically work; hand preparation finishes the headlands and the corners a machine cannot reach.",
     tags: ["land", "mechanisation"],
-    field: "agriculture-food-systems",
+    field: "agriculture-food-security",
   },
   {
     chapter: "season",
@@ -66,7 +106,7 @@ const sequence = [
     title: "The crop",
     body: "Groundnuts, maize and horticulture. Weeding is the labour peak of the season and the point at which a crop is either kept or lost.",
     tags: ["crop"],
-    field: "agriculture-food-systems",
+    field: "agriculture-food-security",
   },
   {
     chapter: "season",
@@ -74,7 +114,7 @@ const sequence = [
     title: "Harvest",
     body: "Groundnut plants are lifted with the pods still attached, then collected from the field. Timing here is unforgiving in both directions.",
     tags: ["harvest"],
-    field: "agriculture-food-systems",
+    field: "agriculture-food-security",
   },
   {
     chapter: "season",
@@ -88,7 +128,7 @@ const sequence = [
     chapter: "season",
     code: "S-06",
     title: "Value addition",
-    body: "Groundnuts processed and jarred as peanut butter. This is the step that changes what a harvest is worth, and the reason the enterprise work and the agriculture work belong to the same organisation.",
+    body: "Groundnuts processed and jarred as peanut butter; baking runs cooling on trays. This is the step that changes what a harvest is worth, and the reason the enterprise work and the agriculture work belong to the same organisation.",
     tags: ["value-addition"],
     field: "business-development",
   },
@@ -98,7 +138,7 @@ const sequence = [
     title: "Livestock and kitchen plots",
     body: "Poultry cycles, nursery beds and household vegetable plots run alongside the main season, so income does not have to wait for one harvest.",
     tags: ["livestock", "household"],
-    field: "agriculture-food-systems",
+    field: "agriculture-food-security",
   },
   {
     chapter: "season",
@@ -107,6 +147,14 @@ const sequence = [
     body: "Training sessions, farming-group mobilisation and working meetings. Most of the field work only happens because this part happened first.",
     tags: ["training"],
     field: "skills-education",
+  },
+  {
+    chapter: "season",
+    code: "S-09",
+    title: "Holding the river bank",
+    body: "Seedlings planted out to a line along a river bank and watered by hand. Roots hold ground that would otherwise wash into the water, which protects the catchment everything downstream depends on and puts tree cover back on cleared land — erosion, water and carbon answered by one afternoon's work.",
+    tags: ["tree-planting"],
+    field: "climate-action",
   },
   {
     chapter: "room",
@@ -130,7 +178,7 @@ const sequence = [
     title: "Partner farms",
     body: "Production sites YOCED works alongside rather than operates. The horticulture here runs at a scale and standard that a single household rarely reaches on its own, which is the argument for organising producers into groups.",
     tags: ["partner-farm"],
-    field: "agriculture-food-systems",
+    field: "agriculture-food-security",
   },
   {
     chapter: "network",
@@ -150,7 +198,7 @@ export default function WorkPage() {
           <span className="label">Evidence archive</span>
           <span className="label">{photos.length} frames</span>
           <span className="label" style={{ marginLeft: "auto" }}>
-            Three chapters
+            Four chapters
           </span>
         </div>
         <h1 className="grotesk hero__headline" id="work-heading">
@@ -163,8 +211,11 @@ export default function WorkPage() {
             outcome claims. Anything YOCED did not photograph carries its source.
           </p>
           <div className="btn-row">
-            <Link href="/programs/agriculture-food-systems" className="btn btn--solid">
-              The agriculture field <ArrowUpRight size={17} aria-hidden="true" />
+            <Link href="/programs/creatives" className="btn btn--solid">
+              The creatives field <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+            <Link href="/programs/agriculture-food-security" className="btn">
+              Agriculture &amp; food security <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -182,7 +233,9 @@ export default function WorkPage() {
               and the organisations it works alongside.
             </p>
             <p>
-              What follows runs in three chapters. <strong>The season</strong> is one continuous
+              What follows runs in four chapters. <strong>On the stage</strong> covers the
+              creative sector — heritage, performance, venues and the trade behind them.{" "}
+              <strong>The season</strong> is one continuous
               operation — land opened, seed planted, crop tended, harvest lifted, produce dried
               and sorted, then processed. Read end to end it is the argument for why the
               agriculture, employment and enterprise fields sit in one organisation.
@@ -239,16 +292,14 @@ export default function WorkPage() {
                 </div>
               </div>
 
-              <div className="sheet">
-                {frames.map((frame, frameIndex) => (
-                  <Figure
-                    key={frame.slug}
-                    photo={frame}
-                    index={frameIndex + 1}
-                    sizes="(max-width: 520px) 100vw, (max-width: 760px) 50vw, 25vw"
-                  />
-                ))}
-              </div>
+              {/* Stepped through in sequence rather than laid out as a grid:
+                  these frames are an account of an activity in order, and a
+                  contact sheet flattens that back into thumbnails. */}
+              <Sequence
+                photos={frames}
+                label={`${step.code} — ${step.title}`}
+                sizes="(max-width: 1180px) 100vw, 1100px"
+              />
             </div>
           </section>
           </div>

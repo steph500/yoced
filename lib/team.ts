@@ -22,7 +22,7 @@ export const team: Leader[] = [
     portrait: "/assets/voices/dovies.webp",
     focus:
       "Sets YOCED's direction and carries the organisation's relationships with communities, partner organisations and the groups YOCED works through. Leads on programs, partnerships and field work.",
-    fields: ["agriculture-food-systems", "women-community-empowerment", "job-creation"],
+    fields: ["agriculture-food-security", "women-community-empowerment", "job-creation"],
   },
   {
     name: "Stefan Juma",

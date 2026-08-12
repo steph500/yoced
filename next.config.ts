@@ -19,6 +19,19 @@ const nextConfig: NextConfig = {
         destination: "https://yoced.com/:path*",
         permanent: true,
       },
+      // Two fields were renamed after launch: Agriculture & Food Systems became
+      // Agriculture & Food Security, and Youth & Creative Rights was widened
+      // into Creatives. Both had live, shareable URLs — so both keep working.
+      {
+        source: "/programs/agriculture-food-systems",
+        destination: "/programs/agriculture-food-security",
+        permanent: true,
+      },
+      {
+        source: "/programs/youth-creative-rights",
+        destination: "/programs/creatives",
+        permanent: true,
+      },
     ];
   },
 };

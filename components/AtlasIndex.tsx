@@ -18,7 +18,7 @@ type Props = {
 /**
  * The Impact Atlas.
  *
- * Twelve fields presented as a ruled index rather than a grid of cards, filtered
+ * Thirteen fields presented as a ruled index rather than a grid of cards, filtered
  * by cluster and searchable across every text field in the program record. On
  * wide screens, hovering or focusing a row shows that field's photograph in a
  * sticky preview pane — additive only, so the index is complete without it.
@@ -110,7 +110,7 @@ export function AtlasIndex({ programs, previews, heading, intro }: Props) {
             </p>
             {results.length === 0 ? (
               <p className="atlas__empty">
-                Nothing matches “{query}”. YOCED works across twelve fields — try a broader
+                Nothing matches “{query}”. YOCED works across thirteen fields — try a broader
                 term, or{" "}
                 <Link href="/contact" className="link">
                   ask us directly

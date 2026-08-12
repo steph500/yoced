@@ -17,7 +17,7 @@ export default function NotFound() {
         <h1>This page is not in the atlas.</h1>
         <p>
           The link may be out of date, or the page may have moved during the site rebuild.
-          Everything YOCED does lives in one of the twelve fields below.
+          Everything YOCED does lives in one of the thirteen fields below.
         </p>
         <div className="btn-row" style={{ marginTop: 10 }}>
           <Link href="/" className="btn btn--solid">
@@ -30,7 +30,7 @@ export default function NotFound() {
       </div>
 
       <section className="band band--tight wrap">
-        <span className="label">Twelve fields</span>
+        <span className="label">Thirteen fields</span>
         <ul className="rows" style={{ marginTop: 16 }}>
           {programs.map((program) => (
             <li key={program.slug}>

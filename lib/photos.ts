@@ -8,14 +8,21 @@
  * Sources are stored as pre-optimised WebP under /public/field and served through
  * next/image. `blurDataURL` holds a 20px LQIP generated at build-prep time.
  *
- * Two intakes are held here:
+ * Three intakes are held here:
  *   1. Field production — the groundnut, maize, horticulture and poultry work.
  *   2. Institutional and network evidence — the National Productivity and
  *      Performance Conference 2026, working visits, partner farms and partner
  *      organisations.
+ *   3. The creative sector — cultural heritage, performing arts, the venues and
+ *      collaborators around them, and the instrument trade.
  *
  * Anything not photographed by YOCED carries a `credit`. A delegate pass QR code
  * was blurred before publication.
+ *
+ * `tags` are load-bearing: /work builds its chapters by filtering on them, so a
+ * frame appears wherever its tags say it belongs and nowhere else. Keep the
+ * chapter-driving tags — cultural-heritage, performance, creative-business,
+ * creative-economy, partner-farm, tree-planting — mutually exclusive.
  */
 
 export type Photo = {
@@ -494,7 +501,7 @@ export const photos: Photo[] = [
     height: 720,
     alt: "A dense kale crop growing in flat, well-tended rows extending toward a treeline",
     caption: "Kale under cultivation at a partner farm.",
-    tags: ["horticulture", "partner-farm", "crop"],
+    tags: ["horticulture", "partner-farm"],
     blurDataURL:
       "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACwAwCdASoUAAkAPulgqE2pJaQiMAgBIB0JZQCo9CHfM4wcS2dSwAD+QPtheE8+W/7SBMUXJ6bqcl22+JjSxLkaSR1gzXb0T0drVz8C2y6eBgHgT4pt0YUaAAA=",
   },
@@ -505,7 +512,7 @@ export const photos: Photo[] = [
     height: 720,
     alt: "Rows of mature kale plants filling a smallholding to the field edge",
     caption: "A kale block approaching harvest at a partner farm.",
-    tags: ["horticulture", "partner-farm", "crop"],
+    tags: ["horticulture", "partner-farm"],
     blurDataURL:
       "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAABwAwCdASoUAAkAPulgqE2pJaQiMAgBIB0JZwAAW/2sQhs35+wA/Tt22poJGPJ8doAxFdUOEJXrQo4xA5f1UxZoQr4haGbGHCNe90ez8wAAAA==",
   },
@@ -516,7 +523,7 @@ export const photos: Photo[] = [
     height: 720,
     alt: "A broad field of low green crop under an overcast sky",
     caption: "A field crop at a partner farm.",
-    tags: ["horticulture", "partner-farm", "crop"],
+    tags: ["horticulture", "partner-farm"],
     blurDataURL:
       "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAwCdASoUAAkAPulgqE0pJaOiMAgBIB0JQBOgBDw4B5uz5TuhAAD+TQkwJV8H89Ca2JhnIkdX1F9s1yAdxS3LSatLNjQ8O1XJMudwQutzS3fmI2sH4z3/coAAAA==",
   },
@@ -527,7 +534,7 @@ export const photos: Photo[] = [
     height: 720,
     alt: "A young leafy crop newly established in rows on dark soil",
     caption: "A young crop recently established at a partner farm.",
-    tags: ["horticulture", "partner-farm", "crop"],
+    tags: ["horticulture", "partner-farm"],
     blurDataURL:
       "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACwAwCdASoUAAkAPulgqE0pJaQiMAgBIB0JQBWABEBSaGuo5PaF4AD8j/Vx5igRIuoQVtvHKvV0MEzoQ2grwQh5pKuuHSO7Glin2ram2MyqJKmFmzU7jAAA",
   },
@@ -538,7 +545,7 @@ export const photos: Photo[] = [
     height: 720,
     alt: "A brassica crop growing in rows with a footpath running through the block",
     caption: "Brassicas in production at a partner farm.",
-    tags: ["horticulture", "partner-farm", "crop"],
+    tags: ["horticulture", "partner-farm"],
     blurDataURL:
       "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACwAwCdASoUAAkAPulgqU2pJaQiMAgBIB0JQBadA9iKHhf9VMG/4ADJyJkuahguqozGOjOz7jXQSAD4jLQ0l3beOGssCANY5+ZxPEG/bXQzeF0AAAA=",
   },
@@ -576,6 +583,280 @@ export const photos: Photo[] = [
     tags: ["partner", "meeting"],
     blurDataURL:
       "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAACwBACdASoUAA8APulgqE0pJaOiMAgBIB0JZgCdMoADVTNMDNuyZAP8K7HN0DYAAP47/++heifwXn7K8JooF7TT3sDvR6CsKowHbbYyLPCKW5IIMOajKiAtIr1mgXTnLvnrqUlEN8GcHJeReesqn3llrLA/tEKk0ihAGNyDWsmwH3dQAAA=",
+  },
+
+  /* ---------------------------------------------------------------------
+   * Intake 3 — the creative sector, plus further land and food frames.
+   * ------------------------------------------------------------------ */
+
+  {
+    slug: "djembe-player",
+    src: "/field/djembe-player.webp",
+    width: 853,
+    height: 1280,
+    alt: "A drummer seated at a microphone with a pair of hand drums held between his knees",
+    caption: "A percussionist set up to play, hands resting on the skins before the first strike.",
+    tags: ["cultural-heritage", "music"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAADwAwCdASoNABQAPulgqE0pJaOiMAgBIB0JaQAAUzky0YeLIzFnXxygAP7pTzVSPmsfkJ/CqNf93Um7REmmhBJmrdxNyYY9lcugp2YUftBmVxEAsvNT5GqNJOIQ/zRMD24QhFceibd6e4EPFgBPfV/MAAAAAA==",
+  },
+  {
+    slug: "ancestral-hands-key-art",
+    src: "/field/ancestral-hands-key-art.webp",
+    width: 1280,
+    height: 853,
+    alt: "Key art for the film Ancestral Hands: The Art of Djembe, showing two drum makers seated with djembes in a workshop",
+    caption:
+      "Key art for Ancestral Hands: The Art of Djembe — two generations of drum makers in the workshop.",
+    tags: ["cultural-heritage", "film"],
+    credit: "Ancestral Hands, a film by R.G. Fondo",
+    blurDataURL:
+      "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAACQAwCdASoUAA0APulep00pJSOiMAgBIB0JQBOmUAAJiS8Evx6AAP7sAfTP11LPWiO4vxjmr/XmTfkN+yZLXIQFLCDIUoJO5NDzEXh//fyMH8UnlZlYWm9O6Dbn1WC0FzuHzWp0s7T9TJb6lmSyN3/4AN0tuAAA",
+  },
+  {
+    slug: "ancestral-hands-poster",
+    fit: "contain",
+    src: "/field/ancestral-hands-poster.webp",
+    width: 853,
+    height: 1280,
+    alt: "Portrait poster for the film Ancestral Hands: The Art of Djembe, a drum maker holding a finished djembe",
+    caption: "The film's poster: a finished djembe, held by the man who made it.",
+    tags: ["cultural-heritage", "film"],
+    credit: "Ancestral Hands, a film by R.G. Fondo",
+    blurDataURL:
+      "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAwCdASoNABQAPuleqE0pJSQiMAgBIB0JZgCw7CPqAXTde8LPJgAA/uzHGpkaMuiUXzJjjkeCdQjcx6X2KW+wEIUWdgXkD/HMu651Kt+sppYiB9926snMWYgn7ePHUnlQAAAA",
+  },
+  {
+    slug: "stage-254-lead",
+    src: "/field/stage-254-lead.webp",
+    width: 1200,
+    height: 1600,
+    alt: "A singer in a yellow jacket playing an acoustic guitar at a microphone, a guitarist beside him",
+    caption: "Mid-set at 254 Brewing Co, in front of the brewery's painted back wall.",
+    tags: ["performance"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAADQBACdASoPABQAPulep00pJSOiMAgBIB0JagCdMoFWZgV83yIuRw9Yx2xGt+dGAAD+2tTJ1/v17390eUCR+FlKLHl877GCa1axfo92G9G0N1AkF9JGilOSEW0EFOzzaCHzzGNUGWPzX0voTNTRtuO5vqTTEtbWz0ec/hod58c4QPw2wNAFqKHpDEAQysjdbk28h16H6J4xycw+BLAAAA==",
+  },
+  {
+    slug: "stage-254-band",
+    src: "/field/stage-254-band.webp",
+    width: 1200,
+    height: 1600,
+    alt: "Two musicians performing together on a small stage, one on acoustic guitar at the microphone and one on electric guitar",
+    caption: "Two players, one stage, a room close enough to hear the strings.",
+    tags: ["performance"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAAAwBACdASoPABQAPuleqE0pJSOiMAgBIB0JaACsAYyepII8YaQn08PypAAA/tD8m23uMKddvYaerPqmDjc0V53ZNlXud3rYHCi++FUXOGNoLVZdQLt3XqXDmhCwP8jNsammWoUO/zeo617V58hnEPgsov3ZSMruQRlXSVfBN6ubmq3LN55tfTPdQyfQu0Urzn44RRKXQeGdh3sBL/D++SqiwjdWrcpn+5/z4MxgaAA=",
+  },
+  {
+    slug: "stage-254-solo",
+    src: "/field/stage-254-solo.webp",
+    width: 720,
+    height: 1600,
+    alt: "A solo performer seated on a stool with an acoustic guitar, a keyboard player behind him",
+    caption: "A solo set on a stool, keys behind, amplifier to the side.",
+    tags: ["performance"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADwAwCdASoJABQAPulgqE0pJaQiMAgBIB0JQBOmUI7gBK2jsjgKBUS4APsib7+TqWgl6dEr/LVhMGcHI88Z5hWK1URF9kkfZnd4RPVpKJLKsj0KDOs0E0MPD+DnR6KmlAvoE8I/70b2uiig618YUshYtZZHzR4qW8AAAA==",
+  },
+  {
+    slug: "stage-house-trio",
+    src: "/field/stage-house-trio.webp",
+    width: 1600,
+    height: 1066,
+    alt: "Three musicians performing in a living room — keyboard, acoustic guitar and electric guitar",
+    caption: "A trio playing a house set: keys, acoustic and electric, on carpet rather than a stage.",
+    tags: ["performance"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAADQBACdASoUAA0APuleqE0pJSOiMAgBIB0JagCdMoMlxGBb/4B1s5Nf70yoQhP0wAD8YwtLTKDcIzQ5GzPD/A2wYOUlTXF1F0YRuBefWupRVup6IhWntbsmeziYeUuxa3K3JCN5AyIC+eUL5LYHRYcl+KmBHkkOc9ykpey57IkYNDZUviWYVAzxr1Atv1CQRpX2IBdgRs0KuaDcAAA=",
+  },
+  {
+    slug: "stage-house-listening",
+    src: "/field/stage-house-listening.webp",
+    width: 1600,
+    height: 1349,
+    alt: "Four people seated close to a performance, watching and listening",
+    caption: "The front row of a house set, close enough that nobody is watching a screen.",
+    tags: ["performance", "audience"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAABwBQCdASoUABEAPulsrlGpJaQiqAgBIB0JYwCdMoKPHFAACZVzihi0Q08v6nvSgrpj9nqAAP7AtN/qghNYFSaTOl5zxLJ9alz+FO28af9CtTSy58wnysawtmWKE6GL/FfFrofW29cd+5BgMx55skEcZsuZkEkcjrNHlEpx+xrJ5RmbkS12A6LK8o9vhtkpAWID8sI9OFU2IuKZQYKKSJ6SkXFf6RSzknCNE6yEppzlTvECEceAAA==",
+  },
+  {
+    slug: "stage-house-audience",
+    src: "/field/stage-house-audience.webp",
+    width: 1431,
+    height: 1000,
+    alt: "A full room of people seated on chairs and sofas facing a performance",
+    caption: "A room filled for a set — the audience a creative venue has to be able to gather.",
+    tags: ["performance", "audience"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAQBACdASoUAA4APulep00pJSOiMAgBIB0JYgCdAYyUzvPyPFpsD/1mgAD+Tr/qlwpByh6VNxWjRoZKzuD8ssYPtcZZBVjxUC1XjeLH8Z1vLCI1eae3UHo1EEWkO+/+H6vomH6mRSqoIaYv93ifSZNiBzYxK8kh6wkxtIWWv3HxXVKGCzGzfdTr0/elRbWCPzNzW90NAAA=",
+  },
+  {
+    slug: "stage-house-room",
+    src: "/field/stage-house-room.webp",
+    width: 481,
+    height: 644,
+    alt: "A wide view of a double-height room lit red, with a band playing to an audience seated on the floor and on sofas",
+    caption: "The whole room, seen from the balcony — the venue is somebody's living space.",
+    tags: ["performance", "audience"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAACwBACdASoPABQAPulep00pJSOiMAgBIB0JbACdMoRwAdDcw0HPEfICD2RfOIqAAM44FpHOSGJiEmhGuDuiyKJtZ6DKkZ9neaVN07PW2K5ukrs1bSTfpnIUcUS5RErNUkqlwXkPAnHzfYZbh/bxt1N2HtZsvwXP7wAto3ciZPmTG2zK+wtutITUeqUluw3FGRdMEXAAAAA=",
+  },
+  {
+    slug: "stage-after-set",
+    src: "/field/stage-after-set.webp",
+    width: 1600,
+    height: 1200,
+    alt: "Musicians greeting each other beside the stage after a performance, photographed in black and white",
+    caption: "After the set, beside the stage. The next collaboration usually starts here.",
+    tags: ["performance"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAwBACdASoUAA8APuleqE0pJSOiMAgBIB0JaQAD5DoGuh3dX4Vqhxd3PAAA/oVKHa2IDgMs0/DO36Dl1Lp4OzDHTI+70vZECCPcH0ZFtWJ7gOi5yw57x/i2lQd/IMJ4Jj2z3BKc0K4SqqNxz8wbEfnxnIkO4eK5Si2oOTOTBdsLbBsVGECB8Y33MThth8RVCH4gAA==",
+  },
+  {
+    slug: "venue-254-sitting",
+    src: "/field/venue-254-sitting.webp",
+    width: 1800,
+    height: 1012,
+    alt: "Five people seated on stools at the bar of 254 Brewing Co, the taps and awards visible behind them",
+    caption: "A working session at 254 Brewing Co — the venue side of the creative work.",
+    tags: ["creative-business"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAQBACdASoUAAsAPulgqE0pJaOiMAgBIB0JZAC1GoACX7ygzfbfrCfaQAD+S/HCchQUDon3uC9HS7aL3mYf92IyigzDs9WNckvDXpI3jCUgjDHLRP3kucF2myMvfh2+l/0XyibPWDAz+KoYA24M8tqv3vDiKJlFqCF8D/i0xkbRU4DLAxm7I15nTaJTAAAA",
+  },
+  {
+    slug: "venue-254-brewhouse",
+    src: "/field/venue-254-brewhouse.webp",
+    width: 1800,
+    height: 1012,
+    alt: "A small group on a brewery floor examining cups of grain and hops beside the fermentation vessels",
+    caption: "On the brewhouse floor, going through grain and hops with the production team.",
+    tags: ["creative-business"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAQBACdASoUAAsAPulgp00pJaOiMAgBIB0JQBbZMZZbyOFruA8eEH3JQAD945zb+g8JY/eFe+zyuWx/fF7EmZTkMKC2Ht1ICU5584CIJSBhB9OaEMH0Zp7d0pK7/oqvx+VPe2ttVeXDlBbakXAPwL64JbHC4nmH5Slmx2/XIYAAAA==",
+  },
+  {
+    slug: "venue-254-tasting",
+    src: "/field/venue-254-tasting.webp",
+    width: 1800,
+    height: 1012,
+    alt: "A wider view of the same brewery floor, tanks and control panels behind a group in conversation",
+    caption: "The plant behind the product — tanks, controls and the people who run them.",
+    tags: ["creative-business"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADwAwCdASoUAAsAPulgp00pJaOiMAgBIB0JZQAAPcplTKBWwN1I8NAAAP7F/KuPB9RopqEk5TbQdz6YU8zdbW8nSE7GbfiNUHt55lsXWKLS3jx0UjUWL36gJadkwbA979lI3aiyZwocj+7uB8UFlBqqLycdV4zkAAA=",
+  },
+  {
+    slug: "creative-collaborators",
+    src: "/field/creative-collaborators.webp",
+    width: 1600,
+    height: 1395,
+    alt: "Three men photographed together against a graffiti wall at a creative venue",
+    caption: "Collaborators at a creative venue, photographed between sessions.",
+    tags: ["creative-business"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAADQBACdASoUABEAPulsrlGpJaQiqAgBIB0JYwCxHy/lvwiipc25Vk+NDpfyGO5BwAD+6jzF22rR8i87rjbO4sm+JkDvRIUcCm2ZB81HgLWrq7bV53/ukTSkFVxfuYmcU5PVHRQ7mC9Rq8PfTeew1WMF3gXnkQF3rbEJV8E+nhvxNRovm8D8HXifDPFF/mUH2sIqdcApSdUGwMXVDHUW7dPvcRmSQSgDF0E7gAAA",
+  },
+  {
+    slug: "photography-exhibition",
+    src: "/field/photography-exhibition.webp",
+    width: 1350,
+    height: 1800,
+    alt: "Two men standing in a gallery in front of large mounted documentary photographs of a waste site",
+    caption: "At a documentary photography exhibition. The prints on the wall are the exhibiting photographer's.",
+    tags: ["creative-business"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAwBACdASoPABQAPulep00pJSOiMAgBIB0JYwCdACPgbg8WT2qex1ZtwAAA/t+KzY9I5Y0WhtFNu9hvW4YD9swXizZXEjcTLQqM17HOgG6u2jOzlajQi49n5Fe+zQ97sSeM/HFVtf/31jvEF7+Z16LkGQ8HRl6Q7rld8YRC9lnP8vuez7/ozqZt9caeiMdyXwggvcmBtis/MxSXpLQAAA==",
+  },
+  {
+    slug: "conference-artist-delegation",
+    src: "/field/conference-artist-delegation.webp",
+    width: 1800,
+    height: 1200,
+    alt: "Six men photographed together on a lawn outside a conference venue, five in suits with delegate lanyards and one holding an acoustic guitar",
+    caption: "Outside the conference venue: accredited delegates, and a performer holding a guitar.",
+    tags: ["conference", "institutional"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAwBACdASoUAA0APulgp00pJaOiMAgBIB0JYgCdIExCA8Nzsvv+iZXQtVQA/jM5U1Fd21pc9AnQ/aFwbmF178iTHsAbpkDk4IDbTUrxhLvUJEu0WvWpphjGR9hSEPEHnUG/F1/sFebVCXq1VSQ9/Vjr41eqscaT/JEBDzWN9f6beOu1q25b4ygBshbQej3AAAA=",
+  },
+  {
+    slug: "instrument-trade-stands",
+    src: "/field/instrument-trade-stands.webp",
+    width: 1200,
+    height: 1600,
+    alt: "Trade stands at a guitar industry fair, with instruments on a rack and manufacturers' banners behind",
+    caption: "Trade stands at an international guitar fair — the supply side of the music business.",
+    tags: ["creative-economy"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACwAwCdASoPABQAPuleqE0pJSOiMAgBIB0JQAAK/7Hq6dRKKGKiAAD9c152b6gkyH1a0jGC9YRCDHhqOmZuLwvpFVUzRmJdAZ7qM+Wk9MuPxYr+iJoi1TkVa1Ytj8TldJ49xX9+ZUNU+Q4alDKie0/I3nHJIfumCGS50nEGOBMGGTNvaGtZr+fd3plmI90rONAAAA==",
+  },
+  {
+    slug: "instrument-trade-wall",
+    src: "/field/instrument-trade-wall.webp",
+    width: 1200,
+    height: 1600,
+    alt: "A wall of electric guitars and basses on display, each with a manufacturer's name plate beneath it",
+    caption: "A manufacturer's wall, every instrument labelled. Craft, catalogued and priced.",
+    tags: ["creative-economy"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAADwAwCdASoPABQAPulgqE0pJaOiMAgBIB0JZQDA3BL4q1osxWryl+PYAP33oPBK3jyidcOXQqW2ULLVCgXBVhC0GttVih5HOVpYcNgN4LmX9rkooYm0zpBz8MPj2tWMu1IbIXxut2G6/gqruu0aGRDL3krb+Kf7nXR4Ge/ftlz/mZX8Xqg7cbpLaiQCE7syeU98RWcAAAA=",
+  },
+  {
+    slug: "citrus-tree",
+    src: "/field/citrus-tree.webp",
+    width: 718,
+    height: 541,
+    alt: "A young orange tree carrying ripe fruit, standing in worked sandy soil",
+    caption: "A young orange tree in fruit, on a producer's plot.",
+    tags: ["partner-farm", "horticulture"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBACdASoUAA8APulep00pJSOiMAgBIB0JYgCdMoADK09cIbkphfiswAD9j79gIfQKqwwNJ4xeo5Xl9FDnTriNrQs3cKwh9EdN1Y7IvX8smsbg/7NiC938zd1Vc+kCWTZ1iLIF3kIfufDXu81AuM+p9MI+VgKU6qqJpAAA",
+  },
+  {
+    slug: "citrus-harvest",
+    src: "/field/citrus-harvest.webp",
+    width: 718,
+    height: 406,
+    alt: "Two cartons filled with freshly picked oranges standing on the ground",
+    caption: "Picked and boxed at the tree. What happens next decides what it is worth.",
+    tags: ["partner-farm", "horticulture"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAQBACdASoUAAsAPuleqE0pJSOiMAgBIB0JbACdMoMljD26NkRH/LfVoAD+qfPbLo/fB4cb1Eb4wg7TN3xkL9T0CcT28E9tHCjs0/YWdQP82Zjqgne6Y77Ixh3mvDvcvN2VcD8DD32XmE9HYt+i9BZON/2nlMJ8LQrBHDoDk8HP0wAA",
+  },
+  {
+    slug: "legume-drying-yard",
+    src: "/field/legume-drying-yard.webp",
+    width: 1600,
+    height: 720,
+    alt: "A large heap of lifted groundnut plants drying on tarpaulins on grass, with three people working around it",
+    caption: "The lifted crop heaped onto tarpaulins to dry, spread out as the day goes on.",
+    tags: ["post-harvest"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAwCdASoUAAkAPulgqE0pJaOiMAgBIB0JZgCdACB5LXMIsi9AwgAA4jKcclCump/X9Dqkmu4zfkdCMb2z0SDXbo1kwLu60jW+QOitjKDc871QlfABhztdPsRJ2FFRgyxmalSdAAA=",
+  },
+  {
+    slug: "riverbank-tree-planting",
+    src: "/field/riverbank-tree-planting.webp",
+    width: 720,
+    height: 1600,
+    alt: "Two people carrying buckets of water along a line of newly planted seedlings on cleared ground beside a river treeline",
+    caption:
+      "Planting out along a river bank, seedlings set to a line and watered by hand. Roots hold a bank that would otherwise wash into the water.",
+    tags: ["tree-planting"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACwAwCdASoJABQAPulep00pJSOiMAgBIB0JZQC2yCKdP3nHz2zdAAD+1RavgLI/scMFB6yK9sFuQNX9GjlJ1gjro0WZh9RRgXmSQYjVWAJBZDO30pdqprKjgAA=",
+  },
+  {
+    slug: "bakery-production",
+    src: "/field/bakery-production.webp",
+    width: 1040,
+    height: 780,
+    alt: "Several large baked cakes cooling on steel trays in a production kitchen",
+    caption: "A baking run cooling on trays. Food processing is the same argument as the peanut butter.",
+    tags: ["value-addition"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAACQBACdASoUAA8APuleqE0pJSOiMAgBIB0JQBOmUAzgKoJb6JUAabUAOgiY/lAA/r6NIIJ3p4OsSJaJophjk98rJDHKSlA+q14G0Hpn8Tl9UEiz0tKt4yGlxUzX0ZtFS6efCiVD3RYxixKZZ/UFcRr7uVPf48LAGYwFOHsRDdEG4f0O9f+aEhonSPcPYCTD8ztFxIkSCRrrAK02zdG82uqRoQQAAA==",
   },
 ];
 

@@ -150,7 +150,7 @@ export default async function AudiencePage({ params }: Params) {
               <div>
                 <h2 id="fields-heading">Start from the field, not from YOCED.</h2>
                 <p className="muted" style={{ maxWidth: "58ch", marginBottom: 22 }}>
-                  All twelve fields carry their own partnership models and their own shareable
+                  All thirteen fields carry their own partnership models and their own shareable
                   page. Filter the atlas by cluster to find the ones that match your mandate.
                 </p>
                 <Link href="/programs" className="btn btn--solid">

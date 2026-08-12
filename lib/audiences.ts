@@ -1,7 +1,7 @@
 /**
  * Audience routes.
  *
- * YOCED covers twelve fields and five very different kinds of visitor. These
+ * YOCED covers thirteen fields and five very different kinds of visitor. These
  * routes exist so that each visitor can answer one question quickly: where do I
  * belong here?
  *
@@ -75,7 +75,7 @@ export const audiences: Audience[] = [
       {
         title: "If you are a creative",
         body: [
-          "Two things decide whether creative work pays: whether you own what you made, and whether your practice runs like a business. Intellectual Property covers the first, Business Development the second, and Youth & Creative Rights covers the terms you are being offered.",
+          "Two things decide whether creative work pays: whether you own what you made, and whether your practice runs like a business. Intellectual Property covers the first, and Creatives covers the second — the venue, the ticket, the contract and the terms you are being offered.",
         ],
       },
     ],
@@ -85,7 +85,7 @@ export const audiences: Audience[] = [
       "Whether you are looking for work or building something",
       "How much time you actually have available",
     ],
-    programs: ["skills-education", "job-creation", "agriculture-food-systems", "financial-literacy"],
+    programs: ["skills-education", "job-creation", "agriculture-food-security", "financial-literacy"],
     cta: { label: "Talk to YOCED", href: "/contact?topic=youth" },
     inquiryTopic: "youth",
     heroPhoto: "planting-ridges",
@@ -156,7 +156,7 @@ export const audiences: Audience[] = [
     navLabel: "Partners",
     question: "My organisation works in one of these fields.",
     headline: "Enter through one field. The rest stays available.",
-    lede: "You do not have to engage with all of YOCED to work with YOCED. Each of the twelve fields has its own page, its own partnership models and its own route in — and each one is built to be sent to a colleague on its own.",
+    lede: "You do not have to engage with all of YOCED to work with YOCED. Each of the thirteen fields has its own page, its own partnership models and its own route in — and each one is built to be sent to a colleague on its own.",
     accent: "slate",
     offers: [
       {
@@ -222,7 +222,7 @@ export const audiences: Audience[] = [
     offers: [
       {
         title: "Fund a defined field",
-        body: "Twelve program areas, each with its own scope, communities and partnership models. Funding can be restricted to one.",
+        body: "Thirteen program areas, each with its own scope, communities and partnership models. Funding can be restricted to one.",
       },
       {
         title: "Fund a rotational pool",
@@ -243,7 +243,7 @@ export const audiences: Audience[] = [
         body: [
           "Active field operations, photographed: land preparation, mechanisation, planting, weeding, harvest, drying, sorting, and processing into a packaged product.",
           "Six active ventures across furniture, food, apparel, film and craft.",
-          "A defined model in each of twelve program areas, with stated partnership routes.",
+          "A defined model in each of thirteen program areas, with stated partnership routes.",
           "Working relationships with the organisations listed on the partners page.",
         ],
       },
@@ -329,7 +329,7 @@ export const audiences: Audience[] = [
       "Where you are located",
       "The specific thing you want to change",
     ],
-    programs: ["agriculture-food-systems", "women-community-empowerment", "financial-literacy", "health-wellbeing"],
+    programs: ["agriculture-food-security", "women-community-empowerment", "financial-literacy", "health-wellbeing"],
     cta: { label: "Contact YOCED", href: "/contact?topic=community" },
     inquiryTopic: "community",
     heroPhoto: "training-session",

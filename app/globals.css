@@ -615,7 +615,7 @@ textarea {
   flex: none;
 }
 
-/* Mega panel: the twelve fields grouped into four clusters.
+/* Mega panel: the thirteen fields grouped into four clusters.
    Opens with a grid-template-rows 0fr → 1fr transition, which animates to the
    panel's natural height without JavaScript measuring anything. */
 .mega {
@@ -885,16 +885,7 @@ textarea {
   padding-top: 3px;
   color: var(--accent-ink);
 }
-.on-ink /* Attribution travels with any frame YOCED did not photograph. */
-.figure__credit {
-  display: block;
-  margin-top: 4px;
-  font-family: var(--font-mono), monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.05em;
-  opacity: 0.72;
-}
-.figure figcaption .code {
+.on-ink .figure figcaption .code {
   color: var(--accent-lit);
 }
 
@@ -987,6 +978,162 @@ textarea {
 .mosaic > *:nth-child(7n + 6) {
   grid-column: span 3;
   aspect-ratio: 3 / 2;
+}
+
+/* --- Slideshow ---------------------------------------------------------
+   One frame at a time, advancing in sequence. The track is a scroll-snap
+   container so that the no-JS render is a working gallery rather than a
+   stack; the controls below are added after mount. */
+.slides {
+  position: relative;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+.slides__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.slides__track::-webkit-scrollbar {
+  display: none;
+}
+.slides__track:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 3px;
+}
+.on-ink .slides__track:focus-visible {
+  outline-color: var(--accent-lit);
+}
+.slides__slide {
+  scroll-snap-align: start;
+  margin: 0;
+  min-width: 0;
+}
+/* A fixed stage with the frame contained inside it. The archive is a mix of
+   portrait and landscape, and cropping every frame to one ratio takes the top
+   off half the photographs. Letterboxing on ink reads as a projection and
+   keeps the whole image. */
+.slides__slide .shot {
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+}
+.slides__slide .shot img {
+  object-fit: contain;
+}
+.slides__caption {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding-top: 12px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--muted);
+  min-height: 4.6em;
+}
+.on-ink .slides__caption {
+  color: var(--muted-lit);
+}
+.slides__caption .code {
+  padding-top: 3px;
+  color: var(--accent-ink);
+}
+.on-ink .slides__caption .code {
+  color: var(--accent-lit);
+}
+
+.slides__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+}
+.on-ink .slides__bar {
+  border-top-color: var(--rule-lit);
+}
+.on-ink .slides__btn {
+  border-color: var(--rule-lit);
+}
+.slides__count {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+.on-ink .slides__count {
+  color: var(--muted-lit);
+}
+.slides__dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1 1 auto;
+}
+.slides__dots button {
+  width: 22px;
+  height: 12px;
+  padding: 5px 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.slides__dots button::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--rule);
+  transition: background 0.2s ease;
+}
+.on-ink .slides__dots button::before {
+  background: var(--rule-lit);
+}
+.slides__dots button[aria-current="true"]::before {
+  background: var(--accent-ink);
+}
+.on-ink .slides__dots button[aria-current="true"]::before {
+  background: var(--accent-lit);
+}
+.slides__nav {
+  display: flex;
+  gap: 8px;
+}
+.slides__btn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+.slides__btn:hover {
+  border-color: var(--accent-ink);
+  background: var(--paper-2);
+}
+.on-ink .slides__btn:hover {
+  border-color: var(--accent-lit);
+  background: var(--ink-2);
+}
+
+@media (max-width: 760px) {
+  .slides__slide .shot {
+    aspect-ratio: 1;
+  }
+  .slides__caption {
+    min-height: 6em;
+  }
 }
 
 /* Archive contact sheet. */
@@ -2274,4 +2421,14 @@ html.js-reveal [data-reveal="pending"] {
   .shot {
     break-inside: avoid;
   }
+}
+
+/* Archive call-to-action beneath a slideshow. */
+.archive-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 28px;
+  margin-top: 26px;
 }
