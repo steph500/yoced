@@ -15,6 +15,15 @@ const previews = Object.fromEntries(
   programs.map((program) => [program.slug, program.heroPhoto ? photo(program.heroPhoto) : undefined]),
 );
 
+const roomPhotos = photoSet(
+  "conference-plenary",
+  "conference-delegate-pass",
+  "conference-address",
+  "conference-delegates",
+  "conference-performance",
+  "institutional-delegation",
+);
+
 const tickerItems = programs.map((program) => `${program.code} ${program.title}`);
 
 const reelPhotos = photoSet(
@@ -23,8 +32,10 @@ const reelPhotos = photoSet(
   "weeding-team",
   "groundnut-harvest-drying",
   "groundnut-peanut-butter",
+  "conference-delegation",
+  "partner-farm-kale",
+  "partner-254-brewing",
   "poultry-brooder",
-  "capsicum-harvest",
   "training-session",
 );
 
@@ -123,6 +134,35 @@ export default function HomePage() {
         </p>
       </section>
 
+      {/* Institutional presence ------------------------------------------ */}
+      <section className="band band--tight wrap" aria-labelledby="room-heading">
+        <div className="railed">
+          <span className="label">In the room</span>
+          <div>
+            <h2 className="display t-2" id="room-heading">
+              Development is decided in rooms as often as in fields.
+            </h2>
+            <div className="prose" style={{ maxWidth: "60ch", marginTop: 18 }}>
+              <p>
+                YOCED attended the National Productivity and Performance Conference 2026 at the
+                Kenya School of Government, Lower Kabete, with its Founder accredited as a
+                delegate. Presence is what that evidences — and presence is worth showing, because
+                it is where scope, access and delivery get agreed.
+              </p>
+            </div>
+            <p style={{ marginTop: 20 }}>
+              <Link href="/work" className="link">
+                See the record <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Captioned rather than cropped: the delegate pass has to stay readable,
+          and the broadcast frames must carry their source. */}
+      <Reel photos={roomPhotos} />
+
       {/* Clusters ------------------------------------------------------- */}
       <section className="band on-ink" aria-labelledby="clusters-heading">
         <div className="wrap">
@@ -173,15 +213,16 @@ export default function HomePage() {
             </h2>
           </div>
           <p>
-            Every photograph on this site is from YOCED project work. Captions describe what is
-            in the frame and nothing more — there are no outcome claims attached to any of them.
+            Field production, institutional presence and the partner network. Captions describe
+            what is in the frame and nothing more, and anything YOCED did not photograph carries
+            its source.
           </p>
         </div>
 
         <Reel photos={reelPhotos}>
           <p className="muted" style={{ fontSize: ".95rem" }}>
-            The archive runs from land preparation through planting, weeding and harvest to
-            drying, sorting and a jar on a shelf.
+            Three chapters: the season, from land preparation to a jar on a shelf; the rooms YOCED
+            has been present in; and the sites and organisations it works alongside.
           </p>
           <Link href="/work" className="btn btn--solid">
             Open the full archive <ArrowUpRight size={17} aria-hidden="true" />

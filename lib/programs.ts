@@ -197,7 +197,14 @@ export const programs: Program[] = [
     related: ["job-creation", "capital-rotational-funding", "financial-literacy"],
     ventures: ["casa-furnishings", "sweet-and-fancy", "slice-and-ice", "fashion-and-design"],
     heroPhoto: "partner-meeting",
-    photos: ["partner-meeting", "training-session", "groundnut-peanut-butter"],
+    photos: [
+      "partner-meeting",
+      "conference-delegate-pass",
+      "conference-delegation",
+      "institutional-handshake",
+      "training-session",
+      "groundnut-peanut-butter",
+    ],
   },
   {
     slug: "capital-rotational-funding",
@@ -540,6 +547,11 @@ export const programs: Program[] = [
       "chicks-with-feed",
       "machinery-yard",
       "maize-field",
+      "partner-farm-kale",
+      "partner-farm-kale-rows",
+      "partner-farm-brassica",
+      "partner-farm-young-crop",
+      "partner-farm-green-crop",
     ],
     topics: [
       {
@@ -552,7 +564,7 @@ export const programs: Program[] = [
       },
       {
         title: "Horticulture",
-        body: "Kale, capsicum and tomatoes as short-cycle enterprises alongside the main season.",
+        body: "Kale, capsicum and tomatoes as short-cycle enterprises alongside the main season, on YOCED plots and on partner farms.",
       },
       {
         title: "Poultry",
@@ -596,7 +608,7 @@ export const programs: Program[] = [
       },
       {
         title: "Biodiversity and environment",
-        body: "Tree cover, land condition and environmental awareness alongside production work.",
+        body: "Tree cover, land condition and environmental awareness alongside production work. YOCED attended Green Earth Ambassadors Foundation's Guinness World Records tree-planting attempt at Kessup Forest, Elgeiyo Marakwet, in support — the attempt was theirs.",
       },
     ],
     communities: [
@@ -628,7 +640,15 @@ export const programs: Program[] = [
     related: ["agriculture-food-systems", "health-wellbeing", "technology"],
     ventures: [],
     heroPhoto: "crop-residue",
-    photos: ["crop-residue", "prepared-plot", "kitchen-garden", "tractor-and-hand", "maize-field", "groundnut-field"],
+    photos: [
+      "crop-residue",
+      "green-earth-record-notice",
+      "prepared-plot",
+      "kitchen-garden",
+      "tractor-and-hand",
+      "maize-field",
+      "groundnut-field",
+    ],
   },
   {
     slug: "health-wellbeing",

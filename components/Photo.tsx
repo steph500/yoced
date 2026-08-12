@@ -25,7 +25,7 @@ export function Shot({
   className?: string;
 }) {
   return (
-    <div className={`shot ${className}`.trim()}>
+    <div className={`shot ${className}`.trim()} data-fit={photo.fit ?? "cover"}>
       <Image {...shared(photo)} alt={photo.alt} fill sizes={sizes} priority={priority} />
     </div>
   );
@@ -53,7 +53,10 @@ export function Figure({
       <Shot photo={photo} sizes={sizes} priority={priority} />
       <figcaption>
         <span className="code">{index === undefined ? "◆" : String(index).padStart(3, "0")}</span>
-        <span>{photo.caption}</span>
+        <span>
+          {photo.caption}
+          {photo.credit ? <span className="figure__credit">{photo.credit}</span> : null}
+        </span>
       </figcaption>
     </figure>
   );

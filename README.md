@@ -55,30 +55,36 @@ editing a component.
 | `lib/audiences.ts` | The five `/for/*` routes |
 | `lib/partners.ts` | Partner organisations |
 | `lib/team.ts` | Leadership |
-| `lib/testimonials.ts` | Testimonials (currently empty — see below) |
+| `lib/testimonials.ts` | The four recovered "Words of Wisdom" quotes |
 | `lib/photos.ts` | The field archive: every photo, caption, alt text and tag |
 | `lib/inquiry.ts` | Contact form topics and routing |
 | `lib/sdg.ts` | SDG titles |
 
-### Deliberately empty, waiting on real material
+### What is evidenced, and what is still open
 
-Three things are intentionally blank rather than invented. Each one hides its own
-UI when empty, so nothing breaks and no gap appears.
+`lib/photos.ts` holds two intakes:
 
-1. **`socialLinks` in `lib/site.ts`.** The previous site linked Facebook,
-   Instagram, X and LinkedIn, but none of those URLs could be verified. Add
-   `{ label, href }` entries and the footer and contact page start showing them.
-2. **`testimonials` in `lib/testimonials.ts`.** The old site carried quotes
-   attributed to Dovies Ebbiey, Nzisa Matulu, Fundi Ngundi and Tim Janot. The
-   exact wording could not be recovered, and a reconstructed testimonial is not a
-   testimonial. Add verbatim quotes and the section appears on `/partners`.
-3. **`portrait` in `lib/team.ts`.** No leadership photography was supplied. The
-   leadership cards use a designed typographic treatment instead. Add a path to
-   an image in `public/` and the portrait renders automatically.
+1. **Field production** — the groundnut, maize, horticulture and poultry work.
+2. **Institutional and network evidence** — the National Productivity and
+   Performance Conference 2026 (Kenya School of Government, 17–19 June 2026,
+   where the Founder was an accredited delegate), working visits, partner farms
+   and partner organisations.
 
-Partner logos work the same way: `logo` on a `Partner` is optional and currently
-unset for every entry, because no logo files were available and an approximation
-of another organisation's mark would be worse than clean type.
+Rules that hold across both:
+
+- Anything YOCED did not photograph carries a `credit`, which renders with the
+  caption. Broadcast stills are marked as such.
+- Presence is described as presence. Attending a conference is not an
+  endorsement by its convenors or speakers, and the site says so on `/work`.
+- Another organisation's initiative is credited to them. The Guinness World
+  Records tree-planting attempt is Green Earth Ambassadors Foundation's;
+  YOCED attended in support, and that is exactly how it appears.
+- The delegate pass has its QR code blurred before publication.
+
+**`socialLinks` in `lib/site.ts` is the one thing still empty.** The previous
+site linked Facebook, Instagram, X and LinkedIn but none of those URLs could be
+verified. Add `{ label, href }` entries and the footer and contact page start
+showing them. Nothing else on the site is waiting on material.
 
 ### Adding photographs
 

@@ -150,8 +150,7 @@ export default function AboutPage() {
             </h2>
           </div>
           <p>
-            Roles rather than biographies. What each position is responsible for is established;
-            career histories were not available and are not invented here.
+            Roles and remits — what each position is accountable for, and the fields it leads on.
           </p>
         </div>
 

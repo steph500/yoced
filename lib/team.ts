@@ -1,7 +1,9 @@
 /**
- * YOCED leadership. Public roles are confirmed from YOCED's recovered material
- * and the organisation's current direction. Dovies' portrait is recovered from
- * the previous YOCED website. No stock or generated leadership portraits are used.
+ * YOCED leadership.
+ *
+ * Roles are confirmed — Dovies Ebbiey's title is corroborated by his accredited
+ * delegate pass for the National Productivity and Performance Conference 2026.
+ * `focus` states the remit of the role. No stock or generated portraits are used.
  */
 export type Leader = {
   name: string;

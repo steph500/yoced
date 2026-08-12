@@ -7,6 +7,15 @@
  *
  * Sources are stored as pre-optimised WebP under /public/field and served through
  * next/image. `blurDataURL` holds a 20px LQIP generated at build-prep time.
+ *
+ * Two intakes are held here:
+ *   1. Field production — the groundnut, maize, horticulture and poultry work.
+ *   2. Institutional and network evidence — the National Productivity and
+ *      Performance Conference 2026, working visits, partner farms and partner
+ *      organisations.
+ *
+ * Anything not photographed by YOCED carries a `credit`. A delegate pass QR code
+ * was blurred before publication.
  */
 
 export type Photo = {
@@ -19,6 +28,17 @@ export type Photo = {
   /** Editorial caption shown alongside the image. */
   caption: string;
   tags: string[];
+  /**
+   * Set when the frame is not YOCED's own photograph — a broadcast still, or
+   * another organisation's material. Rendered alongside the caption so
+   * attribution travels with the image.
+   */
+  credit?: string;
+  /**
+   * Documents — a delegate pass, a printed notice — must be readable, so they
+   * are contained rather than cropped to fill. Photographs default to "cover".
+   */
+  fit?: "cover" | "contain";
   blurDataURL: string;
 };
 
@@ -374,6 +394,188 @@ export const photos: Photo[] = [
     tags: ["training", "meeting"],
     blurDataURL:
       "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQAwCdASoUAAkAPuleqE0pJSQiMAgBIB0JZQC7ABk54nQYZ9wJ8AAAzjrSEbcx3fg3VRiw1bPTC1117Xe+3wWkdBASZKfXPf1xZWsufQjPNrajNXJUi4EhUB/9BZcxNIX6RuXxTItyZAAA",
+  },
+  {
+    slug: "conference-delegate-pass",
+    fit: "contain",
+    src: "/field/conference-delegate-pass.webp",
+    width: 519,
+    height: 960,
+    alt: "A delegate pass for the National Productivity and Performance Conference 2026, naming Dovies Ebbiey, Founder, YoCED (Youth Corporate and Economic Development)",
+    caption: "YOCED's delegate pass for the National Productivity and Performance Conference 2026 — Kenya School of Government, Lower Kabete, 17 to 19 June 2026.",
+    tags: ["conference", "institutional", "record"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAwCdASoLABQAPulgqE2pJaQiMAgBIB0JYwCdAB49gr/HyBD8GAAA4m/f0cRPOnLqtt8XLY1VCQMGYNbzEd6/me9YMz48NQoDDyd1WdQE1NnVzC04fIGSlmwTayYdBHF25d+CwAA=",
+  },
+  {
+    slug: "conference-delegation",
+    src: "/field/conference-delegation.webp",
+    width: 1800,
+    height: 1200,
+    alt: "Six men in suits and conference lanyards standing together on a lawn, one holding an acoustic guitar",
+    caption: "Delegates and performers on the conference grounds at the Kenya School of Government.",
+    tags: ["conference", "institutional"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAADwAwCdASoUAA0APuleqE0pJSQiMAgBIB0JZgCo9BjSG4ZOY5vikdiYAP4zRNETksFRjmLZCNrvuYXTP3hJ+4/q3IB82G3a9rvPOYdRpkNWzDPUxTjd0E5OfRY56NbbIvmN2X/BKRv51f0zwH1PgAkNN+78f4WJqIP+O/RCwef8GYfEgz0AEUCSiZxyUWcRW4AAAA==",
+  },
+  {
+    slug: "conference-delegates",
+    src: "/field/conference-delegates.webp",
+    width: 1105,
+    height: 1600,
+    alt: "Three men wearing conference delegate lanyards outside a stone building",
+    caption: "Delegates at the National Productivity and Performance Conference 2026.",
+    tags: ["conference", "institutional"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAADwAwCdASoOABQAPuleqE0pJSOiMAgBIB0JQAR5mA2bGbkZm6Al6CAwANt8G1lDC2vTiNsIpgTUla8mxmtjwnLisv7kMMuOxSym6lVwLF/W9mJfWvcYo4kFZGmVeoeWHh61RVBZNQy/UGuEmJxldLZcvFWWMN6LJM87TIMX+hJPTq5DJLRJLPts1L9BH104DpZgAA==",
+  },
+  {
+    slug: "conference-plenary",
+    src: "/field/conference-plenary.webp",
+    width: 1600,
+    height: 720,
+    alt: "A conference plenary with a panel seated on stage beneath a banner reading National Productivity and Performance Conference 2026",
+    caption: "The plenary floor. The conference theme was Productivity for Fiscal Sustainability and Efficient Service Delivery.",
+    tags: ["conference", "institutional"],
+    credit: "Broadcast still",
+    blurDataURL:
+      "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADwAwCdASoUAAkAPulep00pJSOiMAgBIB0JaAC7ACPg/jsFuwZ9NTuAAP3HvHXvDe4y3nLDA+nrfh8cVkMPEVwh0gx481f9oz9wuDkVjxLc13Y1+akH3aLxGQxjeCOD0EdpZ/65bi/f/6grzFtxeVzeiIhGCntF21CT3vuAAAA=",
+  },
+  {
+    slug: "conference-address",
+    src: "/field/conference-address.webp",
+    width: 709,
+    height: 384,
+    alt: "A speaker addressing the National Productivity and Performance Conference from a podium, shown in a television broadcast",
+    caption: "The Head of State addresses the National Productivity and Performance Conference 2026.",
+    tags: ["conference", "institutional"],
+    credit: "Broadcast still · Citizen Digital",
+    blurDataURL:
+      "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAABQBACdASoUAAsAPulep00pJSOiMAgBIB0JYwDCmuAt/8B5cAvaqRM2CnIAAP7tldqEO0HOnqU0/xNwGIak2t5Z3JQEPHa6v9lw/UUmCsjstfknXVmEuHXysl9mHpMLXoikkRb5LIu0po5XneFZfzTgkyyEB17yLZHyg6bIpdJICkAHgUAAAA==",
+  },
+  {
+    slug: "conference-performance",
+    src: "/field/conference-performance.webp",
+    width: 688,
+    height: 384,
+    alt: "Two performers at the conference podium, one playing an acoustic guitar, shown in a television broadcast",
+    caption: "A performance during the conference programme.",
+    tags: ["conference", "institutional"],
+    credit: "Broadcast still",
+    blurDataURL:
+      "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAwBACdASoUAAsAPuleqE0pJSOiMAgBIB0JbACdABxOFwLCj27xthahmgAA/vHfwsCFWYCfBojPrjk3ou4npTTekrEOYifsUCYK/IvtG1hc+hAvcIazcfkxF+8HzCUMEbwOCq/hJ2vXPa85EjwC5cfU/+Yi2Kq3kXlLgpwoviS/+ZAA",
+  },
+  {
+    slug: "institutional-delegation",
+    src: "/field/institutional-delegation.webp",
+    width: 1200,
+    height: 1600,
+    alt: "Four people standing together outside an institutional building",
+    caption: "A delegation during a working visit.",
+    tags: ["institutional", "meeting"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBACdASoPABQAPuleqE0pJSOiMAgBIB0JQBUesYJZ5MjOI/viCnc1WAD+SRYvK2kDKvjcHRc3fkFy++1KS0R+S9sWWjiCjC4zcAMlm6Ih2YGO8Lwpobzu+CD3tb4v4zsqlPESBsRsXHVTGa6W5Jev2zH+Yemn6vrxP83ORH1om+5sAAA=",
+  },
+  {
+    slug: "institutional-handshake",
+    src: "/field/institutional-handshake.webp",
+    width: 960,
+    height: 1280,
+    alt: "Two men shaking hands on a paved forecourt outside a building signposted Central Building",
+    caption: "A handshake at the close of a working meeting.",
+    tags: ["institutional", "meeting"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACwBACdASoPABQAPulep00pJSOiMAgBIB0JZACdMoAlxhbhK2/V1en01komc0QgAP3RP57W4jk8gjSPh6mM7JSXw0kFnsTxeWrOBqyDQoAUH5ul11KBkrMFIzd7O58i0HOw3+MmuRptG9RGK5+1IJ8cyqYraWHqkv8oJr/FCA9UPf51ZIW2yFMsQhDonZ5gYAA=",
+  },
+  {
+    slug: "partner-farm-kale",
+    src: "/field/partner-farm-kale.webp",
+    width: 1600,
+    height: 720,
+    alt: "A dense kale crop growing in flat, well-tended rows extending toward a treeline",
+    caption: "Kale under cultivation at a partner farm.",
+    tags: ["horticulture", "partner-farm", "crop"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACwAwCdASoUAAkAPulgqE2pJaQiMAgBIB0JZQCo9CHfM4wcS2dSwAD+QPtheE8+W/7SBMUXJ6bqcl22+JjSxLkaSR1gzXb0T0drVz8C2y6eBgHgT4pt0YUaAAA=",
+  },
+  {
+    slug: "partner-farm-kale-rows",
+    src: "/field/partner-farm-kale-rows.webp",
+    width: 1600,
+    height: 720,
+    alt: "Rows of mature kale plants filling a smallholding to the field edge",
+    caption: "A kale block approaching harvest at a partner farm.",
+    tags: ["horticulture", "partner-farm", "crop"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAABwAwCdASoUAAkAPulgqE2pJaQiMAgBIB0JZwAAW/2sQhs35+wA/Tt22poJGPJ8doAxFdUOEJXrQo4xA5f1UxZoQr4haGbGHCNe90ez8wAAAA==",
+  },
+  {
+    slug: "partner-farm-green-crop",
+    src: "/field/partner-farm-green-crop.webp",
+    width: 1600,
+    height: 720,
+    alt: "A broad field of low green crop under an overcast sky",
+    caption: "A field crop at a partner farm.",
+    tags: ["horticulture", "partner-farm", "crop"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAwCdASoUAAkAPulgqE0pJaOiMAgBIB0JQBOgBDw4B5uz5TuhAAD+TQkwJV8H89Ca2JhnIkdX1F9s1yAdxS3LSatLNjQ8O1XJMudwQutzS3fmI2sH4z3/coAAAA==",
+  },
+  {
+    slug: "partner-farm-young-crop",
+    src: "/field/partner-farm-young-crop.webp",
+    width: 1600,
+    height: 720,
+    alt: "A young leafy crop newly established in rows on dark soil",
+    caption: "A young crop recently established at a partner farm.",
+    tags: ["horticulture", "partner-farm", "crop"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACwAwCdASoUAAkAPulgqE0pJaQiMAgBIB0JQBWABEBSaGuo5PaF4AD8j/Vx5igRIuoQVtvHKvV0MEzoQ2grwQh5pKuuHSO7Glin2ram2MyqJKmFmzU7jAAA",
+  },
+  {
+    slug: "partner-farm-brassica",
+    src: "/field/partner-farm-brassica.webp",
+    width: 1600,
+    height: 720,
+    alt: "A brassica crop growing in rows with a footpath running through the block",
+    caption: "Brassicas in production at a partner farm.",
+    tags: ["horticulture", "partner-farm", "crop"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACwAwCdASoUAAkAPulgqU2pJaQiMAgBIB0JQBadA9iKHhf9VMG/4ADJyJkuahguqozGOjOz7jXQSAD4jLQ0l3beOGssCANY5+ZxPEG/bXQzeF0AAAA=",
+  },
+  {
+    slug: "green-earth-record-notice",
+    fit: "contain",
+    src: "/field/green-earth-record-notice.webp",
+    width: 1093,
+    height: 1600,
+    alt: "An official Guinness World Records announcement for a tree planting record attempt of over 24,000 trees in 24 hours at Kessup Forest, Elgeiyo Marakwet County, on 22 April 2026, by Hillary Kiplagat Kibiwott, Co-Founder of Green Earth Ambassadors Foundation",
+    caption: "Green Earth Ambassadors Foundation's Guinness World Records tree-planting attempt at Kessup Forest, Elgeiyo Marakwet. The attempt is theirs; YOCED attended in support.",
+    tags: ["climate", "third-party"],
+    credit: "Green Earth Ambassadors Foundation",
+    blurDataURL:
+      "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADQAwCdASoOABQAPulgqE0pJaOiMAgBIB0JQBhQA+pIv1dJLiiKiiAA/sJTAbPT1rO1moSlkSSGXNmhwUauIZxefWw819fco1y745aTwACsJXzXKncl8nPFpYpaE4/CfU67H9JQMGUFsJdcCXkG2vgwHjno10sRi39lxQAA",
+  },
+  {
+    slug: "partner-254-brewing",
+    src: "/field/partner-254-brewing.webp",
+    width: 1600,
+    height: 1200,
+    alt: "A group photographed together beneath the 254 Brewing Co sign inside the brewery",
+    caption: "At 254 Brewing Co, one of the organisations in the YOCED network.",
+    tags: ["partner", "meeting"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABQBACdASoUAA8APulgqE0pJaQiMAgBIB0JZACdIExDHGGT2d6YYlE6mIEIAPZMESwfDqk5IlAepdEqmARy6/Nf3jKt2jPQHBTUotFKmD8dJDUiEWWfd5v2BImnXYtRg6ixAgN1GVTHUAQSfeF0WwdzaNPYIDilkScUskn7xy+6NEoK/INtehNUGwoyHSojAfJmAAAA",
+  },
+  {
+    slug: "partner-network-evening",
+    src: "/field/partner-network-evening.webp",
+    width: 1600,
+    height: 1200,
+    alt: "Three people photographed together at an evening industry event",
+    caption: "Meeting collaborators at an evening industry event.",
+    tags: ["partner", "meeting"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAACwBACdASoUAA8APulgqE0pJaOiMAgBIB0JZgCdMoADVTNMDNuyZAP8K7HN0DYAAP47/++heifwXn7K8JooF7TT3sDvR6CsKowHbbYyLPCKW5IIMOajKiAtIr1mgXTnLvnrqUlEN8GcHJeReesqn3llrLA/tEKk0ihAGNyDWsmwH3dQAAA=",
   },
 ];
 

@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
-import { Plate } from "@/components/Photo";
+import { Plate, Reel } from "@/components/Photo";
 import { reveal } from "@/lib/reveal";
 import { partners } from "@/lib/partners";
 import { clusters, programs, programsInCluster } from "@/lib/programs";
 import { testimonials } from "@/lib/testimonials";
-import { photo } from "@/lib/photos";
+import { photo, photoSet } from "@/lib/photos";
 import { technologyPartner } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -21,6 +21,16 @@ export const metadata: Metadata = {
     url: "/partners",
   },
 };
+
+const networkPhotos = photoSet(
+  "partner-254-brewing",
+  "conference-delegation",
+  "institutional-handshake",
+  "partner-farm-kale",
+  "green-earth-record-notice",
+  "institutional-delegation",
+  "partner-network-evening",
+);
 
 export default function PartnersPage() {
   return (
@@ -111,6 +121,22 @@ export default function PartnersPage() {
         </p>
       </section>
 
+      <section className="band band--tight wrap" aria-labelledby="evidence-heading">
+        <div className="section-head">
+          <div>
+            <span className="label">In practice</span>
+            <h2 className="display t-1" id="evidence-heading" style={{ marginTop: 14 }}>
+              What the network looks like on the ground.
+            </h2>
+          </div>
+          <p>
+            Rooms, sites and organisations. Presence and association are shown as exactly that —
+            neither is a claim of funding or endorsement.
+          </p>
+        </div>
+        <Reel photos={networkPhotos} />
+      </section>
+
       <section className="band on-ink wrap" aria-labelledby="models-heading">
         <div className="section-head">
           <div>
@@ -175,10 +201,14 @@ export default function PartnersPage() {
 
       {testimonials.length > 0 ? (
         <section className="band on-ink wrap" aria-labelledby="voices-heading">
-          <span className="label">In their words</span>
-          <h2 className="display t-1" id="voices-heading" style={{ margin: "14px 0 32px" }}>
-            What partners say.
+          <span className="label">Words of wisdom · from the YOCED archive</span>
+          <h2 className="display t-1" id="voices-heading" style={{ margin: "14px 0 18px" }}>
+            Voices carried forward.
           </h2>
+          <p className="muted" style={{ maxWidth: "62ch", marginBottom: 34 }}>
+            Recovered verbatim from YOCED’s earlier published profile. These are perspectives from
+            the archive, not statements of current funding.
+          </p>
           <ul className="rows">
             {testimonials.map((item) => (
               <li key={item.name} style={{ padding: "28px 0" }}>

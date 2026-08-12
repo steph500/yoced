@@ -841,6 +841,17 @@ textarea {
   height: 100%;
   object-fit: cover;
 }
+/* Documents are shown whole, on their own ground, rather than cropped. */
+.shot[data-fit="contain"] {
+  background: var(--paper-2);
+}
+.shot[data-fit="contain"] img {
+  object-fit: contain;
+  padding: 10px;
+}
+.on-ink .shot[data-fit="contain"] {
+  background: var(--ink-2);
+}
 .on-ink .shot {
   background: var(--ink-2);
 }
@@ -861,11 +872,29 @@ textarea {
 .on-ink .figure figcaption {
   color: var(--muted-lit);
 }
+/* Attribution travels with any frame YOCED did not photograph. */
+.figure__credit {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  opacity: 0.72;
+}
 .figure figcaption .code {
   padding-top: 3px;
   color: var(--accent-ink);
 }
-.on-ink .figure figcaption .code {
+.on-ink /* Attribution travels with any frame YOCED did not photograph. */
+.figure__credit {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  opacity: 0.72;
+}
+.figure figcaption .code {
   color: var(--accent-lit);
 }
 
