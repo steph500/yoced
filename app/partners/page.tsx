@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/SiteChrome";
 import { Plate } from "@/components/Photo";
+import { reveal } from "@/lib/reveal";
 import { partners } from "@/lib/partners";
 import { clusters, programs, programsInCluster } from "@/lib/programs";
 import { testimonials } from "@/lib/testimonials";
@@ -11,9 +11,9 @@ import { photo } from "@/lib/photos";
 import { technologyPartner } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Partners & funders",
+  title: "Partners",
   description:
-    "Partner with YOCED through a defined program field, venture, capability or delivery mandate. Explore partnership routes across twelve active fields in Kenya.",
+    "How partnership works at YOCED: enter through one of twelve fields, with stated partnership models for each. Network includes MKJ Law LLP, Kenbright, 254 Brewing Co, Twenty Fifth Hive, Njoki Karuoya Creative & Media Centre, PesaSwap and technology partner SelfAwareTech.",
   alternates: { canonical: "/partners" },
   openGraph: {
     title: "Partner with YOCED",
@@ -22,27 +22,32 @@ export const metadata: Metadata = {
   },
 };
 
-const partnershipRoutes = programs.reduce((count, program) => count + program.partnershipModels.length, 0);
-
 export default function PartnersPage() {
   return (
     <PageShell>
       <section className="hero" aria-labelledby="partners-heading">
         <div className="hero__meta">
           <span className="label">Partners · funders · collaborators</span>
-          <span className="label">{programs.length} active fields</span>
-          <span className="label" style={{ marginLeft: "auto" }}>{partnershipRoutes} defined partnership routes</span>
+          <span className="label" style={{ marginLeft: "auto" }}>
+            12 fields, 40+ partnership models
+          </span>
         </div>
-        <h1 className="grotesk hero__headline" id="partners-heading">Enter through <em>one</em> field.</h1>
+        <h1 className="grotesk hero__headline" id="partners-heading">
+          Enter through <em>one</em> field.
+        </h1>
         <div className="hero__foot">
           <p>
-            YOCED is broad by design, but a partnership does not have to be. Start with the
-            program, geography, community, technical capability or funding objective that matches
-            your mandate and the conversation stays there until there is a reason to widen it.
+            You do not have to engage with all of YOCED to work with YOCED. Each field carries
+            its own partnership models, its own communities and its own page — built to be
+            circulated internally without the rest of the organisation attached.
           </p>
           <div className="btn-row">
-            <Link href="/contact?topic=partnership" className="btn btn--solid">Open a conversation <ArrowUpRight size={17} aria-hidden="true" /></Link>
-            <Link href="/for/funders" className="btn">Funder due diligence route <ArrowUpRight size={17} aria-hidden="true" /></Link>
+            <Link href="/contact?topic=partnership" className="btn btn--solid">
+              Open a conversation <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+            <Link href="/for/funders" className="btn">
+              For funders <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
@@ -52,14 +57,18 @@ export default function PartnersPage() {
       <section className="band wrap" aria-labelledby="network-heading">
         <div className="section-head">
           <div>
-            <span className="label">YOCED network</span>
-            <h2 className="display t-1" id="network-heading" style={{ marginTop: 14 }}>Relationships that widen what can be built.</h2>
+            <span className="label">Network</span>
+            <h2 className="display t-1" id="network-heading" style={{ marginTop: 14 }}>
+              Organisations in the YOCED network.
+            </h2>
           </div>
           <p>
-            Organisations below are carried over from YOCED&apos;s previous public partner network.
-            Their presence is not presented as a current funding commitment or endorsement.
+            Listed as network rather than endorsement. Nothing on this page states that an
+            organisation currently funds YOCED, and outreach history is not treated as
+            partnership.
           </p>
         </div>
+
         <div className="partners">
           {partners.map((partner, index) => {
             const inner = (
@@ -68,36 +77,71 @@ export default function PartnersPage() {
                 <div>
                   <span className="partner__name">{partner.name}</span>
                   <div className="partner__foot" style={{ marginTop: 14 }}>
-                    <span className="label">{partner.field}</span>
+                    <span className="label" style={{ letterSpacing: ".08em" }}>
+                      {partner.field}
+                    </span>
                     {partner.role ? <span className="partner__role">{partner.role}</span> : null}
                   </div>
                 </div>
               </>
             );
             return partner.href ? (
-              <a key={partner.name} href={partner.href} className="partner" rel="noopener noreferrer" target="_blank">{inner}</a>
-            ) : <div key={partner.name} className="partner">{inner}</div>;
+              <a
+                key={partner.name}
+                href={partner.href}
+                className="partner"
+                rel="noopener noreferrer"
+                target="_blank"
+                data-accent="slate"
+                {...reveal(index * 30)}
+              >
+                {inner}
+              </a>
+            ) : (
+              <div key={partner.name} className="partner" {...reveal(index * 30)}>
+                {inner}
+              </div>
+            );
           })}
         </div>
+
+        <p className="muted" style={{ marginTop: 22, fontSize: ".88rem", maxWidth: "70ch" }}>
+          Two further logos appeared on YOCED’s previous website but could not be identified with
+          confidence from the surviving material. They have been left out rather than guessed at.
+        </p>
       </section>
 
       <section className="band on-ink wrap" aria-labelledby="models-heading">
         <div className="section-head">
           <div>
             <span className="label">Partnership directory</span>
-            <h2 className="display t-1" id="models-heading" style={{ marginTop: 14 }}>Start with the work, not the bureaucracy.</h2>
+            <h2 className="display t-1" id="models-heading" style={{ marginTop: 14 }}>
+              Start with the field, not the bureaucracy.
+            </h2>
           </div>
-          <p>Every field has concrete partnership models covering delivery, technical capacity, market access, funding or combinations of them.</p>
+          <p>
+            Every field lists the specific ways an organisation can work on it — funding,
+            technical capacity, market access, delivery or all four.
+          </p>
         </div>
+
         {clusters.map((cluster) => (
-          <div key={cluster.id} data-accent={cluster.accent} style={{ marginBottom: 34 }}>
-            <span className="label label--accent">{cluster.title}</span>
-            <ul className="defs" style={{ marginTop: 9 }}>
+          <div key={cluster.id} data-accent={cluster.accent} style={{ marginBottom: 40 }}>
+            <span className="label label--accent" style={{ marginBottom: 6 }}>
+              {cluster.title}
+            </span>
+            <ul className="defs">
               {programsInCluster(cluster.id).map((program) => (
                 <li key={program.slug}>
                   <span className="code">{program.code}</span>
-                  <span className="defs__t"><Link href={`/programs/${program.slug}`} className="link">{program.title}</Link></span>
-                  <span className="defs__d">{program.partnershipModels.map((model) => model.title).join(" · ")}</span>
+                  <span className="defs__t">
+                    <Link href={`/programs/${program.slug}`} className="link">
+                      {program.title}
+                    </Link>
+                  </span>
+                  <span className="defs__d">
+                    {program.partnershipModels.map((model) => model.title).join(" · ")}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -109,45 +153,65 @@ export default function PartnersPage() {
         <div className="railed">
           <span className="label">{technologyPartner.role}</span>
           <div>
-            <h2 className="display t-2" id="tech-heading" style={{ marginBottom: 14 }}>{technologyPartner.name}</h2>
-            <div className="prose" style={{ maxWidth: "62ch" }}>
+            <h2 className="display t-2" id="tech-heading" style={{ marginBottom: 16 }}>
+              {technologyPartner.name}
+            </h2>
+            <div className="prose" style={{ maxWidth: "60ch" }}>
               <p>{technologyPartner.note}</p>
-              <p>The relationship is a technology partnership. YOCED remains an independent organisation.</p>
+              <p>
+                YOCED is not owned by SelfAwareTech, SelfAwareTech is not a YOCED program, and
+                YOCED is not a SelfAwareTech product. The relationship is a partnership on
+                technology, and it is described that way everywhere on this site.
+              </p>
             </div>
-            <a href={technologyPartner.url} className="link" rel="noopener noreferrer" target="_blank">selfawaretech.com <ArrowUpRight size={15} aria-hidden="true" /></a>
+            <p style={{ marginTop: 18 }}>
+              <a href={technologyPartner.url} className="link" rel="noopener noreferrer" target="_blank">
+                selfawaretech.com <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            </p>
           </div>
         </div>
       </section>
 
       {testimonials.length > 0 ? (
         <section className="band on-ink wrap" aria-labelledby="voices-heading">
-          <div className="section-head">
-            <div>
-              <span className="label">YOCED archive · Words of Wisdom</span>
-              <h2 className="display t-1" id="voices-heading" style={{ marginTop: 14 }}>Perspectives preserved from the previous YOCED site.</h2>
-            </div>
-            <p>These are archived perspectives, not statements of current funding or endorsement.</p>
-          </div>
-          <div className="archive-voices">
+          <span className="label">In their words</span>
+          <h2 className="display t-1" id="voices-heading" style={{ margin: "14px 0 32px" }}>
+            What partners say.
+          </h2>
+          <ul className="rows">
             {testimonials.map((item) => (
-              <article className="archive-voice" key={item.name}>
-                {item.portrait ? <div className="archive-voice__portrait"><Image src={item.portrait} alt="" fill sizes="120px" /></div> : null}
-                <blockquote>“{item.quote}”</blockquote>
-                <p><b>{item.name}</b>{item.role ? ` · ${item.role}` : ""}</p>
-              </article>
+              <li key={item.name} style={{ padding: "28px 0" }}>
+                <blockquote
+                  className="display t-3"
+                  style={{ margin: 0, maxWidth: "44ch", fontWeight: 400 }}
+                >
+                  “{item.quote}”
+                </blockquote>
+                <p className="label" style={{ marginTop: 16 }}>
+                  {item.name}
+                  {item.role ? ` · ${item.role}` : ""}
+                  {item.organisation ? ` · ${item.organisation}` : ""}
+                </p>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       ) : null}
 
       <section className="band wrap">
-        <div className="cta-panel">
+        <div className="cta-panel" data-accent="slate">
           <div>
             <span className="label">Next step</span>
-            <h2>Tell us the mandate. We will route it to the right field.</h2>
-            <p>No generic intake maze: program, partnership, funding, delivery, venture or technology.</p>
+            <h2>Tell us the field and the mandate. We will do the routing.</h2>
+            <p>
+              {programs.length} fields, each with its own partnership route. Name yours in the
+              inquiry form and the conversation starts in the right place.
+            </p>
           </div>
-          <Link href="/contact?topic=partnership" className="btn">Contact YOCED <ArrowUpRight size={17} aria-hidden="true" /></Link>
+          <Link href="/contact?topic=partnership" className="btn">
+            Contact YOCED <ArrowUpRight size={17} aria-hidden="true" />
+          </Link>
         </div>
       </section>
     </PageShell>

@@ -1,13 +1,15 @@
-/** Single source of truth for YOCED identity, contact details and navigation. */
+/**
+ * Single source of truth for YOCED's identity, contact details and navigation.
+ * Update here, not in components.
+ */
+
 export const site = {
   name: "YOCED",
   legalName: "Youth Corporate and Economic Development",
-  /** Lockup form — the ampersand keeps the sidebar subtitle to two lines. */
-  shortLegalName: "Youth Corporate & Economic Development",
   url: "https://yoced.com",
-  tagline: "Build ideas into impact.",
+  tagline: "One ecosystem. Many doors.",
   description:
-    "YOCED is a Kenyan youth development ecosystem that helps young people, creatives and communities turn capability into sustainable ventures, livelihoods, skills and long-term economic participation across twelve active fields.",
+    "YOCED is a Kenyan youth development ecosystem that turns ideas and capability into ventures, livelihoods, skills and long-term economic participation across twelve active fields.",
   email: "yoced.ke@gmail.com",
   phone: "+254 726 647052",
   phoneHref: "tel:+254726647052",
@@ -20,10 +22,17 @@ export const technologyPartner = {
   name: "SelfAwareTech",
   role: "Technology Partner",
   url: "https://www.selfawaretech.com",
-  note: "SelfAwareTech is an independent technology company and YOCED technology partner. It is not part of YOCED, and YOCED is not a SelfAwareTech product.",
+  note: "SelfAwareTech is an independent technology company. It builds and maintains YOCED's digital platform as a partner, not as part of the organisation.",
 } as const;
 
-/** Previous YOCED pages showed Facebook, Instagram, X and LinkedIn, but current URLs remain unverified. */
+/**
+ * Social profiles.
+ *
+ * The previous YOCED site linked Facebook, Instagram, X and LinkedIn, but none of
+ * those URLs could be verified from the material available. Rather than publish a
+ * broken or wrong handle, this list stays empty and every social surface on the
+ * site hides itself until real URLs are added here.
+ */
 export type SocialLink = { label: string; href: string };
 export const socialLinks: SocialLink[] = [];
 
