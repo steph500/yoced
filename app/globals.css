@@ -905,7 +905,10 @@ textarea {
 .plate-figure {
   position: relative;
 }
-.plate__caption {
+/* Scoped through .plate-figure so these beat `.figure figcaption`, which is
+   one specificity point higher than a bare `.plate__caption` and was winning
+   — painting every full-bleed caption in dark ink on top of a photograph. */
+.plate-figure .plate__caption {
   position: absolute;
   left: var(--gutter);
   bottom: 20px;
@@ -914,12 +917,16 @@ textarea {
   flex-wrap: wrap;
   gap: 6px 16px;
   align-items: baseline;
+  max-width: 74ch;
   color: var(--paper);
-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.7);
   font-size: 0.85rem;
+  line-height: 1.45;
 }
-.plate__caption .code {
-  opacity: 0.75;
+.plate-figure .plate__caption .code {
+  padding-top: 0;
+  color: var(--paper);
+  opacity: 0.72;
 }
 .plate::after {
   content: "";
@@ -2288,14 +2295,22 @@ html.js-reveal [data-reveal="pending"] {
   .plate {
     aspect-ratio: 3 / 2;
   }
-  .plate__caption {
+  .plate-figure .plate__caption {
     position: static;
-    color: var(--ink);
+    max-width: none;
+    color: var(--muted);
     text-shadow: none;
     padding: 12px var(--gutter) 0;
   }
-  .on-ink .plate__caption {
-    color: var(--paper);
+  .plate-figure .plate__caption .code {
+    color: var(--accent-ink);
+    opacity: 1;
+  }
+  .on-ink .plate-figure .plate__caption {
+    color: var(--muted-lit);
+  }
+  .on-ink .plate-figure .plate__caption .code {
+    color: var(--accent-lit);
   }
   .plate::after {
     display: none;

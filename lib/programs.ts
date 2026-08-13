@@ -286,7 +286,9 @@ const fields: Omit<Program, "code">[] = [
     ventures: [],
     heroPhoto: "field-preparation",
     photos: [
+      "land-preparation-crew",
       "field-preparation",
+      "groundnut-canopy",
       "ploughing",
       "tractor-and-hand",
       "planting-ridges",

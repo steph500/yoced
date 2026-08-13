@@ -83,8 +83,8 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Documentary opener -------------------------------------------- */}
-      <Plate photo={photo("field-preparation")} priority />
+      {/* Documentary opener — the first photograph anyone sees. ---------- */}
+      <Plate photo={photo("land-preparation-crew")} priority />
 
       {/* Audience doors ------------------------------------------------ */}
       <section className="band wrap" aria-labelledby="doors-heading">

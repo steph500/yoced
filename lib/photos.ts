@@ -847,6 +847,33 @@ export const photos: Photo[] = [
     blurDataURL:
       "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACwAwCdASoJABQAPulep00pJSOiMAgBIB0JZQC2yCKdP3nHz2zdAAD+1RavgLI/scMFB6yK9sFuQNX9GjlJ1gjro0WZh9RRgXmSQYjVWAJBZDO30pdqprKjgAA=",
   },
+  /* ---------------------------------------------------------------------
+   * Intake 4 — the cover frame, plus the crop it becomes.
+   * ------------------------------------------------------------------ */
+
+  {
+    slug: "land-preparation-crew",
+    src: "/field/land-preparation-crew.webp",
+    width: 1113,
+    height: 501,
+    alt: "A red tractor standing on freshly ploughed ground while three workers open the headland with hoes",
+    caption:
+      "A tractor and a hand crew opening the same ground. Machine takes the body of the field, hoes take the headland — this is what a season starts as.",
+    tags: ["land", "mechanisation", "labour", "season-start"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoUAAkAPulgqE0pJaQiMAgBIB0JQBOgBD4YTuq3kzZfu84AAP14LchPWTmVJVddmJh5GZPvoNZri19yshNnoTXsCMCaw8ZZYv8qR/6V2Pbm4jHrsAA5ocGSrIAAAA==",
+  },
+  {
+    slug: "groundnut-canopy",
+    src: "/field/groundnut-canopy.webp",
+    width: 811,
+    height: 365,
+    alt: "A wide groundnut field in full leaf, with workers spread along the far edge beneath a treeline",
+    caption: "The same ground, later: a closed canopy across the whole field, with the crew working the far edge.",
+    tags: ["crop"],
+    blurDataURL:
+      "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAwCdASoUAAkAPulgqU2pJaQiMAgBIB0JZACdMoADYEO3hi9Z8Y0AAPff3sTC5RTxQWdw6EL55eNZEWvP15VcfRcm6Cgb74aMZFcocR36M8SqCHoRmkxOyWWtd+7AAAA=",
+  },
   {
     slug: "bakery-production",
     src: "/field/bakery-production.webp",
