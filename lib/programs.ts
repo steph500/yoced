@@ -72,6 +72,8 @@ export type Program = {
   ventures: string[];
   heroPhoto?: string;
   photos: string[];
+  /** Optional pointer to a longer argument that belongs to this field. */
+  furtherReading?: { href: string; title: string; body: string };
   /** Optional topic directory for fields broad enough to need one. */
   topics?: { title: string; body: string }[];
 };
@@ -188,6 +190,11 @@ const fields: Omit<Program, "code">[] = [
     related: ["intellectual-property", "business-development", "skills-education"],
     ventures: ["film", "fashion-and-design", "crafted-africa"],
     heroPhoto: "stage-house-audience",
+    furtherReading: {
+      href: "/how-it-works",
+      title: "How YOCED works",
+      body: "The full argument behind this field: the three instruments that formalise a practice, the employment multiplier that follows, and the case for exporting Kenyan intellectual property rather than importing a template.",
+    },
     photos: [
       "ancestral-hands-key-art",
       "djembe-player",

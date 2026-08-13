@@ -179,6 +179,23 @@ export default async function ProgramPage({ params }: Params) {
             </section>
           ) : null}
 
+          {program.furtherReading ? (
+            <section className="pd__section" aria-labelledby="further-heading">
+              <div>
+                <span className="label">Read on</span>
+              </div>
+              <div className="pd__body">
+                <h2 id="further-heading">{program.furtherReading.title}</h2>
+                <p>{program.furtherReading.body}</p>
+                <p style={{ marginTop: 6 }}>
+                  <Link href={program.furtherReading.href} className="link">
+                    Read the argument <ArrowUpRight size={15} aria-hidden="true" />
+                  </Link>
+                </p>
+              </div>
+            </section>
+          ) : null}
+
           <section className="pd__section" aria-labelledby="communities-heading">
             <div>
               <span className="label">{program.topics ? "05" : "04"} / Communities</span>

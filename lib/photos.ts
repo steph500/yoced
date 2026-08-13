@@ -663,12 +663,12 @@ export const photos: Photo[] = [
     slug: "stage-house-trio",
     src: "/field/stage-house-trio.webp",
     width: 1600,
-    height: 1066,
+    height: 1395,
     alt: "Three musicians performing in a living room — keyboard, acoustic guitar and electric guitar",
     caption: "A trio playing a house set: keys, acoustic and electric, on carpet rather than a stage.",
     tags: ["performance"],
     blurDataURL:
-      "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAADQBACdASoUAA0APuleqE0pJSOiMAgBIB0JagCdMoMlxGBb/4B1s5Nf70yoQhP0wAD8YwtLTKDcIzQ5GzPD/A2wYOUlTXF1F0YRuBefWupRVup6IhWntbsmeziYeUuxa3K3JCN5AyIC+eUL5LYHRYcl+KmBHkkOc9ykpey57IkYNDZUviWYVAzxr1Atv1CQRpX2IBdgRs0KuaDcAAA=",
+      "data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAADQBACdASoUABEAPulsrlGpJaQiqAgBIB0JYwCxHy/lvwiipc25Vk+NDpfyGO5BwAD+6jzF22rR8i87rjbO4sm+JkDvRIUcCm2ZB81HgLWrq7bV53/ukTSkFVxfuYmcU5PVHRQ7mC9Rq8PfTeew1WMF3gXnkQF3rbEJV8E+nhvxNRovm8D8HXifDPFF/mUH2sIqdcApSdUGwMXVDHUW7dPvcRmSQSgDF0E7gAAA",
   },
   {
     slug: "stage-house-listening",
@@ -751,12 +751,12 @@ export const photos: Photo[] = [
     slug: "creative-collaborators",
     src: "/field/creative-collaborators.webp",
     width: 1600,
-    height: 1395,
+    height: 1066,
     alt: "Three men photographed together against a graffiti wall at a creative venue",
     caption: "Collaborators at a creative venue, photographed between sessions.",
     tags: ["creative-business"],
     blurDataURL:
-      "data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAADQBACdASoUABEAPulsrlGpJaQiqAgBIB0JYwCxHy/lvwiipc25Vk+NDpfyGO5BwAD+6jzF22rR8i87rjbO4sm+JkDvRIUcCm2ZB81HgLWrq7bV53/ukTSkFVxfuYmcU5PVHRQ7mC9Rq8PfTeew1WMF3gXnkQF3rbEJV8E+nhvxNRovm8D8HXifDPFF/mUH2sIqdcApSdUGwMXVDHUW7dPvcRmSQSgDF0E7gAAA",
+      "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAADQBACdASoUAA0APuleqE0pJSOiMAgBIB0JagCdMoMlxGBb/4B1s5Nf70yoQhP0wAD8YwtLTKDcIzQ5GzPD/A2wYOUlTXF1F0YRuBefWupRVup6IhWntbsmeziYeUuxa3K3JCN5AyIC+eUL5LYHRYcl+KmBHkkOc9ykpey57IkYNDZUviWYVAzxr1Atv1CQRpX2IBdgRs0KuaDcAAA=",
   },
   {
     slug: "photography-exhibition",

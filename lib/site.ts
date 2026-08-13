@@ -38,6 +38,7 @@ export const socialLinks: SocialLink[] = [];
 
 export const primaryNav = [
   { label: "Programs", href: "/programs" },
+  { label: "How it works", href: "/how-it-works" },
   { label: "Field work", href: "/work" },
   { label: "Ventures", href: "/ventures" },
   { label: "Partners", href: "/partners" },

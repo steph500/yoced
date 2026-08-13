@@ -84,7 +84,9 @@ export function Plate({
       </div>
       {caption ? (
         <figcaption className="plate__caption">
-          <span className="code">FIELD ARCHIVE</span>
+          {/* Attribution has to travel with the frame here too — a full-bleed
+              plate is the most prominent place an image appears on the site. */}
+          <span className="code">{photo.credit ? photo.credit.toUpperCase() : "FIELD ARCHIVE"}</span>
           <span>{photo.caption}</span>
         </figcaption>
       ) : null}

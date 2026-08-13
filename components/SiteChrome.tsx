@@ -48,6 +48,9 @@ function Footer() {
               </li>
             ))}
             <li>
+              <Link href="/how-it-works">How YOCED works</Link>
+            </li>
+            <li>
               <Link href="/work">Field work</Link>
             </li>
             <li>

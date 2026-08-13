@@ -63,7 +63,10 @@ export default function AboutPage() {
             opportunity, and funding that keeps moving.
           </p>
           <div className="btn-row">
-            <Link href="/work" className="btn btn--solid">
+            <Link href="/how-it-works" className="btn btn--solid">
+              How YOCED works <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+            <Link href="/work" className="btn">
               See the field work <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
           </div>

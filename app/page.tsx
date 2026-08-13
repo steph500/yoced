@@ -137,6 +137,29 @@ export default function HomePage() {
         </p>
       </section>
 
+      {/* The argument ----------------------------------------------------- */}
+      <section className="band band--tight wrap" aria-labelledby="hiw-band-heading">
+        <div className="section-head">
+          <div>
+            <span className="label">The argument</span>
+            <h2 className="display t-1" id="hiw-band-heading" style={{ marginTop: 14 }}>
+              One formalised artist anchors a micro-economy.
+            </h2>
+          </div>
+          <p>
+            Registration, an intellectual property position and a set of books are what turn a
+            practice into something that can be lent to, contracted with and exported. That is
+            the whole mechanism, and it scales.
+          </p>
+        </div>
+        <p>
+          <Link href="/how-it-works" className="link">
+            How YOCED works — the infrastructure, the multiplier and the export case{" "}
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </Link>
+        </p>
+      </section>
+
       {/* Institutional presence ------------------------------------------ */}
       <section className="band band--tight wrap" aria-labelledby="room-heading">
         <div className="railed">
