@@ -15,7 +15,7 @@ import { people } from "@/lib/people";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "YOCED — Youth Corporate and Economic Development — is a Nairobi-based ecosystem working across thirteen fields, with roots in Business Process Management. Led by Dovies Ebbiey, Founder & President, and Stefan Juma, Co-founder & Technology Lead.",
+    "YOCED is a Nairobi-based ecosystem working across thirteen fields, creative and cultural programmes, technology and practical partnerships. Led by Dovies Ebbiey and Stefan Juma.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About YOCED",
@@ -150,7 +150,7 @@ export default function AboutPage() {
           <div>
             <span className="label">Leadership</span>
             <h2 className="display t-1" id="leadership-heading" style={{ marginTop: 14 }}>
-              Two people, two remits.
+              Two leads, one operating system.
             </h2>
           </div>
           <p>
@@ -177,6 +177,11 @@ export default function AboutPage() {
               <span className="leader__role">{person.role}</span>
               <h3 className="leader__name">{person.name}</h3>
               <p className="leader__focus">{person.focus}</p>
+              {person.external ? (
+                <a href={person.external.href} className="leader__link" rel="noopener noreferrer" target="_blank">
+                  {person.external.label} <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              ) : null}
               <ul className="tags">
                 {person.fields.map((slug) => {
                   const program = programs.find((item) => item.slug === slug);

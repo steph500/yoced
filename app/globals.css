@@ -1950,10 +1950,103 @@ a.partner:hover {
   max-width: 46ch;
   margin: 0;
 }
+.leader__link {
+  align-items: center;
+  color: var(--saffron-lit);
+  display: inline-flex;
+  font-size: 0.88rem;
+  gap: 7px;
+  margin-top: 2px;
+}
 .leader__portrait {
   width: 100%;
   aspect-ratio: 4 / 5;
   max-width: 220px;
+}
+
+/* Africa execution is an operating capability, not a separate service line:
+   the three disciplines meet in a single, flexible collaboration. */
+.execution__head h2 em {
+  color: var(--clay-ink);
+  font-style: normal;
+}
+.execution__capabilities {
+  border: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.execution__capabilities > div {
+  min-height: 280px;
+  padding: clamp(24px, 3vw, 42px);
+  position: relative;
+}
+.execution__capabilities > div + div {
+  border-left: 1px solid var(--rule);
+}
+.execution__capabilities .code {
+  color: var(--accent-ink);
+}
+.execution__capabilities h3 {
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  margin: 22px 0 14px;
+  max-width: 12ch;
+}
+.execution__capabilities p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 39ch;
+}
+.execution__journey {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.46fr) minmax(0, 1.54fr);
+  gap: clamp(28px, 5vw, 90px);
+  padding-top: clamp(52px, 7vw, 96px);
+}
+.execution__journey h3 {
+  margin-top: 12px;
+}
+.execution__journey ol {
+  border-top: 1px solid var(--rule);
+  list-style: none;
+}
+.execution__journey li {
+  align-items: baseline;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  gap: clamp(12px, 2vw, 26px);
+  grid-template-columns: 42px minmax(110px, 0.55fr) minmax(0, 1.45fr);
+  padding: 17px 0;
+}
+.execution__journey li .code {
+  color: var(--clay-ink);
+}
+.execution__journey li strong {
+  font-size: 1.02rem;
+  letter-spacing: -0.015em;
+}
+.execution__journey li > span:last-child {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+.execution__foot {
+  align-items: center;
+  display: flex;
+  gap: clamp(20px, 4vw, 60px);
+  justify-content: space-between;
+  padding-top: clamp(30px, 4vw, 54px);
+}
+.execution__foot p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+  max-width: 58ch;
 }
 
 /* Individual profiles: a distinct, reusable page type for people whose work
@@ -2472,12 +2565,23 @@ html.js-reveal [data-reveal="pending"] {
   .next-fields {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .execution__capabilities {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .execution__capabilities > div + div {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .execution__capabilities > div {
+    min-height: 0;
+  }
   .hero__foot,
   .pd__intro,
   .vd__hero,
   .aud__hero,
   .profile-hero__grid,
   .spotlight-hero__grid,
+  .execution__journey,
   .contact,
   .cluster {
     grid-template-columns: minmax(0, 1fr);
@@ -2563,6 +2667,17 @@ html.js-reveal [data-reveal="pending"] {
   }
   .defs li {
     grid-template-columns: 32px minmax(0, 1fr);
+  }
+  .execution__journey li {
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+  .execution__journey li > span:last-child {
+    grid-column: 2 / -1;
+    margin-top: 3px;
+  }
+  .execution__foot {
+    align-items: flex-start;
+    flex-direction: column;
   }
   .defs__d {
     grid-column: 2 / -1;

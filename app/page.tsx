@@ -4,6 +4,7 @@ import { PageShell } from "@/components/SiteChrome";
 import { AtlasIndex } from "@/components/AtlasIndex";
 import { Plate } from "@/components/Photo";
 import { Sequence } from "@/components/Sequence";
+import { AfricaExecution } from "@/components/AfricaExecution";
 import { reveal } from "@/lib/reveal";
 import { clusters, programs, programsInCluster } from "@/lib/programs";
 import { audiences } from "@/lib/audiences";
@@ -61,16 +62,17 @@ export default function HomePage() {
 
         <div className="hero__foot">
           <p>
-            YOCED builds the layer underneath youth opportunity in Kenya — the enterprises,
-            field operations, skills and funding routes that turn capability into an income
-            that survives the season.
+            YOCED builds the layer underneath youth opportunity in Kenya — enterprises, field
+            operations, skills and funding routes that turn capability into income that survives
+            the season. We also help partners turn ideas into locally grounded creative,
+            technology and pilot work.
           </p>
           <div className="btn-row">
-            <Link href="#atlas" className="btn btn--solid">
-              Open the atlas <ArrowUpRight size={17} aria-hidden="true" />
+            <Link href="/contact?topic=africa-project" className="btn btn--solid">
+              Bring us an idea <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
-            <Link href="/work" className="btn">
-              See the field work <ArrowUpRight size={17} aria-hidden="true" />
+            <Link href="#atlas" className="btn">
+              Open the atlas <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -116,6 +118,8 @@ export default function HomePage() {
           ))}
         </ul>
       </section>
+
+      <AfricaExecution id="home-execution-heading" />
 
       {/* The atlas ------------------------------------------------------ */}
       <AtlasIndex

@@ -11,7 +11,7 @@ import { site, socialLinks } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Contact YOCED in ${site.location}. Program inquiries, partnership, funding, youth and enterprise support, community groups, corporate collaboration, technology and media — routed by topic. ${site.email} · ${site.phone}`,
+  description: `Contact YOCED in ${site.location}. Africa project exploration, partnerships, pilots, creative and technology work, program inquiries and funding — routed by topic. ${site.email} · ${site.phone}`,
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact YOCED",
@@ -41,6 +41,12 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
         <h1 className="grotesk hero__headline" id="contact-heading">
           Start with what you want to <em>move</em>.
         </h1>
+        <div className="hero__foot">
+          <p>
+            A market question, a workshop, a creative programme, a product pilot or a technical
+            build — bring the objective and the context you have. We will start from there.
+          </p>
+        </div>
       </section>
 
       <section className="band band--tight wrap">

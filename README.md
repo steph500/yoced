@@ -57,10 +57,17 @@ editing a component.
 | `lib/team.ts` | Leadership |
 | `lib/people.ts` | Individual profiles published on `/people/*`; separate from YOCED leadership |
 | `lib/fieldSpotlights.ts` | Guest, initiative and practice spotlights attached to a program and published on `/spotlights/*` |
+| `lib/execution.ts` | The Africa execution capabilities and flexible Explore → Learn & Scale collaboration path |
 | `lib/testimonials.ts` | The four recovered "Words of Wisdom" quotes |
 | `lib/photos.ts` | The field archive: every photo, caption, alt text and tag |
 | `lib/inquiry.ts` | Contact form topics and routing |
 | `lib/sdg.ts` | SDG titles |
+
+`AfricaExecution` is the shared presentation of that capability on the home and
+Partners pages. It deliberately describes a flexible collaboration shape rather
+than fixed consulting packages. Its CTA uses the `africa-project` inquiry topic
+in `lib/inquiry.ts`, which covers market exploration, workshops, pilots and
+implementation conversations.
 
 ### What is evidenced, and what is still open
 

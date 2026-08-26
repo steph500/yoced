@@ -10,11 +10,12 @@ import { clusters, programs, programsInCluster } from "@/lib/programs";
 import { testimonials } from "@/lib/testimonials";
 import { photo, photoSet } from "@/lib/photos";
 import { technologyPartner } from "@/lib/site";
+import { AfricaExecution } from "@/components/AfricaExecution";
 
 export const metadata: Metadata = {
   title: "Partners",
   description:
-    "How partnership works at YOCED: enter through one of thirteen fields, with stated partnership models for each. Network includes MKJ Law LLP, Kenbright, 254 Brewing Co, Twenty Fifth Hive, Njoki Karuoya Creative & Media Centre, PesaSwap and technology partner SelfAwareTech.",
+    "Work with YOCED on African market exploration, creative and technology programmes, workshops, prototypes, pilots and local implementation — through thirteen connected fields.",
   alternates: { canonical: "/partners" },
   openGraph: {
     title: "Partner with YOCED",
@@ -41,23 +42,24 @@ export default function PartnersPage() {
     <PageShell>
       <section className="hero" aria-labelledby="partners-heading">
         <div className="hero__meta">
-          <span className="label">Partners · funders · collaborators</span>
+          <span className="label">Partners · founders · collaborators</span>
           <span className="label" style={{ marginLeft: "auto" }}>
             13 fields, 45+ partnership models
           </span>
         </div>
         <h1 className="grotesk hero__headline" id="partners-heading">
-          Enter through <em>one</em> field.
+          Bring the idea. Make it real <em>here</em>.
         </h1>
         <div className="hero__foot">
           <p>
-            You do not have to engage with all of YOCED to work with YOCED. Each field carries
-            its own partnership models, its own communities and its own page — built to be
-            circulated internally without the rest of the organisation attached.
+            YOCED works with international and local organisations that need African context and
+            practical execution: market exploration, workshops, creative programmes, technical
+            prototypes, pilots and implementation. Start with the question; the relevant field,
+            people and route take shape from there.
           </p>
           <div className="btn-row">
-            <Link href="/contact?topic=partnership" className="btn btn--solid">
-              Open a conversation <ArrowUpRight size={17} aria-hidden="true" />
+            <Link href="/contact?topic=africa-project" className="btn btn--solid">
+              Explore a partnership <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
             <Link href="/for/funders" className="btn">
               For funders <ArrowUpRight size={17} aria-hidden="true" />
@@ -67,6 +69,8 @@ export default function PartnersPage() {
       </section>
 
       <Plate photo={photo("partner-meeting")} priority />
+
+      <AfricaExecution id="partners-execution-heading" />
 
       <section className="band wrap" aria-labelledby="network-heading">
         <div className="section-head">

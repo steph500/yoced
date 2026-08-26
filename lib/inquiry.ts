@@ -8,6 +8,7 @@ export type TopicId =
   | "entrepreneur"
   | "community"
   | "corporate"
+  | "africa-project"
   | "technology"
   | "media";
 
@@ -61,6 +62,12 @@ export const topics: Topic[] = [
     label: "Corporate collaboration",
     subject: "Corporate",
     hint: "CSR, supply chain or an employment pipeline.",
+  },
+  {
+    id: "africa-project",
+    label: "Africa project / pilot",
+    subject: "Africa project",
+    hint: "Market exploration, a workshop, a prototype, a pilot or an implementation partnership.",
   },
   {
     id: "technology",
