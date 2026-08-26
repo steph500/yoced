@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact YOCED",
-    description: "Tell us the field, and we will route it from there.",
+    description: "Bring a market question, workshop, pilot, programme or technical build to YOCED.",
     url: "/contact",
   },
 };

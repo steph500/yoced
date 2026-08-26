@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/partners" },
   openGraph: {
     title: "Partner with YOCED",
-    description: "Enter through one field. The rest of the ecosystem stays available.",
+    description: "African context and practical execution for exploration, workshops, pilots and implementation.",
     url: "/partners",
   },
 };

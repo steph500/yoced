@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About YOCED",
-    description: "An ecosystem for youth-led economic development, based in Nairobi, Kenya.",
+    description: "A Nairobi-based ecosystem connecting youth development, creative work, technology and practical partnerships.",
     url: "/about",
   },
 };
