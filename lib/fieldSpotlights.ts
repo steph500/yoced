@@ -63,18 +63,6 @@ export const fieldSpotlights: FieldSpotlight[] = [
     ],
     gallery: [
       {
-        src: "/assets/spotlights/esha-radio-portrait-one.webp",
-        width: 1080,
-        height: 1920,
-        alt: "A portrait of a woman wearing a black top and a purple pendant necklace",
-      },
-      {
-        src: "/assets/spotlights/esha-radio-portrait-two.webp",
-        width: 1080,
-        height: 1920,
-        alt: "A portrait of a woman wearing a sleeveless dark top",
-      },
-      {
         src: "/assets/spotlights/esha-radio-portrait-three.webp",
         width: 1080,
         height: 1920,

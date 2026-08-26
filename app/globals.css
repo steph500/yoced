@@ -2200,8 +2200,7 @@ a.partner:hover {
 }
 .spotlight-gallery__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(12px, 2vw, 26px);
+  grid-template-columns: minmax(0, 360px);
 }
 .spotlight-gallery__grid img {
   width: 100%;
@@ -2546,9 +2545,6 @@ html.js-reveal [data-reveal="pending"] {
   }
   .field-spotlights__art {
     min-height: 220px;
-  }
-  .spotlight-gallery__grid {
-    gap: 8px;
   }
   .spotlight-gallery__grid img {
     aspect-ratio: 2 / 3;
