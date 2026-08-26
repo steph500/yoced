@@ -3,6 +3,8 @@ import { site } from "@/lib/site";
 import { programs } from "@/lib/programs";
 import { ventures } from "@/lib/ventures";
 import { audiences } from "@/lib/audiences";
+import { people } from "@/lib/people";
+import { fieldSpotlights } from "@/lib/fieldSpotlights";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -34,6 +36,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.75,
+    })),
+    ...people.map((person) => ({
+      url: url(`/people/${person.slug}`),
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.65,
+    })),
+    ...fieldSpotlights.map((spotlight) => ({
+      url: url(`/spotlights/${spotlight.slug}`),
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
   ];
 }

@@ -55,6 +55,8 @@ editing a component.
 | `lib/audiences.ts` | The five `/for/*` routes |
 | `lib/partners.ts` | Partner organisations |
 | `lib/team.ts` | Leadership |
+| `lib/people.ts` | Individual profiles published on `/people/*`; separate from YOCED leadership |
+| `lib/fieldSpotlights.ts` | Guest, initiative and practice spotlights attached to a program and published on `/spotlights/*` |
 | `lib/testimonials.ts` | The four recovered "Words of Wisdom" quotes |
 | `lib/photos.ts` | The field archive: every photo, caption, alt text and tag |
 | `lib/inquiry.ts` | Contact form topics and routing |
@@ -111,6 +113,18 @@ Two things are still waiting on material:
 
 `photo()` throws at build time on an unknown slug, so a typo fails the build
 rather than shipping a broken image.
+
+### Adding a profile or spotlight
+
+- Add a person to `lib/people.ts` for a shareable individual profile. These are
+  not automatically leadership: add someone to `lib/team.ts` only when their
+  YOCED leadership role is confirmed.
+- Add a guest, initiative or practice to `lib/fieldSpotlights.ts` and set its
+  `field` to the relevant program slug. It will appear in that program's
+  **Field spotlights** section and receive its own shareable page.
+- Put their optimised WebP imagery in `public/assets/people/` or
+  `public/assets/spotlights/` respectively. Describe only what is visible in
+  image alt text; do not infer names or outcomes from a photograph.
 
 ---
 

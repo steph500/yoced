@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
@@ -12,6 +13,7 @@ import { getVenture } from "@/lib/ventures";
 import { photo, photoSet } from "@/lib/photos";
 import { sdgTitle } from "@/lib/sdg";
 import { site } from "@/lib/site";
+import { spotlightsForField } from "@/lib/fieldSpotlights";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -51,6 +53,9 @@ export default async function ProgramPage({ params }: Params) {
   const remaining = allFrames.length - gallery.length;
   const related = program.related.map(getProgram).filter((item) => item !== undefined);
   const linkedVentures = program.ventures.map(getVenture).filter((item) => item !== undefined);
+  const spotlights = spotlightsForField(program.slug);
+  const nextSection = program.topics ? 5 : 4;
+  const communitiesSection = nextSection + (spotlights.length > 0 ? 1 : 0);
 
   return (
     <PageShell>
@@ -196,9 +201,43 @@ export default async function ProgramPage({ params }: Params) {
             </section>
           ) : null}
 
+          {spotlights.length > 0 ? (
+            <section className="pd__section" aria-labelledby="spotlights-heading">
+              <div>
+                <span className="label">{String(nextSection).padStart(2, "0")} / Field spotlights</span>
+              </div>
+              <div>
+                <h2 id="spotlights-heading">People and initiatives to know.</h2>
+                <div className="field-spotlights">
+                  {spotlights.map((spotlight) => (
+                    <Link href={`/spotlights/${spotlight.slug}`} key={spotlight.slug}>
+                      <span className="field-spotlights__art">
+                        <Image
+                          src={spotlight.hero.src}
+                          alt=""
+                          width={spotlight.hero.width}
+                          height={spotlight.hero.height}
+                          sizes="190px"
+                        />
+                      </span>
+                      <span className="field-spotlights__copy">
+                        <span className="label">{spotlight.label}</span>
+                        <strong>{spotlight.title}</strong>
+                        <span>{spotlight.lede}</span>
+                        <span className="link">
+                          Open spotlight <ArrowUpRight size={16} aria-hidden="true" />
+                        </span>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
+          ) : null}
+
           <section className="pd__section" aria-labelledby="communities-heading">
             <div>
-              <span className="label">{program.topics ? "05" : "04"} / Communities</span>
+              <span className="label">{String(communitiesSection).padStart(2, "0")} / Communities</span>
             </div>
             <div>
               <h2 id="communities-heading">Who this field reaches.</h2>

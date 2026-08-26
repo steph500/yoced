@@ -10,6 +10,7 @@ import { clusters, programs } from "@/lib/programs";
 import { ventures } from "@/lib/ventures";
 import { photo } from "@/lib/photos";
 import { site, technologyPartner } from "@/lib/site";
+import { people } from "@/lib/people";
 
 export const metadata: Metadata = {
   title: "About",
@@ -183,6 +184,45 @@ export default function AboutPage() {
                 })}
               </ul>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="band band--tight wrap" aria-labelledby="people-heading">
+        <div className="section-head">
+          <div>
+            <span className="label">People to know</span>
+            <h2 className="display t-1" id="people-heading" style={{ marginTop: 14 }}>
+              A practice, in full.
+            </h2>
+          </div>
+          <p>
+            Individual profiles make the people and specialised work around YOCED easier to find,
+            understand and share.
+          </p>
+        </div>
+
+        <div className="featured-people">
+          {people.map((person) => (
+            <Link href={`/people/${person.slug}`} className="featured-person" key={person.slug}>
+              <div className="featured-person__image">
+                <Image
+                  src={person.portrait.src}
+                  alt={person.portrait.alt}
+                  fill
+                  sizes="(max-width: 760px) 100vw, 42vw"
+                />
+              </div>
+              <div className="featured-person__copy">
+                <span className="label">{person.eyebrow}</span>
+                <h3>{person.name}</h3>
+                <p className="featured-person__role">{person.role}</p>
+                <p>{person.organisation}</p>
+                <span className="link">
+                  Read profile <ArrowUpRight size={16} aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
