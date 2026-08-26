@@ -196,7 +196,7 @@ export const audiences: Audience[] = [
         title: "The boundaries",
         body: [
           "YOCED is not a clinical, legal or financial services provider. In health, protection and legal matters its role is reach, organisation and referral — with the professional capacity coming from the partner.",
-          "SelfAwareTech is an independent technology company acting as YOCED's technology partner. It is not part of YOCED and YOCED is not part of it.",
+          "SelfAwareTech is YOCED’s independent technology partner, contributing product engineering and digital systems capability where a collaboration calls for it.",
         ],
       },
     ],

@@ -195,9 +195,9 @@ export default function PartnersPage() {
             <div className="prose" style={{ maxWidth: "60ch" }}>
               <p>{technologyPartner.note}</p>
               <p>
-                YOCED is not owned by SelfAwareTech, SelfAwareTech is not a YOCED program, and
-                YOCED is not a SelfAwareTech product. The relationship is a partnership on
-                technology, and it is described that way everywhere on this site.
+                Together, the partnership can pair local insight, creative delivery and practical
+                implementation with the web, mobile and AI product work a collaboration needs.
+                SelfAwareTech remains an independent company with a focused role in that work.
               </p>
             </div>
             <p style={{ marginTop: 18 }}>

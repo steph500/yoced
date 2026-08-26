@@ -22,7 +22,7 @@ export const technologyPartner = {
   name: "SelfAwareTech",
   role: "Technology Partner",
   url: "https://www.selfawaretech.com",
-  note: "SelfAwareTech is an independent technology company. It builds and maintains YOCED's digital platform as a partner, not as part of the organisation.",
+  note: "SelfAwareTech is YOCED’s technology partner, bringing product engineering and digital systems capability into the work.",
 } as const;
 
 /**

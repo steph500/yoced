@@ -980,7 +980,7 @@ const fields: Omit<Program, "code">[] = [
     approach: [
       "We start from the constraint, not the technology. Coordination of field crews, record-keeping for a venture that needs to be fundable, market reach for a producer group — each of these has a technology answer only after the underlying operation is sound.",
       "Digital skills are treated as part of the Skills & Education field rather than as a separate track, so that they attach to specific work.",
-      "YOCED's platform and digital infrastructure are built with SelfAwareTech, an independent technology company working as YOCED's technology partner.",
+      "YOCED's platform and digital infrastructure are built in partnership with SelfAwareTech, its independent technology partner.",
     ],
     activities: [
       {
